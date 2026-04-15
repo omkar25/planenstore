@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
+import { Nunito_Sans } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { Header } from "@/components/shared/common/header/header";
+import { ThemeProvider } from "@/components/shared/common/theme/theme-provider";
 import "../globals.css";
+
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "store",
@@ -26,10 +34,13 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={nunitoSans.variable} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
+          <ThemeProvider>
+            <Header />
+            {children}
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

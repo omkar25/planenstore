@@ -1,4 +1,12 @@
 {
+  "Header": {
+    "home": "Startseite",
+    "portfolio": "Portfolio",
+    "aboutUs": "Über uns",
+    "references": "Referenzen",
+    "contact": "Kontakt",
+    "shop": "Shop"
+  },
   "HomePage": {
     "title": "Hallo shadcn!",
     "description": "Ihre Next.js-App ist bereit.",

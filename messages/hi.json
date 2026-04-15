@@ -1,4 +1,12 @@
 {
+  "Header": {
+    "home": "होम",
+    "portfolio": "पोर्टफोलियो",
+    "aboutUs": "हमारे बारे में",
+    "references": "संदर्भ",
+    "contact": "संपर्क",
+    "shop": "दुकान"
+  },
   "HomePage": {
     "title": "नमस्ते shadcn!",
     "description": "आपका Next.js ऐप तैयार है।",

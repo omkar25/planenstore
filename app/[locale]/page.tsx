@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AuroraText } from "@/components/aurora-text";
+import { AuroraText } from "@/components/shared/aurora-text";
 
 export default function Home() {
   const t = useTranslations("HomePage");
