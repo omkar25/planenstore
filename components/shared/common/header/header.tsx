@@ -9,13 +9,23 @@ import { LanguageSelector } from "../language/language-selector";
 // import { ModeToggle } from "../theme/mode-toggle";
 import { ColorSwitcher } from "../theme/color-switcher";
 
-const navKeys = ["home", "portfolio", "aboutUs", "references", "contact"] as const;
+const navItems = [
+  { key: "home", sectionId: "hero" },
+  { key: "portfolio", sectionId: "portfolio" },
+  { key: "aboutUs", sectionId: "about" },
+  { key: "references", sectionId: "referenzen" },
+  { key: "contact", sectionId: "kontakt" },
+] as const;
 
 export function Header() {
   const t = useTranslations("Header");
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleToggle = () => setMobileOpen((prev) => !prev);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#0a0a0a] border-b border-white/5">
@@ -30,14 +40,15 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          {navKeys.map((key) => (
-            <Link
+          {navItems.map(({ key, sectionId }) => (
+            <button
               key={key}
-              href="/"
+              type="button"
+              onClick={() => scrollTo(sectionId)}
               className="text-sm text-neutral-400 transition-colors hover:text-white"
             >
               {t(key)}
-            </Link>
+            </button>
           ))}
         </nav>
 
@@ -47,7 +58,7 @@ export function Header() {
           <LanguageSelector />
           <Link
             href="/"
-            className="rounded-full bg-lime-400 px-5 py-1.5 text-sm font-semibold text-black transition-colors hover:bg-lime-300"
+            className="rounded-full bg-primary px-5 py-1.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
           >
             {t("shop")}
           </Link>

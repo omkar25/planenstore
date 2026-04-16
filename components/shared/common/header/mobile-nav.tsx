@@ -2,9 +2,14 @@
 
 import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
-import { Link } from "@/i18n/navigation";
 
-const navKeys = ["home", "portfolio", "aboutUs", "references", "contact"] as const;
+const navItems = [
+  { key: "home", sectionId: "hero" },
+  { key: "portfolio", sectionId: "portfolio" },
+  { key: "aboutUs", sectionId: "about" },
+  { key: "references", sectionId: "referenzen" },
+  { key: "contact", sectionId: "kontakt" },
+] as const;
 
 interface MobileNavProps {
   open: boolean;
@@ -30,15 +35,18 @@ export function MobileNav({ open, onToggle }: MobileNavProps) {
 
   return (
     <nav className="flex flex-col gap-1 border-t border-white/5 px-6 py-4 md:hidden">
-      {navKeys.map((key) => (
-        <Link
+      {navItems.map(({ key, sectionId }) => (
+        <button
           key={key}
-          href="/"
-          onClick={onToggle}
-          className="rounded-lg px-3 py-2 text-sm text-neutral-400 transition-colors hover:bg-white/5 hover:text-white"
+          type="button"
+          onClick={() => {
+            document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+            onToggle();
+          }}
+          className="rounded-lg px-3 py-2 text-left text-sm text-neutral-400 transition-colors hover:bg-white/5 hover:text-white"
         >
           {t(key)}
-        </Link>
+        </button>
       ))}
     </nav>
   );

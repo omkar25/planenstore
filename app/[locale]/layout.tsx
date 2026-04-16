@@ -5,6 +5,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/shared/common/header/header";
+import Footer from "@/components/shared/common/footer/Footer";
 import { ThemeProvider } from "@/components/shared/common/theme/theme-provider";
 import "../globals.css";
 
@@ -40,6 +41,7 @@ export default async function LocaleLayout({
           <ThemeProvider>
             <Header />
             {children}
+            <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

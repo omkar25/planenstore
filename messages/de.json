@@ -8,8 +8,62 @@
     "shop": "Shop"
   },
   "HomePage": {
-    "title": "Hallo shadcn!",
-    "description": "Ihre Next.js-App ist bereit.",
-    "getStarted": "Loslegen"
+    "hero": {
+      "title": "TORİ Planen & Netze",
+      "subtitle1": "Sicherheit…",
+      "subtitle2": "Umweltschutz…",
+      "subtitle3": "Wetterschutz…",
+      "cta": "Alle Produkte"
+    },
+    "products": {
+      "sectionTitle": "Unsere Produkte",
+      "pvcPlanen": {
+        "title": "PVC-Planen",
+        "description": "Hochwertige PVC-Planen für Gerüstbau und Baustellensicherung."
+      },
+      "oesenbandplane": {
+        "title": "Ösenbandplane",
+        "description": "Robuste Ösenbandplanen für maximalen Schutz und Langlebigkeit."
+      },
+      "staubschutznetze": {
+        "title": "Staubschutznetze",
+        "description": "Effektiver Schutz vor Staub und Schmutz auf Baustellen."
+      },
+      "strahlschutznetze": {
+        "title": "Strahlschutznetze",
+        "description": "Zuverlässige Strahlschutznetze für sichere Arbeitsumgebungen."
+      },
+      "viewAll": "Alle Produkte"
+    },
+    "about": {
+      "sectionTitle": "Über uns",
+      "headline": "Ihr Spezialist für Montage von Planen und Netzen seit über 20 Jahren",
+      "description": "Wir sind ein erfahrenes Unternehmen, das sich auf die Montage von Planen und Netzen spezialisiert hat. Unser Team besteht aus kompetenten Fachleuten mit umfangreichem Fachwissen und langjähriger Erfahrung in der Branche.",
+      "cta": "Kontakt"
+    },
+    "references": {
+      "sectionTitle": "TORİ Planen Referenzen",
+      "tagline": "Ihr Partner für sichere, nachhaltige und innovative Gerüstlösungen.",
+      "items": {
+        "dust": { "title": "Tori Planen", "subtitle": "Staubschutznetze" },
+        "pvc": { "title": "Toriplanen", "subtitle": "PVC Planen" },
+        "blast": { "title": "Toriplanen", "subtitle": "Strahlschutznetze" }
+      }
+    },
+    "certifications": {
+      "sectionTitle": "Zertifikat",
+      "mold": {
+        "title": "Schimmelresistent",
+        "description": "Schimmelresistent und ideal für feuchte Räume wie Badezimmer geeignet."
+      },
+      "fire": {
+        "title": "Feuerfest / Nicht brennbar",
+        "description": "Das verwendete Baumaterial ist feuerfest und erfüllt alle Sicherheitsstandards."
+      },
+      "eco": {
+        "title": "Umweltfreundlich",
+        "description": "Hergestellt aus recycelbaren Materialien für eine nachhaltige Zukunft."
+      }
+    }
   }
 }

@@ -8,8 +8,62 @@
     "shop": "Shop"
   },
   "HomePage": {
-    "title": "Hello shadcn!",
-    "description": "Your Next.js app is ready.",
-    "getStarted": "Get Started"
+    "hero": {
+      "title": "TORİ Tarps & Nets",
+      "subtitle1": "Safety…",
+      "subtitle2": "Environmental Protection…",
+      "subtitle3": "Weather Protection…",
+      "cta": "All Products"
+    },
+    "products": {
+      "sectionTitle": "Our Products",
+      "pvcPlanen": {
+        "title": "PVC Tarps",
+        "description": "High-quality PVC tarps for scaffolding and construction site protection."
+      },
+      "oesenbandplane": {
+        "title": "Eyelet Band Tarps",
+        "description": "Robust eyelet band tarps for maximum protection and durability."
+      },
+      "staubschutznetze": {
+        "title": "Dust Protection Nets",
+        "description": "Effective protection against dust and dirt on construction sites."
+      },
+      "strahlschutznetze": {
+        "title": "Blast Protection Nets",
+        "description": "Reliable blast protection nets for safe working environments."
+      },
+      "viewAll": "All Products"
+    },
+    "about": {
+      "sectionTitle": "About Us",
+      "headline": "Your specialist for tarp and net installation for over 20 years",
+      "description": "We are an experienced company specializing in the installation of tarps and nets. Our team consists of skilled professionals with extensive expertise and years of experience in the industry.",
+      "cta": "Contact"
+    },
+    "references": {
+      "sectionTitle": "TORİ Tarps References",
+      "tagline": "Your partner for safe, sustainable and innovative scaffolding solutions.",
+      "items": {
+        "dust": { "title": "Tori Tarps", "subtitle": "Dust Protection Nets" },
+        "pvc": { "title": "Tori Tarps", "subtitle": "PVC Tarps" },
+        "blast": { "title": "Tori Tarps", "subtitle": "Blast Protection Nets" }
+      }
+    },
+    "certifications": {
+      "sectionTitle": "Certifications",
+      "mold": {
+        "title": "Mold Resistant",
+        "description": "Mold resistant and ideal for humid rooms such as bathrooms."
+      },
+      "fire": {
+        "title": "Fireproof / Non-combustible",
+        "description": "The building material used is fireproof and meets all safety standards."
+      },
+      "eco": {
+        "title": "Eco-Friendly",
+        "description": "Made from recyclable materials for a sustainable future."
+      }
+    }
   }
 }

@@ -5,8 +5,8 @@ export interface ColorTheme {
 }
 
 export const colorThemes: ColorTheme[] = [
-  { name: "Neutral", value: "neutral", preview: "bg-neutral-500" },
+  { name: "Lime", value: "Lime", preview: "bg-lime-400" },
   { name: "Blue", value: "blue", preview: "bg-blue-500" },
 ];
 
-export const defaultColorTheme = "neutral";
+export const defaultColorTheme = "Lime";
