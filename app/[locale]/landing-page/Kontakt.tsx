@@ -13,17 +13,17 @@ const contactInfo = [
   {
     icon: HiLocationMarker,
     title: "Adresse",
-    details: ["Musterstraße 42", "20457 Hamburg", "Deutschland"],
+    details: ["Reeseberg 3", "21079 Hamburg", "Deutschland"],
   },
   {
     icon: HiPhone,
     title: "Telefon",
-    details: ["+49 (0) 40 123 456 78", "+49 (0) 170 123 4567"],
+    details: ["+49 (40) 303 72 206"],
   },
   {
     icon: HiMail,
     title: "E-Mail",
-    details: ["info@toriplanen.de", "anfrage@toriplanen.de"],
+    details: ["info@toriplanen.de"],
   },
   {
     icon: HiClock,

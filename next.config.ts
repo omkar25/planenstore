@@ -6,7 +6,7 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 const nextConfig: NextConfig = {
   turbopack: {
     root: import.meta.dirname,
-  },
+  }
 };
 
 export default withNextIntl(nextConfig);

@@ -2,14 +2,31 @@
 
 import { HiChevronDown } from "react-icons/hi";
 import { AuroraText } from "@/components/shared/aurora-text";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function Hero() {
   const taglines = ["Sicherheit", "Umweltschutz", "Wetterschutz"];
-
+  const titleRef = useRef(null);
+  const titleInView = useInView(titleRef, { once: true });
   return (
-    <section id="hero" className="relative w-full h-screen overflow-hidden bg-background">
-      {/* Background video */}
-      <div className="absolute inset-0">
+    
+    <section id="hero" className="relative py-24 bg-background">
+      
+        <motion.div
+          ref={titleRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={titleInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-1">
+          Professionelle Lösungen für <span className="text-primary">Baustellen</span>
+          </h2>
+          <div className="w-20 h-1 bg-primary mx-auto mt-6 rounded-full" />
+        </motion.div>
+        {/* Background video */}
+      <div className="absolute">
         <video
           autoPlay
           loop
@@ -23,15 +40,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
-        {/* Badge */}
-        <div className="mb-6">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/30 bg-background/60 backdrop-blur-md">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <AuroraText as="span" className="text-sm font-medium tracking-widest uppercase">
-              Professionelle Lösungen für Baustellen
-            </AuroraText>
-          </div>
-        </div>
+        
 
         {/* Headline */}
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-2">
