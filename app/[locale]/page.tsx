@@ -8,7 +8,7 @@ import CarouselSlider from "@/components/slider/CarouselSlider";
 export default function Home() {
   return (
     <main>
-      <CarouselSlider autoPlay interval={2000} />
+      <CarouselSlider autoPlay interval={4000} />
       <Hero />
       <Portfolio />
       <About />
