@@ -151,20 +151,12 @@
   }
 }
 
+
+
 .aurora-text {
-  background-image: linear-gradient(
-    135deg,
-    #ff6b6b,
-    #feca57,
-    #48dbfb,
-    #ff9ff3,
-    #54a0ff,
-    #5f27cd,
-    #01a3a4,
-    #ff6b6b
-  );
+  background-image: linear-gradient(135deg, #85ff6b, var(--color-lime-400), var(--color-lime-400), var(--ring), rgb(138, 214, 87), #a7efa4, var(--color-lime-400), #ace1a2);
   background-size: 300% 300%;
-  animation: aurora 6s ease infinite;
+  animation: 6s infinite aurora;
 }
 
 @layer base {
