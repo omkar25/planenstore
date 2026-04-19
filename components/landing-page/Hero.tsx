@@ -16,7 +16,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={ref}
-      className="relative w-full h-screen min-h-[600px] overflow-hidden mt-2"
+      className="relative w-full h-[60vh] sm:h-[70vh] md:h-screen min-h-[400px] md:min-h-[600px] overflow-hidden mt-2"
     >
       {/* Background video */}
       <video

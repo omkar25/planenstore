@@ -85,8 +85,7 @@ export default function CarouselSlider({
 
   return (
     <div
-      className="relative w-full overflow-hidden"
-      style={{ aspectRatio: "16/6" }}
+      className="relative w-full overflow-hidden aspect-3/4 sm:aspect-4/3 md:aspect-video lg:aspect-16/7"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       role="region"
@@ -112,28 +111,26 @@ export default function CarouselSlider({
           />
 
           {/* Right half container — centers the floating panel */}
-          <div className="absolute inset-y-0 right-0 flex w-full md:w-1/2 items-center justify-center md:justify-start px-6 md:px-12">
+          <div className="absolute inset-0 flex items-end sm:items-center justify-center md:inset-y-0 md:right-0 md:left-auto md:w-1/2 md:justify-start px-4 sm:px-6 md:px-12 pb-16 sm:pb-0">
 
             {/* Floating dark panel — slides in from right */}
             <motion.div
               initial={{ opacity: 0, x: 80 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="flex flex-col items-start justify-center rounded-2xl px-8 md:px-12 py-8 md:py-10 backdrop-blur-sm"
+              className="flex flex-col items-start justify-center rounded-2xl px-5 sm:px-8 md:px-12 py-5 sm:py-8 md:py-10 backdrop-blur-sm max-w-[90vw] sm:max-w-none"
               style={{ background: "rgba(20, 20, 20, 0.65)" }}
             >
               {/* Title */}
               <h2
-                className="mb-3 font-light tracking-wide text-white"
-                style={{ fontSize: "clamp(1.5rem, 4vw, 3.5rem)" }}
+                className="mb-2 sm:mb-3 font-light tracking-wide text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
               >
                 {slides[current].title}
               </h2>
 
               {/* Subtitle */}
               <p
-                className="mb-8 font-light text-white/80"
-                style={{ fontSize: "clamp(0.85rem, 1.5vw, 1.1rem)" }}
+                className="mb-4 sm:mb-8 font-light text-white/80 text-xs sm:text-sm md:text-base line-clamp-3 sm:line-clamp-none"
               >
                 {slides[current].subtitle}
               </p>
@@ -141,7 +138,7 @@ export default function CarouselSlider({
               {/* CTA button */}
               <a
                 href={slides[current].ctaHref}
-                className="inline-flex items-center gap-2 rounded-lg border border-white/70 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-200 hover:bg-white hover:text-black"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/70 px-4 py-2 sm:px-6 sm:py-3 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-white transition-all duration-200 hover:bg-white hover:text-black"
               >
                 {slides[current].ctaLabel}
                 <span className="inline-block h-3 w-3 rounded-sm bg-primary" />
@@ -157,7 +154,7 @@ export default function CarouselSlider({
         className="absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white/70 transition hover:text-white"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-8 w-8" strokeWidth={1.5} />
+        <ChevronLeft className="h-5 w-5 sm:h-8 sm:w-8" strokeWidth={1.5} />
       </button>
 
       {/* Next arrow */}
@@ -166,18 +163,18 @@ export default function CarouselSlider({
         className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/70 transition hover:text-white"
         aria-label="Next slide"
       >
-        <ChevronRight className="h-8 w-8" strokeWidth={1.5} />
+        <ChevronRight className="h-5 w-5 sm:h-8 sm:w-8" strokeWidth={1.5} />
       </button>
 
       {/* Dot indicators */}
-      <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2">
+      <div className="absolute bottom-3 sm:bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-1.5 sm:gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
             aria-label={`Go to slide ${i + 1}`}
             className={cn(
-              "h-3.5 w-3.5 rounded-full border-2 transition-all duration-300",
+              "h-2.5 w-2.5 sm:h-3.5 sm:w-3.5 rounded-full border-2 transition-all duration-300",
               i === current
                 ? "border-white bg-white"
                 : "border-white/60 bg-transparent"
