@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { ShoppingBag } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 import { MobileNav, MobileNavToggle } from "./mobile-nav";
 import { LanguageSelector } from "../language/language-selector";
 // import { ModeToggle } from "../theme/mode-toggle";
@@ -32,10 +33,14 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <span className="text-xl font-bold tracking-tight">
-            <span className="text-primary">T</span>
-            <span className="text-foreground">P</span>
-          </span>
+          <Image
+            src="/logo/cropped-001-1.png"
+            alt="Tori Planen"
+            width={120}
+            height={40}
+            className="h-10 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Right side — Nav + Actions */}
