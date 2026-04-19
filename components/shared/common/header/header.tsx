@@ -36,10 +36,10 @@ export function Header() {
           <Image
             src="/logo/cropped-001-1.png"
             alt="Tori Planen"
-            width={120}
-            height={40}
+            width={100}
+            height={100}
+            style={{ width: "auto", height: "3.6rem" }}
             className="object-contain"
-            style={{ width: "auto", height: "2.5rem" }}
             priority
           />
         </Link>
