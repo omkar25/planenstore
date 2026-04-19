@@ -149,14 +149,40 @@ export default function Kontakt() {
                       </div>
                       <h3 className="text-foreground font-semibold">{t(`info.${key}`)}</h3>
                     </div>
-                    {details.map((detail) => (
-                      <p
-                        key={detail}
-                        className="text-muted-foreground text-sm leading-relaxed"
-                      >
-                        {detail}
-                      </p>
-                    ))}
+                    {details.map((detail) => {
+                      if (key === "phone") {
+                        const tel = detail.replace(/[\s()]/g, "");
+                        return (
+                          <a
+                            key={detail}
+                            href={`tel:${tel}`}
+                            className="block text-muted-foreground hover:text-primary text-sm leading-relaxed font-semibold transition-colors"
+                          >
+                            {detail}
+                          </a>
+                        );
+                      }
+                      if (key === "email") {
+                        return (
+                          <a
+                            key={detail}
+                            href={`mailto:${detail}`}
+                            rel="noopener"
+                            className="block text-muted-foreground hover:text-primary text-sm leading-relaxed font-semibold transition-colors"
+                          >
+                            {detail}
+                          </a>
+                        );
+                      }
+                      return (
+                        <p
+                          key={detail}
+                          className="text-muted-foreground text-sm leading-relaxed"
+                        >
+                          {detail}
+                        </p>
+                      );
+                    })}
                   </motion.div>
                 );
               })}
