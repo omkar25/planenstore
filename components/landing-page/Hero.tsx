@@ -1,6 +1,5 @@
 "use client";
 
-import { HiChevronDown } from "react-icons/hi";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
@@ -24,6 +23,7 @@ export default function Hero() {
         loop
         muted
         playsInline
+        preload="none"
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/video/Tori-Video-Webbbb_1.mp4" type="video/mp4" />

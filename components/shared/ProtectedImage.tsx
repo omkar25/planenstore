@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image, { ImageProps } from "next/image";
 
 /**
@@ -13,22 +14,13 @@ import Image, { ImageProps } from "next/image";
  * A determined user can still capture via dev-tools or screenshots.
  */
 export default function ProtectedImage(props: ImageProps) {
-  const isFill = props.fill === true;
-
   return (
-    <div
-      className={isFill ? "absolute inset-0 select-none" : "relative select-none"}
-      style={{ WebkitTouchCallout: "none" }}
+    <Image
+      {...props}
+      alt={props.alt || ""}
+      draggable={false}
       onContextMenu={(e) => e.preventDefault()}
-    >
-      <Image
-        {...props}
-        alt={props.alt || ""}
-        draggable={false}
-        onContextMenu={(e) => e.preventDefault()}
-      />
-      {/* Transparent overlay blocks direct image interaction */}
-      <div className="absolute inset-0 z-10" aria-hidden="true" />
-    </div>
+      style={{ ...props.style, WebkitTouchCallout: "none" } as React.CSSProperties}
+    />
   );
 }

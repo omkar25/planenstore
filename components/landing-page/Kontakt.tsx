@@ -198,6 +198,7 @@ export default function Kontakt() {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
+                sandbox="allow-scripts allow-same-origin"
                 referrerPolicy="no-referrer-when-downgrade"
               />
               {/* Info card overlay */}
