@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
+import ProtectedImage from "@/components/shared/ProtectedImage";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -102,7 +102,7 @@ export default function CarouselSlider({
           className="absolute inset-0"
         >
           {/* Background image */}
-          <Image
+          <ProtectedImage
             src={slides[current].src}
             alt={slides[current].alt}
             fill

@@ -38,7 +38,8 @@ export function Header() {
             alt="Tori Planen"
             width={120}
             height={40}
-            className="h-10 w-auto object-contain"
+            className="object-contain"
+            style={{ width: "auto", height: "2.5rem" }}
             priority
           />
         </Link>

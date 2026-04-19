@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
+import ProtectedImage from "@/components/shared/ProtectedImage";
 
 const projectKeys = ["blastNets", "pvcInstall", "dustNets", "weatherTarps", "facade", "scaffold"] as const;
 const projectYears: Record<string, string> = {
@@ -47,7 +47,7 @@ function ProjectCard({
       className="group relative rounded-2xl overflow-hidden bg-card/50 border border-border hover:border-primary/30 transition-all duration-500 cursor-pointer"
     >
       <div className="relative h-56 overflow-hidden">
-        <Image
+        <ProtectedImage
           src={projectImages[projectKey]}
           alt={title}
           fill

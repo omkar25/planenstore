@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
+import ProtectedImage from "@/components/shared/ProtectedImage";
 
 const productKeys = ["pvc", "dust", "blast", "weather"] as const;
 const productImages: Record<string, string> = {
@@ -38,7 +38,7 @@ function ProductCard({
       className="group relative bg-card/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all duration-500"
     >
       <div className="relative h-64 overflow-hidden">
-        <Image
+        <ProtectedImage
           src={productImages[productKey]}
           alt={title}
           fill
