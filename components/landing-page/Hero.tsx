@@ -62,16 +62,6 @@ export default function Hero() {
         </div>
 
       </div>
-
-      {/* Scroll hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.3, duration: 0.8 }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/40"
-      >
-        <HiChevronDown className="w-5 h-5 animate-bounce" />
-      </motion.div>
     </section>
   );
 }

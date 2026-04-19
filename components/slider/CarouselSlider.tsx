@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Slide {
   id: number;
@@ -91,61 +92,64 @@ export default function CarouselSlider({
       role="region"
       aria-label="Image carousel"
     >
-      {/* Slides track */}
-      <div
-        className="flex h-full transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${current * 100}%)` }}
-      >
-        {slides.map((slide, i) => (
-          <div key={slide.id} className="relative h-full min-w-full">
+      {/* Slides */}
+      <AnimatePresence>
+        <motion.div
+          key={slides[current].id}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          className="absolute inset-0"
+        >
+          {/* Background image */}
+          <Image
+            src={slides[current].src}
+            alt={slides[current].alt}
+            fill
+            className="object-cover"
+            priority={current === 0}
+          />
 
-            {/* Background image */}
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              className="object-cover"
-              priority={i === 0}
-            />
+          {/* Right half container — centers the floating panel */}
+          <div className="absolute inset-y-0 right-0 flex w-full md:w-1/2 items-center justify-center md:justify-start px-6 md:px-12">
 
-            {/* Right half container — centers the floating panel */}
-            <div className="absolute inset-y-0 right-0 flex w-1/2 items-center justify-start px-12">
-
-              {/* Floating dark panel — shrinks to content height */}
-              <div
-                className="flex flex-col items-start justify-center px-12 py-10"
-                style={{ background: "rgba(20, 20, 20, 0.65)" }}
+            {/* Floating dark panel — slides in from right */}
+            <motion.div
+              initial={{ opacity: 0, x: 80 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="flex flex-col items-start justify-center rounded-2xl px-8 md:px-12 py-8 md:py-10 backdrop-blur-sm"
+              style={{ background: "rgba(20, 20, 20, 0.65)" }}
+            >
+              {/* Title */}
+              <h2
+                className="mb-3 font-light tracking-wide text-white"
+                style={{ fontSize: "clamp(1.5rem, 4vw, 3.5rem)" }}
               >
-                {/* Title */}
-                <h2
-                  className="mb-3 font-light tracking-wide text-white"
-                  style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-                >
-                  {slide.title}
-                </h2>
+                {slides[current].title}
+              </h2>
 
-                {/* Subtitle */}
-                <p
-                  className="mb-8 font-light text-white/80"
-                  style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)" }}
-                >
-                  {slide.subtitle}
-                </p>
+              {/* Subtitle */}
+              <p
+                className="mb-8 font-light text-white/80"
+                style={{ fontSize: "clamp(0.85rem, 1.5vw, 1.1rem)" }}
+              >
+                {slides[current].subtitle}
+              </p>
 
-                {/* CTA button */}
-                
-                 <a href={slide.ctaHref}
-                  className="inline-flex items-center gap-2 border border-white/70 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-200 hover:bg-white hover:text-black"
-                >
-                  {slide.ctaLabel}
-                  {/* Red accent square matching screenshot */}
-                  <span className="inline-block h-3 w-3 bg-red-600" />
-                </a>
-              </div>
-            </div>
+              {/* CTA button */}
+              <a
+                href={slides[current].ctaHref}
+                className="inline-flex items-center gap-2 rounded-lg border border-white/70 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-200 hover:bg-white hover:text-black"
+              >
+                {slides[current].ctaLabel}
+                <span className="inline-block h-3 w-3 rounded-sm bg-primary" />
+              </a>
+            </motion.div>
           </div>
-        ))}
-      </div>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Prev arrow */}
       <button
