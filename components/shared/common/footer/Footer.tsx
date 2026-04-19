@@ -28,13 +28,10 @@ const serviceKeys = ["pvc", "dust", "blast", "weather", "custom"] as const;
 
 const socialLinks = [
   { icon: FaFacebookF, href: "#", label: "Facebook", color: "#1877F2", bg: "#1877F2" },
-  { icon: FaInstagram, href: "#", label: "Instagram", color: "#E4405F", bg: "#E4405F" },
-  { icon: FaLinkedinIn, href: "#", label: "LinkedIn", color: "#0A66C2", bg: "#0A66C2" },
+  { icon: FaInstagram, href: "https://www.instagram.com/tori_planen/", label: "Instagram", color: "#E4405F", bg: "#E4405F" },
   { icon: FaYoutube, href: "#", label: "YouTube", color: "#FF0000", bg: "#FF0000" },
   { icon: FaXTwitter, href: "#", label: "X", color: "#000000", bg: "#000000" },
-  { icon: FaTiktok, href: "#", label: "TikTok", color: "#000000", bg: "#000000" },
-  { icon: FaPinterestP, href: "#", label: "Pinterest", color: "#BD081C", bg: "#BD081C" },
-  { icon: FaWhatsapp, href: "#", label: "WhatsApp", color: "#25D366", bg: "#25D366" },
+  { icon: FaWhatsapp, href: "https://api.whatsapp.com/send/?phone=4917610319001&text&type=phone_number&app_absent=0", label: "WhatsApp", color: "#25D366", bg: "#25D366" },
 ];
 
 export default function Footer() {
