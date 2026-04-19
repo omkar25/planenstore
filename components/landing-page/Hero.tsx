@@ -50,7 +50,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: 30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + i * 0.18, ease: "easeOut" }}
-              className="text-foreground/90 font-light tracking-widest m-0"
+              className="text-white/90 font-light tracking-widest m-0"
               style={{
                 fontSize: "clamp(0.75rem, 1.6vw, 2.35rem)",
                 marginLeft: `${i * 20}px`,
