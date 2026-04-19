@@ -7,63 +7,161 @@
     "contact": "Kontakt",
     "shop": "Shop"
   },
-  "HomePage": {
-    "hero": {
-      "title": "TORİ Planen & Netze",
-      "subtitle1": "Sicherheit…",
-      "subtitle2": "Umweltschutz…",
-      "subtitle3": "Wetterschutz…",
-      "cta": "Alle Produkte"
-    },
+  "Hero": {
+    "titleLine1": "TORİ Planen",
+    "titleLine2": "& Netze",
+    "tagline1": "Sicherheit...",
+    "tagline2": "Umweltschutz...",
+    "tagline3": "Wetterschutz..."
+  },
+  "Portfolio": {
+    "sectionTitle": "Unser",
+    "sectionTitleHighlight": "Portfolio",
+    "subtitle": "Professionelle Planen und Netze für jeden Einsatzbereich – maßgeschneidert für Ihre Anforderungen.",
     "products": {
-      "sectionTitle": "Unsere Produkte",
-      "pvcPlanen": {
+      "pvc": {
         "title": "PVC-Planen",
-        "description": "Hochwertige PVC-Planen für Gerüstbau und Baustellensicherung."
+        "description": "Hochwertige PVC-Planen für den professionellen Einsatz auf Baustellen. Robust, wetterfest und langlebig – ideal für den Schutz von Gebäuden und Materialien.",
+        "features": ["Wetterfest", "UV-beständig", "Reißfest", "Individuell"]
       },
-      "oesenbandplane": {
-        "title": "Ösenbandplane",
-        "description": "Robuste Ösenbandplanen für maximalen Schutz und Langlebigkeit."
-      },
-      "staubschutznetze": {
+      "dust": {
         "title": "Staubschutznetze",
-        "description": "Effektiver Schutz vor Staub und Schmutz auf Baustellen."
+        "description": "Effektive Staubschutznetze reduzieren die Staubbelastung auf Baustellen erheblich. Sie schützen Anwohner und die Umwelt vor Feinstaubpartikeln.",
+        "features": ["Staubreduktion", "Luftdurchlässig", "Leicht", "Vielseitig"]
       },
-      "strahlschutznetze": {
+      "blast": {
         "title": "Strahlschutznetze",
-        "description": "Zuverlässige Strahlschutznetze für sichere Arbeitsumgebungen."
+        "description": "Professionelle Strahlschutznetze für Sandstrahl- und Kugelstrahlarbeiten. Maximale Sicherheit bei industriellen Strahlverfahren.",
+        "features": ["Hochfest", "Abriebfest", "Normgerecht", "Sicher"]
       },
-      "viewAll": "Alle Produkte"
-    },
-    "about": {
-      "sectionTitle": "Über uns",
-      "headline": "Ihr Spezialist für Montage von Planen und Netzen seit über 20 Jahren",
-      "description": "Wir sind ein erfahrenes Unternehmen, das sich auf die Montage von Planen und Netzen spezialisiert hat. Unser Team besteht aus kompetenten Fachleuten mit umfangreichem Fachwissen und langjähriger Erfahrung in der Branche.",
-      "cta": "Kontakt"
-    },
-    "references": {
-      "sectionTitle": "TORİ Planen Referenzen",
-      "tagline": "Ihr Partner für sichere, nachhaltige und innovative Gerüstlösungen.",
-      "items": {
-        "dust": { "title": "Tori Planen", "subtitle": "Staubschutznetze" },
-        "pvc": { "title": "Toriplanen", "subtitle": "PVC Planen" },
-        "blast": { "title": "Toriplanen", "subtitle": "Strahlschutznetze" }
-      }
-    },
-    "certifications": {
-      "sectionTitle": "Zertifikat",
-      "mold": {
-        "title": "Schimmelresistent",
-        "description": "Schimmelresistent und ideal für feuchte Räume wie Badezimmer geeignet."
-      },
-      "fire": {
-        "title": "Feuerfest / Nicht brennbar",
-        "description": "Das verwendete Baumaterial ist feuerfest und erfüllt alle Sicherheitsstandards."
-      },
-      "eco": {
-        "title": "Umweltfreundlich",
-        "description": "Hergestellt aus recycelbaren Materialien für eine nachhaltige Zukunft."
+      "weather": {
+        "title": "Wetterschutzplanen",
+        "description": "Zuverlässiger Wetterschutz für Baustellen bei Wind, Regen und Schnee. Ermöglichen ganzjähriges Arbeiten unter optimalen Bedingungen.",
+        "features": ["Windfest", "Wasserdicht", "Winterfest", "Flexibel"]
       }
     }
+  },
+  "About": {
+    "sectionTitle": "Über",
+    "sectionTitleHighlight": "uns",
+    "description": "TORİ Planen & Netze ist Ihr zuverlässiger Partner für professionelle Planen- und Netzlösungen im Bauwesen. Mit jahrelanger Erfahrung und einem engagierten Team bieten wir maßgeschneiderte Lösungen für Sicherheit, Umweltschutz und Wetterschutz auf Ihrer Baustelle.",
+    "values": {
+      "safety": {
+        "title": "Sicherheit",
+        "description": "Höchste Sicherheitsstandards bei allen unseren Produkten und Montagen. Zertifiziert nach aktuellen Normen."
+      },
+      "environment": {
+        "title": "Umweltschutz",
+        "description": "Nachhaltige Materialien und umweltfreundliche Prozesse. Wir schützen die Umgebung Ihrer Baustelle."
+      },
+      "fastInstall": {
+        "title": "Schnelle Montage",
+        "description": "Professionelle und schnelle Montage durch erfahrene Teams. Termingerecht und zuverlässig."
+      },
+      "team": {
+        "title": "Erfahrenes Team",
+        "description": "Unser qualifiziertes Team berät Sie kompetent und findet für jede Herausforderung die optimale Lösung."
+      }
+    },
+    "stats": {
+      "experience": { "number": "15+", "label": "Jahre Erfahrung" },
+      "projects": { "number": "500+", "label": "Projekte" },
+      "clients": { "number": "200+", "label": "Zufriedene Kunden" },
+      "employees": { "number": "50+", "label": "Mitarbeiter" }
+    }
+  },
+  "Referenzen": {
+    "sectionTitle": "Unsere",
+    "sectionTitleHighlight": "Referenzen",
+    "subtitle": "Ausgewählte Projekte, die unsere Kompetenz und Erfahrung in der Planen- und Netzmontage demonstrieren.",
+    "projects": {
+      "blastNets": {
+        "title": "Strahlschutznetze",
+        "category": "Industriebau",
+        "description": "Installation von Strahlschutznetzen für ein großes Industrieprojekt in Hamburg. Schutz von umliegenden Gebäuden während Sandstrahlarbeiten."
+      },
+      "pvcInstall": {
+        "title": "PVC-Planen Montage",
+        "category": "Hochbau",
+        "description": "Komplettverkleidung eines Hochbauprojekts mit maßgeschneiderten PVC-Planen für ganzjährigen Wetterschutz."
+      },
+      "dustNets": {
+        "title": "Staubschutznetze",
+        "category": "Sanierung",
+        "description": "Großflächige Staubschutznetze für die Sanierung eines historischen Gebäudes in der Hamburger Innenstadt."
+      },
+      "weatherTarps": {
+        "title": "Wetterschutzplanen",
+        "category": "Wohnungsbau",
+        "description": "Wetterschutzlösungen für ein Wohnbauprojekt mit über 200 Wohneinheiten. Ermöglichte termingerechte Fertigstellung."
+      },
+      "facade": {
+        "title": "Fassadenschutz",
+        "category": "Denkmalschutz",
+        "description": "Schutzverhüllung einer denkmalgeschützten Fassade während umfangreicher Restaurierungsarbeiten."
+      },
+      "scaffold": {
+        "title": "Gerüstverkleidung",
+        "category": "Gewerbebau",
+        "description": "Vollständige Gerüstverkleidung eines Gewerbegebäudes mit kombinierten Planen- und Netzlösungen."
+      }
+    }
+  },
+  "Kontakt": {
+    "sectionTitle": "Kontakt",
+    "sectionTitleHighlight": "ieren Sie uns",
+    "subtitle": "Haben Sie Fragen oder benötigen Sie ein individuelles Angebot? Wir freuen uns auf Ihre Nachricht!",
+    "info": {
+      "address": "Adresse",
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "hours": "Öffnungszeiten",
+      "hoursMon": "Mo - Fr: 08:00 - 17:00",
+      "hoursSat": "Sa: nach Vereinbarung"
+    },
+    "map": {
+      "location": "Hamburg, Deutschland",
+      "mapAvailable": "Kartenansicht verfügbar"
+    },
+    "form": {
+      "name": "Name *",
+      "namePlaceholder": "Ihr Name",
+      "email": "E-Mail *",
+      "emailPlaceholder": "ihre@email.de",
+      "phone": "Telefon",
+      "phonePlaceholder": "+49 ...",
+      "message": "Nachricht *",
+      "messagePlaceholder": "Beschreiben Sie Ihr Projekt...",
+      "submit": "Nachricht senden",
+      "submitted": "✓ Nachricht gesendet!",
+      "errors": {
+        "nameRequired": "Bitte geben Sie Ihren Namen ein.",
+        "nameMin": "Der Name muss mindestens 2 Zeichen lang sein.",
+        "emailRequired": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
+        "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        "phoneInvalid": "Bitte geben Sie eine gültige deutsche Telefonnummer ein (z.B. +49 170 1234567).",
+        "messageRequired": "Bitte geben Sie eine Nachricht ein.",
+        "messageMin": "Die Nachricht muss mindestens 10 Zeichen lang sein."
+      }
+    }
+  },
+  "Footer": {
+    "brandName": "Planen & Netze",
+    "brandDescription": "Ihr zuverlässiger Partner für professionelle Planen- und Netzlösungen im Bauwesen. Sicherheit, Umweltschutz und Wetterschutz – alles aus einer Hand.",
+    "quickLinks": "Schnellzugriff",
+    "services": "Leistungen",
+    "servicesList": {
+      "pvc": "PVC-Planen",
+      "dust": "Staubschutznetze",
+      "blast": "Strahlschutznetze",
+      "weather": "Wetterschutzplanen",
+      "custom": "Individuelle Lösungen"
+    },
+    "followUs": "Folgen Sie uns",
+    "wechatScan": "Scannen Sie den Code, um sich auf WeChat zu verbinden",
+    "copyright": "Alle Rechte vorbehalten.",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "scrollTop": "Nach oben scrollen"
   }
 }

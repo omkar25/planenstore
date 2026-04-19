@@ -27,22 +27,22 @@ export function ColorSwitcher() {
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-neutral-400 transition-colors hover:text-white"
+        className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:text-foreground"
       >
         <Palette className="h-4 w-4" />
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 min-w-[160px] rounded-lg border border-white/10 bg-[#0a0a0a] py-1 shadow-xl">
+        <div className="absolute right-0 top-full mt-2 min-w-[160px] rounded-lg border border-border bg-popover py-1 shadow-xl">
           {/* Mode toggle */}
-          <div className="flex items-center gap-1 px-2 py-1.5 border-b border-white/10 mb-1">
+          <div className="flex items-center gap-1 px-2 py-1.5 border-b border-border mb-1">
             <button
               type="button"
               onClick={() => setTheme("light")}
               className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1.5 text-xs transition-colors ${
                 resolvedTheme === "light"
-                  ? "bg-white/10 text-white"
-                  : "text-neutral-400 hover:text-white"
+                  ? "bg-accent text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <Sun className="h-3.5 w-3.5" />
@@ -53,8 +53,8 @@ export function ColorSwitcher() {
               onClick={() => setTheme("dark")}
               className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1.5 text-xs transition-colors ${
                 resolvedTheme === "dark"
-                  ? "bg-white/10 text-white"
-                  : "text-neutral-400 hover:text-white"
+                  ? "bg-accent text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <Moon className="h-3.5 w-3.5" />
@@ -71,10 +71,10 @@ export function ColorSwitcher() {
                 setColorTheme(theme.value);
                 setOpen(false);
               }}
-              className={`flex w-full items-center gap-3 px-3 py-2 text-left text-sm transition-colors hover:bg-white/5 ${
+              className={`flex w-full items-center gap-3 px-3 py-2 text-left text-sm transition-colors hover:bg-accent ${
                 colorTheme === theme.value
-                  ? "text-lime-400"
-                  : "text-neutral-400 hover:text-white"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <span

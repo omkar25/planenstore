@@ -7,63 +7,161 @@
     "contact": "Contact",
     "shop": "Shop"
   },
-  "HomePage": {
-    "hero": {
-      "title": "TORİ Tarps & Nets",
-      "subtitle1": "Safety…",
-      "subtitle2": "Environmental Protection…",
-      "subtitle3": "Weather Protection…",
-      "cta": "All Products"
-    },
+  "Hero": {
+    "titleLine1": "TORİ Tarps",
+    "titleLine2": "& Nets",
+    "tagline1": "Safety...",
+    "tagline2": "Environmental Protection...",
+    "tagline3": "Weather Protection..."
+  },
+  "Portfolio": {
+    "sectionTitle": "Our",
+    "sectionTitleHighlight": "Portfolio",
+    "subtitle": "Professional tarps and nets for every application – tailored to your requirements.",
     "products": {
-      "sectionTitle": "Our Products",
-      "pvcPlanen": {
+      "pvc": {
         "title": "PVC Tarps",
-        "description": "High-quality PVC tarps for scaffolding and construction site protection."
+        "description": "High-quality PVC tarps for professional use on construction sites. Robust, weatherproof and durable – ideal for protecting buildings and materials.",
+        "features": ["Weatherproof", "UV-resistant", "Tear-resistant", "Custom"]
       },
-      "oesenbandplane": {
-        "title": "Eyelet Band Tarps",
-        "description": "Robust eyelet band tarps for maximum protection and durability."
-      },
-      "staubschutznetze": {
+      "dust": {
         "title": "Dust Protection Nets",
-        "description": "Effective protection against dust and dirt on construction sites."
+        "description": "Effective dust protection nets significantly reduce dust pollution on construction sites. They protect residents and the environment from fine dust particles.",
+        "features": ["Dust reduction", "Breathable", "Lightweight", "Versatile"]
       },
-      "strahlschutznetze": {
+      "blast": {
         "title": "Blast Protection Nets",
-        "description": "Reliable blast protection nets for safe working environments."
+        "description": "Professional blast protection nets for sandblasting and shot blasting. Maximum safety in industrial blasting processes.",
+        "features": ["High-strength", "Abrasion-resistant", "Standards-compliant", "Safe"]
       },
-      "viewAll": "All Products"
-    },
-    "about": {
-      "sectionTitle": "About Us",
-      "headline": "Your specialist for tarp and net installation for over 20 years",
-      "description": "We are an experienced company specializing in the installation of tarps and nets. Our team consists of skilled professionals with extensive expertise and years of experience in the industry.",
-      "cta": "Contact"
-    },
-    "references": {
-      "sectionTitle": "TORİ Tarps References",
-      "tagline": "Your partner for safe, sustainable and innovative scaffolding solutions.",
-      "items": {
-        "dust": { "title": "Tori Tarps", "subtitle": "Dust Protection Nets" },
-        "pvc": { "title": "Tori Tarps", "subtitle": "PVC Tarps" },
-        "blast": { "title": "Tori Tarps", "subtitle": "Blast Protection Nets" }
-      }
-    },
-    "certifications": {
-      "sectionTitle": "Certifications",
-      "mold": {
-        "title": "Mold Resistant",
-        "description": "Mold resistant and ideal for humid rooms such as bathrooms."
-      },
-      "fire": {
-        "title": "Fireproof / Non-combustible",
-        "description": "The building material used is fireproof and meets all safety standards."
-      },
-      "eco": {
-        "title": "Eco-Friendly",
-        "description": "Made from recyclable materials for a sustainable future."
+      "weather": {
+        "title": "Weather Protection Tarps",
+        "description": "Reliable weather protection for construction sites in wind, rain and snow. Enable year-round work under optimal conditions.",
+        "features": ["Windproof", "Waterproof", "Winterproof", "Flexible"]
       }
     }
+  },
+  "About": {
+    "sectionTitle": "About",
+    "sectionTitleHighlight": "Us",
+    "description": "TORİ Tarps & Nets is your reliable partner for professional tarp and net solutions in construction. With years of experience and a dedicated team, we offer tailored solutions for safety, environmental protection and weather protection on your construction site.",
+    "values": {
+      "safety": {
+        "title": "Safety",
+        "description": "Highest safety standards for all our products and installations. Certified according to current standards."
+      },
+      "environment": {
+        "title": "Environmental Protection",
+        "description": "Sustainable materials and environmentally friendly processes. We protect the surroundings of your construction site."
+      },
+      "fastInstall": {
+        "title": "Fast Installation",
+        "description": "Professional and fast installation by experienced teams. On time and reliable."
+      },
+      "team": {
+        "title": "Experienced Team",
+        "description": "Our qualified team advises you competently and finds the optimal solution for every challenge."
+      }
+    },
+    "stats": {
+      "experience": { "number": "15+", "label": "Years Experience" },
+      "projects": { "number": "500+", "label": "Projects" },
+      "clients": { "number": "200+", "label": "Satisfied Clients" },
+      "employees": { "number": "50+", "label": "Employees" }
+    }
+  },
+  "Referenzen": {
+    "sectionTitle": "Our",
+    "sectionTitleHighlight": "References",
+    "subtitle": "Selected projects that demonstrate our competence and experience in tarp and net installation.",
+    "projects": {
+      "blastNets": {
+        "title": "Blast Protection Nets",
+        "category": "Industrial Construction",
+        "description": "Installation of blast protection nets for a large industrial project in Hamburg. Protection of surrounding buildings during sandblasting."
+      },
+      "pvcInstall": {
+        "title": "PVC Tarp Installation",
+        "category": "High-rise Construction",
+        "description": "Complete cladding of a high-rise project with custom PVC tarps for year-round weather protection."
+      },
+      "dustNets": {
+        "title": "Dust Protection Nets",
+        "category": "Renovation",
+        "description": "Large-scale dust protection nets for the renovation of a historic building in Hamburg city centre."
+      },
+      "weatherTarps": {
+        "title": "Weather Protection Tarps",
+        "category": "Residential Construction",
+        "description": "Weather protection solutions for a residential project with over 200 units. Enabled on-time completion."
+      },
+      "facade": {
+        "title": "Facade Protection",
+        "category": "Heritage Conservation",
+        "description": "Protective covering of a listed facade during extensive restoration work."
+      },
+      "scaffold": {
+        "title": "Scaffold Cladding",
+        "category": "Commercial Construction",
+        "description": "Complete scaffold cladding of a commercial building with combined tarp and net solutions."
+      }
+    }
+  },
+  "Kontakt": {
+    "sectionTitle": "Contact",
+    "sectionTitleHighlight": "Us",
+    "subtitle": "Do you have questions or need a custom quote? We look forward to your message!",
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "E-Mail",
+      "hours": "Opening Hours",
+      "hoursMon": "Mon - Fri: 08:00 - 17:00",
+      "hoursSat": "Sat: by appointment"
+    },
+    "map": {
+      "location": "Hamburg, Germany",
+      "mapAvailable": "Map view available"
+    },
+    "form": {
+      "name": "Name *",
+      "namePlaceholder": "Your Name",
+      "email": "E-Mail *",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+49 ...",
+      "message": "Message *",
+      "messagePlaceholder": "Describe your project...",
+      "submit": "Send Message",
+      "submitted": "✓ Message sent!",
+      "errors": {
+        "nameRequired": "Please enter your name.",
+        "nameMin": "Name must be at least 2 characters.",
+        "emailRequired": "Please enter your email address.",
+        "emailInvalid": "Please enter a valid email address.",
+        "phoneInvalid": "Please enter a valid German phone number (e.g. +49 170 1234567).",
+        "messageRequired": "Please enter a message.",
+        "messageMin": "Message must be at least 10 characters."
+      }
+    }
+  },
+  "Footer": {
+    "brandName": "Tarps & Nets",
+    "brandDescription": "Your reliable partner for professional tarp and net solutions in construction. Safety, environmental protection and weather protection – all from one source.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "servicesList": {
+      "pvc": "PVC Tarps",
+      "dust": "Dust Protection Nets",
+      "blast": "Blast Protection Nets",
+      "weather": "Weather Protection Tarps",
+      "custom": "Custom Solutions"
+    },
+    "followUs": "Follow Us",
+    "wechatScan": "Scan to connect on WeChat",
+    "copyright": "All rights reserved.",
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy",
+    "scrollTop": "Scroll to top"
   }
 }

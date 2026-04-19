@@ -21,7 +21,7 @@ export function MobileNavToggle({ open, onToggle }: MobileNavProps) {
     <button
       type="button"
       onClick={onToggle}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-neutral-400 transition-colors hover:text-white md:hidden"
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:text-foreground md:hidden"
     >
       {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
     </button>
@@ -34,7 +34,7 @@ export function MobileNav({ open, onToggle }: MobileNavProps) {
   if (!open) return null;
 
   return (
-    <nav className="flex flex-col gap-1 border-t border-white/5 px-6 py-4 md:hidden">
+    <nav className="flex flex-col gap-1 border-t border-border bg-background px-6 py-4 md:hidden">
       {navItems.map(({ key, sectionId }) => (
         <button
           key={key}
@@ -43,7 +43,7 @@ export function MobileNav({ open, onToggle }: MobileNavProps) {
             document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
             onToggle();
           }}
-          className="rounded-lg px-3 py-2 text-left text-sm text-neutral-400 transition-colors hover:bg-white/5 hover:text-white"
+          className="rounded-lg px-3 py-2 text-left text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
         >
           {t(key)}
         </button>

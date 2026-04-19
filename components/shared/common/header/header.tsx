@@ -28,32 +28,31 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#0a0a0a] border-b border-white/5">
+    <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <span className="text-xl font-bold tracking-tight">
-            <span className="text-lime-400">T</span>
-            <span className="text-white">P</span>
+            <span className="text-primary">T</span>
+            <span className="text-foreground">P</span>
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map(({ key, sectionId }) => (
-            <button
-              key={key}
-              type="button"
-              onClick={() => scrollTo(sectionId)}
-              className="text-sm text-neutral-400 transition-colors hover:text-white"
-            >
-              {t(key)}
-            </button>
-          ))}
-        </nav>
-
-        {/* Right side — Shop button + Cart + Mobile toggle */}
-        <div className="flex items-center gap-3">
+        {/* Right side — Nav + Actions */}
+        <div className="flex items-center gap-6">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map(({ key, sectionId }) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => scrollTo(sectionId)}
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {t(key)}
+              </button>
+            ))}
+          </nav>
            <ColorSwitcher />
           <LanguageSelector />
           <Link
@@ -64,7 +63,7 @@ export function Header() {
           </Link>
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-neutral-400 transition-colors hover:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <ShoppingBag className="h-4 w-4" />
           </button>

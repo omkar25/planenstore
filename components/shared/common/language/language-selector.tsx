@@ -34,23 +34,23 @@ export function LanguageSelector() {
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="flex h-9 items-center gap-1.5 rounded-full border border-white/10 px-3 text-sm text-neutral-400 transition-colors hover:text-white"
+        className="flex h-9 items-center gap-1.5 rounded-full border border-border px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
         <Globe className="h-4 w-4" />
         <span>{localeLabels[currentLocale].flag}</span>
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 min-w-[140px] rounded-lg border border-white/10 bg-[#0a0a0a] py-1 shadow-xl">
+        <div className="absolute right-0 top-full mt-2 min-w-[140px] rounded-lg border border-border bg-popover py-1 shadow-xl">
           {routing.locales.map((locale) => (
             <button
               key={locale}
               type="button"
               onClick={() => switchLocale(locale)}
-              className={`flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors hover:bg-white/5 ${
+              className={`flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors hover:bg-accent ${
                 locale === currentLocale
-                  ? "text-lime-400"
-                  : "text-neutral-400 hover:text-white"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <span>{localeLabels[locale].flag}</span>

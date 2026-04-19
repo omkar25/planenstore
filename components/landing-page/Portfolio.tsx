@@ -3,48 +3,31 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-const products = [
-  {
-    title: "PVC-Planen",
-    description:
-      "Hochwertige PVC-Planen für den professionellen Einsatz auf Baustellen. Robust, wetterfest und langlebig – ideal für den Schutz von Gebäuden und Materialien.",
-    image: "/images/pvc-planen.jpg",
-    features: ["Wetterfest", "UV-beständig", "Reißfest", "Individuell"],
-  },
-  {
-    title: "Staubschutznetze",
-    description:
-      "Effektive Staubschutznetze reduzieren die Staubbelastung auf Baustellen erheblich. Sie schützen Anwohner und die Umwelt vor Feinstaubpartikeln.",
-    image: "/images/staubschutz.jpg",
-    features: ["Staubreduktion", "Luftdurchlässig", "Leicht", "Vielseitig"],
-  },
-  {
-    title: "Strahlschutznetze",
-    description:
-      "Professionelle Strahlschutznetze für Sandstrahl- und Kugelstrahlarbeiten. Maximale Sicherheit bei industriellen Strahlverfahren.",
-    image: "/images/strahlschutz.jpg",
-    features: ["Hochfest", "Abriebfest", "Normgerecht", "Sicher"],
-  },
-  {
-    title: "Wetterschutzplanen",
-    description:
-      "Zuverlässiger Wetterschutz für Baustellen bei Wind, Regen und Schnee. Ermöglichen ganzjähriges Arbeiten unter optimalen Bedingungen.",
-    image: "/images/wetterschutz.jpg",
-    features: ["Windfest", "Wasserdicht", "Winterfest", "Flexibel"],
-  },
-];
+const productKeys = ["pvc", "dust", "blast", "weather"] as const;
+const productImages: Record<string, string> = {
+  pvc: "/images/pvc-planen.jpg",
+  dust: "/images/staubschutz.jpg",
+  blast: "/images/strahlschutz.jpg",
+  weather: "/images/wetterschutz.jpg",
+};
 
 function ProductCard({
-  product,
+  productKey,
   index,
+  t,
 }: {
-  product: (typeof products)[0];
+  productKey: string;
   index: number;
+  t: ReturnType<typeof useTranslations>;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "99999px 0px -100px 0px" });
+  const title = t(`products.${productKey}.title`);
+  const description = t(`products.${productKey}.description`);
+  const features = t.raw(`products.${productKey}.features`) as string[];
 
   return (
     <motion.div
@@ -56,24 +39,24 @@ function ProductCard({
     >
       <div className="relative h-64 overflow-hidden">
         <Image
-          src={product.image}
-          alt={product.title}
+          src={productImages[productKey]}
+          alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent" />
         <h3 className="absolute bottom-4 left-6 text-2xl font-bold text-foreground">
-          {product.title}
+          {title}
         </h3>
       </div>
 
       <div className="p-6">
         <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-          {product.description}
+          {description}
         </p>
         <div className="flex flex-wrap gap-2">
-          {product.features.map((feature) => (
+          {features.map((feature) => (
             <span
               key={feature}
               className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20"
@@ -88,8 +71,9 @@ function ProductCard({
 }
 
 export default function Portfolio() {
+  const t = useTranslations("Portfolio");
   const titleRef = useRef(null);
-  const titleInView = useInView(titleRef, { once: true });
+  const titleInView = useInView(titleRef, { once: true, margin: "99999px 0px -100px 0px" });
 
   return (
     <section id="portfolio" className="relative py-24 bg-background">
@@ -102,17 +86,17 @@ export default function Portfolio() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Unser <span className="text-primary">Portfolio</span>
+            {t("sectionTitle")} <span className="text-primary">{t("sectionTitleHighlight")}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Professionelle Planen und Netze für jeden Einsatzbereich – maßgeschneidert für Ihre Anforderungen.
+            {t("subtitle")}
           </p>
           <div className="w-20 h-1 bg-primary mx-auto mt-6 rounded-full" />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {products.map((product, i) => (
-            <ProductCard key={product.title} product={product} index={i} />
+          {productKeys.map((key, i) => (
+            <ProductCard key={key} productKey={key} index={i} t={t} />
           ))}
         </div>
       </div>

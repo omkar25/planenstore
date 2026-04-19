@@ -2,68 +2,41 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-const projects = [
-  {
-    title: "Strahlschutznetze",
-    year: "2023",
-    category: "Industriebau",
-    image: "/images/ref1.jpg",
-    description:
-      "Installation von Strahlschutznetzen für ein großes Industrieprojekt in Hamburg. Schutz von umliegenden Gebäuden während Sandstrahlarbeiten.",
-  },
-  {
-    title: "PVC-Planen Montage",
-    year: "2023",
-    category: "Hochbau",
-    image: "/images/pvc-planen.jpg",
-    description:
-      "Komplettverkleidung eines Hochbauprojekts mit maßgeschneiderten PVC-Planen für ganzjährigen Wetterschutz.",
-  },
-  {
-    title: "Staubschutznetze",
-    year: "2024",
-    category: "Sanierung",
-    image: "/images/staubschutz.jpg",
-    description:
-      "Großflächige Staubschutznetze für die Sanierung eines historischen Gebäudes in der Hamburger Innenstadt.",
-  },
-  {
-    title: "Wetterschutzplanen",
-    year: "2024",
-    category: "Wohnungsbau",
-    image: "/images/ref2.jpg",
-    description:
-      "Wetterschutzlösungen für ein Wohnbauprojekt mit über 200 Wohneinheiten. Ermöglichte termingerechte Fertigstellung.",
-  },
-  {
-    title: "Fassadenschutz",
-    year: "2024",
-    category: "Denkmalschutz",
-    image: "/images/wetterschutz.jpg",
-    description:
-      "Schutzverhüllung einer denkmalgeschützten Fassade während umfangreicher Restaurierungsarbeiten.",
-  },
-  {
-    title: "Gerüstverkleidung",
-    year: "2025",
-    category: "Gewerbebau",
-    image: "/images/strahlschutz.jpg",
-    description:
-      "Vollständige Gerüstverkleidung eines Gewerbegebäudes mit kombinierten Planen- und Netzlösungen.",
-  },
-];
+const projectKeys = ["blastNets", "pvcInstall", "dustNets", "weatherTarps", "facade", "scaffold"] as const;
+const projectYears: Record<string, string> = {
+  blastNets: "2023",
+  pvcInstall: "2023",
+  dustNets: "2024",
+  weatherTarps: "2024",
+  facade: "2024",
+  scaffold: "2025",
+};
+const projectImages: Record<string, string> = {
+  blastNets: "/images/ref1.jpg",
+  pvcInstall: "/images/pvc-planen.jpg",
+  dustNets: "/images/staubschutz.jpg",
+  weatherTarps: "/images/ref2.jpg",
+  facade: "/images/wetterschutz.jpg",
+  scaffold: "/images/strahlschutz.jpg",
+};
 
 function ProjectCard({
-  project,
+  projectKey,
   index,
+  t,
 }: {
-  project: (typeof projects)[0];
+  projectKey: string;
   index: number;
+  t: ReturnType<typeof useTranslations>;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "99999px 0px -50px 0px" });
+  const title = t(`projects.${projectKey}.title`);
+  const category = t(`projects.${projectKey}.category`);
+  const description = t(`projects.${projectKey}.description`);
 
   return (
     <motion.div
@@ -75,8 +48,8 @@ function ProjectCard({
     >
       <div className="relative h-56 overflow-hidden">
         <Image
-          src={project.image}
-          alt={project.title}
+          src={projectImages[projectKey]}
+          alt={title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -84,20 +57,20 @@ function ProjectCard({
         <div className="absolute inset-0 bg-linear-to-t from-background via-background/30 to-transparent" />
 
         <span className="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-primary bg-primary/20 backdrop-blur-sm rounded-full border border-primary/30">
-          {project.year}
+          {projectYears[projectKey]}
         </span>
 
         <span className="absolute bottom-4 left-4 px-3 py-1 text-xs font-medium text-muted-foreground bg-muted/80 backdrop-blur-sm rounded-full">
-          {project.category}
+          {category}
         </span>
       </div>
 
       <div className="p-5">
         <h3 className="text-foreground font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-          {project.title}
+          {title}
         </h3>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          {project.description}
+          {description}
         </p>
       </div>
     </motion.div>
@@ -105,8 +78,9 @@ function ProjectCard({
 }
 
 export default function Referenzen() {
+  const t = useTranslations("Referenzen");
   const titleRef = useRef(null);
-  const titleInView = useInView(titleRef, { once: true });
+  const titleInView = useInView(titleRef, { once: true, margin: "99999px 0px -100px 0px" });
 
   return (
     <section id="referenzen" className="relative py-24 bg-muted">
@@ -119,18 +93,17 @@ export default function Referenzen() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Unsere <span className="text-primary">Referenzen</span>
+            {t("sectionTitle")} <span className="text-primary">{t("sectionTitleHighlight")}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Ausgewählte Projekte, die unsere Kompetenz und Erfahrung in der
-            Planen- und Netzmontage demonstrieren.
+            {t("subtitle")}
           </p>
           <div className="w-20 h-1 bg-primary mx-auto mt-6 rounded-full" />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
+          {projectKeys.map((key, i) => (
+            <ProjectCard key={key} projectKey={key} index={i} t={t} />
           ))}
         </div>
       </div>
