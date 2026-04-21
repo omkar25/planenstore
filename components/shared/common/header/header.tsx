@@ -52,40 +52,39 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
-      <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo/cropped-001-1.png"
+            src="/logo/tori_planen.png"
             alt="Tori Planen"
             width={100}
             height={100}
-            style={{ width: "auto", height: "3.6rem" }}
+            style={{ width: "auto", height: "3.0rem" }}
             className="object-contain"
             priority
           />
         </Link>
 
-        {/* Center — Desktop Navigation */}
-        <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center gap-6">
-          {navItems.map(({ key, sectionId }) => (
-            <button
-              key={key}
-              type="button"
-              onClick={() => scrollTo(sectionId)}
-              className={`text-sm transition-colors hover:text-primary ${
-                activeSection === sectionId
-                  ? "text-primary border-b-2 border-primary pb-0.5"
-                  : "text-muted-foreground"
-              }`}
-            >
-              {t(key)}
-            </button>
-          ))}
-        </nav>
-
-        {/* Right side — Actions */}
+        {/* Right side — Nav + Actions */}
         <div className="flex items-center gap-6">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map(({ key, sectionId }) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => scrollTo(sectionId)}
+                className={`text-sm transition-colors hover:text-primary ${
+                  activeSection === sectionId
+                    ? "text-primary border-b-2 border-primary pb-0.5"
+                    : "text-muted-foreground"
+                }`}
+              >
+                {t(key)}
+              </button>
+            ))}
+          </nav>
           <ColorSwitcher />
           <LanguageSelector />
           <Link
