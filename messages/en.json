@@ -145,6 +145,14 @@
       }
     }
   },
+  "Shop": {
+    "title": "Coming Soon",
+    "description": "Our online shop is being prepared for you. Soon you will be able to order our products directly here.",
+    "backHome": "Back to Home"
+  },
+  "Cart": {
+    "comingSoon": "Shopping Cart – Coming Soon"
+  },
   "Footer": {
     "brandName": "Tarps & Nets",
     "brandDescription": "Your reliable partner for professional tarp and net solutions in construction. Safety, environmental protection and weather protection – all from one source.",

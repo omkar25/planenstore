@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { toast } from "sonner";
 import { useTranslations } from "next-intl";
 import { ShoppingBag } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -20,6 +21,7 @@ const navItems = [
 
 export function Header() {
   const t = useTranslations("Header");
+  const tCart = useTranslations("Cart");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
 
@@ -52,7 +54,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
+      <div className="flex h-14 w-full items-center justify-between px-20">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
@@ -60,7 +62,7 @@ export function Header() {
             alt="Tori Planen"
             width={100}
             height={100}
-            style={{ width: "auto", height: "3.0rem" }}
+            style={{ width: "auto", height: "2.0rem" }}
             className="object-contain"
             priority
           />
@@ -88,14 +90,15 @@ export function Header() {
           <ColorSwitcher />
           <LanguageSelector />
           <Link
-            href="/"
-            className="rounded-full bg-primary px-5 py-1.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+            href="/shop"
+            className="rounded-full bg-primary px-5 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
           >
             {t("shop")}
           </Link>
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90"
+            onClick={() => toast(tCart("comingSoon"), { style: { background: "var(--primary)", color: "#fff" } })}
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white transition-colors hover:bg-primary/90"
           >
             <ShoppingBag className="h-4 w-4" />
           </button>

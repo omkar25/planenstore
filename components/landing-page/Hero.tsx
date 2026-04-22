@@ -33,13 +33,13 @@ export default function Hero() {
       <div className="absolute inset-0 pb-8 z-10 flex flex-col justify-end px-6 sm:px-10 md:flex-row md:items-end md:justify-between md:px-16">
 
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 md:mb-2">
-          <AuroraText as="span" className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black">
+          {/* <AuroraText as="span" className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black">
             {t("titleLine1")}
           </AuroraText>
           <br />
           <AuroraText as="span" className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black">
             {t("titleLine2")}
-          </AuroraText>
+          </AuroraText> */}
         </h1>
 
         {/* Taglines staggered diagonally */}

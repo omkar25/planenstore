@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { Header } from "@/components/shared/common/header/header";
 import Footer from "@/components/shared/common/footer/Footer";
 import { ThemeProvider } from "@/components/shared/common/theme/theme-provider";
+import { Toaster } from "sonner";
 import "../globals.css";
 
 const nunitoSans = Nunito_Sans({
@@ -42,6 +43,7 @@ export default async function LocaleLayout({
             <Header />
             {children}
             <Footer />
+            <Toaster position="top-center" richColors />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

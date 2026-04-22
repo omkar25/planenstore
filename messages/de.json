@@ -115,8 +115,8 @@
       "address": "Adresse",
       "phone": "Telefon",
       "email": "E-Mail",
-      "hours": "Öffnungszeiten",
-      "hoursMon": "Mo - Fr: 08:00 - 17:00",
+      "hours": "Bürozeiten",
+      "hoursMon": "Mo - Fr: 08:00 - 16:00",
       "hoursSat": "Sa: nach Vereinbarung"
     },
     "map": {
@@ -144,6 +144,14 @@
         "messageMin": "Die Nachricht muss mindestens 10 Zeichen lang sein."
       }
     }
+  },
+  "Shop": {
+    "title": "Demnächst verfügbar",
+    "description": "Unser Online-Shop wird gerade für Sie vorbereitet. Bald können Sie hier unsere Produkte direkt bestellen.",
+    "backHome": "Zurück zur Startseite"
+  },
+  "Cart": {
+    "comingSoon": "Warenkorb – Demnächst verfügbar"
   },
   "Footer": {
     "brandName": "Planen & Netze",
