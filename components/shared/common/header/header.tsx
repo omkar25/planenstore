@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
 import { ShoppingBag } from "lucide-react";
@@ -27,7 +28,14 @@ export function Header() {
 
   const handleToggle = () => setMobileOpen((prev) => !prev);
 
+  const pathname = usePathname();
+  const router = useRouter();
+
   const scrollTo = (id: string) => {
+    if (pathname !== "/") {
+      router.push(`/#${id}`);
+      return;
+    }
     setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -58,11 +66,11 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo/tori_planen.png"
+            src="/logo/logo.png"
             alt="Tori Planen"
             width={100}
             height={100}
-            style={{ width: "auto", height: "2.0rem" }}
+            style={{ width: "auto", height: "6.5rem" }}
             className="object-contain"
             priority
           />

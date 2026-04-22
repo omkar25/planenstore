@@ -34,10 +34,20 @@
         "description": "Professionelle Strahlschutznetze für Sandstrahl- und Kugelstrahlarbeiten. Maximale Sicherheit bei industriellen Strahlverfahren.",
         "features": ["Hochfest", "Abriebfest", "Normgerecht", "Sicher"]
       },
-      "weather": {
-        "title": "Wetterschutzplanen",
-        "description": "Zuverlässiger Wetterschutz für Baustellen bei Wind, Regen und Schnee. Ermöglichen ganzjähriges Arbeiten unter optimalen Bedingungen.",
-        "features": ["Windfest", "Wasserdicht", "Winterfest", "Flexibel"]
+      "personenauffang": {
+        "title": "Personenauffangnetze",
+        "description": "Zuverlässige Personenauffangnetze für maximale Sicherheit auf Baustellen. Schützen Arbeiter bei Arbeiten in der Höhe nach geltenden Normen.",
+        "features": ["Normgerecht", "Hochfest", "Geprüft", "Sicher"]
+      },
+      "oesenband": {
+        "title": "Ösenbandplanen",
+        "description": "Professionelle Ösenbandplanen für Sandstrahl- und Kugelstrahlarbeiten. Maximale Sicherheit bei industriellen Strahlverfahren.",
+        "features": ["Ösenbandplanen", "Ösenbandplanen", "Ösenbandplanen", "Ösenbandplanen"]
+      },
+      "keder": {
+        "title": "Kederplanen",
+        "description": "Zuverlässiger Kederplanen für Baustellen bei Wind, Regen und Schnee. Ermöglichen ganzjähriges Arbeiten unter optimalen Bedingungen.",
+        "features": ["Kederplanen", "Kederplanen", "Kederplanen", "Kederplanen"]
       }
     }
   },
@@ -75,35 +85,35 @@
     "sectionTitleHighlight": "Referenzen",
     "subtitle": "Ausgewählte Projekte, die unsere Kompetenz und Erfahrung in der Planen- und Netzmontage demonstrieren.",
     "projects": {
-      "blastNets": {
-        "title": "Strahlschutznetze",
-        "category": "Industriebau",
-        "description": "Installation von Strahlschutznetzen für ein großes Industrieprojekt in Hamburg. Schutz von umliegenden Gebäuden während Sandstrahlarbeiten."
-      },
       "pvcInstall": {
         "title": "PVC-Planen Montage",
         "category": "Hochbau",
         "description": "Komplettverkleidung eines Hochbauprojekts mit maßgeschneiderten PVC-Planen für ganzjährigen Wetterschutz."
+      },
+      "kederInstall": {
+        "title": "Kederplanen Montage",
+        "category": "Gewerbebau",
+        "description": "Professionelle Montage von Kederplanen für ein Gewerbeprojekt. Passgenaue Lösungen für optimalen Schutz."
+      },
+      "oesenbandInstall": {
+        "title": "Ösenbandplanen Montage",
+        "category": "Industriebau",
+        "description": "Installation von Ösenbandplanen für industrielle Anwendungen. Robuste und flexible Befestigungslösungen."
+      },
+      "blastNets": {
+        "title": "Strahlschutznetze",
+        "category": "Industriebau",
+        "description": "Installation von Strahlschutznetzen für ein großes Industrieprojekt in Hamburg. Schutz von umliegenden Gebäuden während Sandstrahlarbeiten."
       },
       "dustNets": {
         "title": "Staubschutznetze",
         "category": "Sanierung",
         "description": "Großflächige Staubschutznetze für die Sanierung eines historischen Gebäudes in der Hamburger Innenstadt."
       },
-      "weatherTarps": {
-        "title": "Wetterschutzplanen",
-        "category": "Wohnungsbau",
-        "description": "Wetterschutzlösungen für ein Wohnbauprojekt mit über 200 Wohneinheiten. Ermöglichte termingerechte Fertigstellung."
-      },
-      "facade": {
-        "title": "Fassadenschutz",
-        "category": "Denkmalschutz",
-        "description": "Schutzverhüllung einer denkmalgeschützten Fassade während umfangreicher Restaurierungsarbeiten."
-      },
-      "scaffold": {
-        "title": "Gerüstverkleidung",
-        "category": "Gewerbebau",
-        "description": "Vollständige Gerüstverkleidung eines Gewerbegebäudes mit kombinierten Planen- und Netzlösungen."
+      "personenauffangInstall": {
+        "title": "Personenauffangnetze Montage",
+        "category": "Hochbau",
+        "description": "Installation von Personenauffangnetzen für maximale Arbeitssicherheit auf einer Großbaustelle."
       }
     }
   },
@@ -171,5 +181,241 @@
     "imprint": "Impressum",
     "privacy": "Datenschutz",
     "scrollTop": "Nach oben scrollen"
+  },
+  "datenschutz": {
+    "badge": "Tori Bau GmbH",
+    "title": "Datenschutzerklärung",
+    "subtitle": "Informationen zur Verarbeitung Ihrer personenbezogenen Daten gemäß DSGVO.",
+    "toc_label": "Inhalt",
+    "footer": "Tori Bau GmbH · Reeseberg 3 · 21079 Hamburg",
+    "legal_basis_label": "Rechtsgrundlage",
+    "sections": [
+      {
+        "number": "1",
+        "title": "Verantwortlicher",
+        "type": "contact",
+        "intro": "Verantwortlich für die Datenverarbeitung auf dieser Website ist:",
+        "company": "Tori Bau GmbH",
+        "address": "Reeseberg 3\n21079 Hamburg",
+        "email": "info@toriplanen.de"
+      },
+      {
+        "number": "2",
+        "title": "Allgemeines zur Datenverarbeitung",
+        "type": "text",
+        "body": "Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Personenbezogene Daten werden auf dieser Website nur im technisch notwendigen Umfang erhoben. Die Verarbeitung erfolgt gemäß der Datenschutz-Grundverordnung (DSGVO)."
+      },
+      {
+        "number": "3",
+        "title": "Hosting",
+        "type": "text",
+        "body": "Unsere Website wird bei {provider} gehostet. Mit Hostinger besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO.",
+        "provider": "Hostinger"
+      },
+      {
+        "number": "4",
+        "title": "Zugriffsdaten (Server-Logfiles)",
+        "type": "list",
+        "intro": "Beim Besuch dieser Website werden automatisch Informationen erfasst:",
+        "items": [
+          "IP-Adresse",
+          "Datum und Uhrzeit",
+          "Browsertyp und -version",
+          "Betriebssystem",
+          "Referrer-URL",
+          "Angeforderte Datei"
+        ],
+        "legal_basis": "Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technischen Sicherheit)."
+      },
+      {
+        "number": "5",
+        "title": "Cookies",
+        "type": "text",
+        "body": "Wir nutzen Cookies, um die Benutzererfahrung zu verbessern. Beim ersten Besuch wird Ihnen ein Cookie-Banner (bereitgestellt von {provider}) angezeigt, in dem Sie Ihre Zustimmung verwalten können.\n\nCookie-Richtlinie und Übersicht der Cookies finden Sie hier: [Cookie-Richtlinie anzeigen] (automatisch durch CookieYes eingefügt)",
+        "provider": "CookieYes"
+      },
+      {
+        "number": "6",
+        "title": "Kontaktformular & Kommunikation",
+        "type": "text_with_legal",
+        "body": "Wenn Sie uns per Kontaktformular oder E-Mail kontaktieren, speichern wir Ihre Angaben zur Bearbeitung der Anfrage.",
+        "legal_basis": "Art. 6 Abs. 1 lit. b DSGVO"
+      },
+      {
+        "number": "7",
+        "title": "Google Analytics",
+        "type": "text_with_legal_and_link",
+        "body": "Diese Website nutzt Google Analytics. Google verwendet Cookies, um die Benutzung der Website zu analysieren. Die erhobenen Daten werden an Google-Server in die USA übertragen.",
+        "legal_basis": "Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO",
+        "link_label": "Mehr Informationen",
+        "link_url": "https://policies.google.com/privacy?hl=de"
+      },
+      {
+        "number": "8",
+        "title": "Eingebundene Dienste von Drittanbietern",
+        "type": "services",
+        "services": [
+          {
+            "name": "Google Fonts",
+            "desc": "Wird zur Darstellung von Schriftarten genutzt. Beim Aufruf werden Daten (z. B. IP-Adresse) an Google übermittelt."
+          },
+          {
+            "name": "Google Maps",
+            "desc": "Zur Darstellung interaktiver Karten. Daten (IP, Standort, evtl. Cookies) werden an Google gesendet."
+          },
+          {
+            "name": "YouTube-Videos",
+            "desc": "Zur Einbindung von Videos nutzen wir YouTube. Beim Abspielen können personenbezogene Daten an Google übermittelt werden."
+          },
+          {
+            "name": "Instagram-Feed",
+            "desc": "Auf einigen Seiten ist ein Instagram-Feed eingebunden. Instagram kann Daten erheben, wenn Sie eingeloggt sind."
+          },
+          {
+            "name": "WhatsApp Kontaktbutton",
+            "desc": "Wenn Sie über den WhatsApp-Button mit uns Kontakt aufnehmen, wird Ihre Telefonnummer sichtbar. Die Nutzung erfolgt freiwillig."
+          }
+        ],
+        "note": "Alle Dienste werden erst nach aktiver Zustimmung über das Cookie-Banner aktiviert."
+      },
+      {
+        "number": "9",
+        "title": "Ihre Rechte als betroffene Person",
+        "type": "rights",
+        "intro": "Sie haben das Recht auf:",
+        "rights": [
+          {
+            "right": "Auskunft",
+            "article": "Art. 15 DSGVO"
+          },
+          {
+            "right": "Berichtigung",
+            "article": "Art. 16 DSGVO"
+          },
+          {
+            "right": "Löschung",
+            "article": "Art. 17 DSGVO"
+          },
+          {
+            "right": "Einschränkung der Verarbeitung",
+            "article": "Art. 18 DSGVO"
+          },
+          {
+            "right": "Datenübertragbarkeit",
+            "article": "Art. 20 DSGVO"
+          },
+          {
+            "right": "Widerspruch",
+            "article": "Art. 21 DSGVO"
+          },
+          {
+            "right": "Widerruf Ihrer Einwilligung",
+            "article": "Art. 7 Abs. 3 DSGVO"
+          }
+        ]
+      },
+      {
+        "number": "10",
+        "title": "Beschwerderecht",
+        "type": "authority",
+        "intro": "Wenn Sie der Meinung sind, dass Ihre Daten unrechtmäßig verarbeitet werden, können Sie sich bei der zuständigen Datenschutzbehörde beschweren:",
+        "authority_name": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit",
+        "authority_address": "Ludwig-Erhard-Str 22, 20459 Hamburg",
+        "authority_url": "https://datenschutz-hamburg.de"
+      },
+      {
+        "number": "11",
+        "title": "Aktualität",
+        "type": "text",
+        "body": "Diese Datenschutzerklärung ist gültig ab dem {date} und wird regelmäßig aktualisiert.",
+        "date": "20. Juni 2025"
+      }
+    ]
+  },
+  "impressum": {
+    "badge": "Tori Bau GmbH",
+    "title": "Impressum",
+    "subtitle": "Angaben gemäß § 5 TMG",
+    "footer": "Tori Bau GmbH · Reeseberg 3 · 21079 Hamburg",
+    "sections": [
+      {
+        "title": "Unternehmensangaben",
+        "items": [
+          {
+            "label": "Firma",
+            "value": "Tori Bau GmbH"
+          },
+          {
+            "label": "Adresse",
+            "value": "Reeseberg 3\n21079 Hamburg\nDeutschland"
+          }
+        ]
+      },
+      {
+        "title": "Vertreten durch",
+        "items": [
+          {
+            "label": "Geschäftsführer",
+            "value": "Selman Yesilmen"
+          }
+        ]
+      },
+      {
+        "title": "Kontakt",
+        "items": [
+          {
+            "label": "Telefon",
+            "value": "+49 40 30372206",
+            "type": "phone"
+          },
+          {
+            "label": "E-Mail",
+            "value": "info@toriplanen.de",
+            "type": "email"
+          }
+        ]
+      },
+      {
+        "title": "Registereintrag",
+        "items": [
+          {
+            "label": "Eintragung",
+            "value": "Eintragung im Handelsregister"
+          },
+          {
+            "label": "Registergericht",
+            "value": "Amtsgericht Hamburg"
+          },
+          {
+            "label": "Handelsregisternummer",
+            "value": "HRB 134867"
+          }
+        ]
+      },
+      {
+        "title": "Umsatzsteuer",
+        "intro": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
+        "items": [
+          {
+            "label": "USt-IdNr.",
+            "value": "DE303422084"
+          }
+        ]
+      },
+      {
+        "title": "Verantwortlich für den Inhalt",
+        "intro": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:",
+        "items": [
+          {
+            "label": "Name",
+            "value": "Selman Yesilmen"
+          },
+          {
+            "label": "Adresse",
+            "value": "Reeseberg 3, 21079 Hamburg"
+          }
+        ]
+      }
+    ]
   }
 }

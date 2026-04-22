@@ -5,22 +5,22 @@ import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import ProtectedImage from "@/components/shared/ProtectedImage";
 
-const projectKeys = ["blastNets", "pvcInstall", "dustNets", "weatherTarps", "facade", "scaffold"] as const;
+const projectKeys = ["pvcInstall", "kederInstall", "oesenbandInstall", "blastNets", "dustNets", "personenauffangInstall"] as const;
 const projectYears: Record<string, string> = {
-  blastNets: "2023",
   pvcInstall: "2023",
+  kederInstall: "2023",
+  oesenbandInstall: "2024",
+  blastNets: "2024",
   dustNets: "2024",
-  weatherTarps: "2024",
-  facade: "2024",
-  scaffold: "2025",
+  personenauffangInstall: "2025",
 };
 const projectImages: Record<string, string> = {
-  blastNets: "/images/ref1.jpg",
   pvcInstall: "/images/pvc-planen.jpg",
+  kederInstall: "/images/kederplanen.jpg",
+  oesenbandInstall: "/images/oesen_1.jpg",
+  blastNets: "/images/strahlschutz.jpg",
   dustNets: "/images/staubschutz.jpg",
-  weatherTarps: "/images/ref2.jpg",
-  facade: "/images/wetterschutz.jpg",
-  scaffold: "/images/strahlschutz.jpg",
+  personenauffangInstall: "/images/personenauffangnetze.jpg",
 };
 
 function ProjectCard({

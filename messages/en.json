@@ -34,10 +34,20 @@
         "description": "Professional blast protection nets for sandblasting and shot blasting. Maximum safety in industrial blasting processes.",
         "features": ["High-strength", "Abrasion-resistant", "Standards-compliant", "Safe"]
       },
-      "weather": {
-        "title": "Weather Protection Tarps",
-        "description": "Reliable weather protection for construction sites in wind, rain and snow. Enable year-round work under optimal conditions.",
-        "features": ["Windproof", "Waterproof", "Winterproof", "Flexible"]
+      "personenauffang": {
+        "title": "Safety Nets",
+        "description": "Reliable safety nets for maximum protection on construction sites. Protect workers during elevated work according to current standards.",
+        "features": ["Standards-compliant", "High-strength", "Certified", "Safe"]
+      },
+      "oesenband": {
+        "title": "Eyelet Band Tarps",
+        "description": "Professional eyelet band tarps for sandblasting and shot blasting. Maximum safety in industrial blasting processes.",
+        "features": ["Eyelet Band Tarps", "Eyelet Band Tarps", "Eyelet Band Tarps", "Eyelet Band Tarps"]
+      },
+      "keder": {
+        "title": "Keder Tarps",
+        "description": "Reliable keder tarps for construction sites in wind, rain and snow. Enable year-round work under optimal conditions.",
+        "features": ["Keder Tarps", "Keder Tarps", "Keder Tarps", "Keder Tarps"]
       }
     }
   },
@@ -75,35 +85,35 @@
     "sectionTitleHighlight": "References",
     "subtitle": "Selected projects that demonstrate our competence and experience in tarp and net installation.",
     "projects": {
-      "blastNets": {
-        "title": "Blast Protection Nets",
-        "category": "Industrial Construction",
-        "description": "Installation of blast protection nets for a large industrial project in Hamburg. Protection of surrounding buildings during sandblasting."
-      },
       "pvcInstall": {
         "title": "PVC Tarp Installation",
         "category": "High-rise Construction",
         "description": "Complete cladding of a high-rise project with custom PVC tarps for year-round weather protection."
+      },
+      "kederInstall": {
+        "title": "Keder Tarp Installation",
+        "category": "Commercial Construction",
+        "description": "Professional keder tarp installation for a commercial project. Precision-fit solutions for optimal protection."
+      },
+      "oesenbandInstall": {
+        "title": "Eyelet Band Tarp Installation",
+        "category": "Industrial Construction",
+        "description": "Installation of eyelet band tarps for industrial applications. Robust and flexible fastening solutions."
+      },
+      "blastNets": {
+        "title": "Blast Protection Nets",
+        "category": "Industrial Construction",
+        "description": "Installation of blast protection nets for a large industrial project in Hamburg. Protection of surrounding buildings during sandblasting."
       },
       "dustNets": {
         "title": "Dust Protection Nets",
         "category": "Renovation",
         "description": "Large-scale dust protection nets for the renovation of a historic building in Hamburg city centre."
       },
-      "weatherTarps": {
-        "title": "Weather Protection Tarps",
-        "category": "Residential Construction",
-        "description": "Weather protection solutions for a residential project with over 200 units. Enabled on-time completion."
-      },
-      "facade": {
-        "title": "Facade Protection",
-        "category": "Heritage Conservation",
-        "description": "Protective covering of a listed facade during extensive restoration work."
-      },
-      "scaffold": {
-        "title": "Scaffold Cladding",
-        "category": "Commercial Construction",
-        "description": "Complete scaffold cladding of a commercial building with combined tarp and net solutions."
+      "personenauffangInstall": {
+        "title": "Safety Net Installation",
+        "category": "High-rise Construction",
+        "description": "Installation of safety nets for maximum worker protection on a large construction site."
       }
     }
   },
@@ -171,5 +181,241 @@
     "imprint": "Imprint",
     "privacy": "Privacy Policy",
     "scrollTop": "Scroll to top"
+  },
+  "datenschutz": {
+    "badge": "Tori Bau GmbH",
+    "title": "Privacy Policy",
+    "subtitle": "Information on the processing of your personal data in accordance with GDPR.",
+    "toc_label": "Contents",
+    "footer": "Tori Bau GmbH · Reeseberg 3 · 21079 Hamburg",
+    "legal_basis_label": "Legal basis",
+    "sections": [
+      {
+        "number": "1",
+        "title": "Controller",
+        "type": "contact",
+        "intro": "The controller responsible for data processing on this website is:",
+        "company": "Tori Bau GmbH",
+        "address": "Reeseberg 3\n21079 Hamburg",
+        "email": "info@toriplanen.de"
+      },
+      {
+        "number": "2",
+        "title": "General Information on Data Processing",
+        "type": "text",
+        "body": "We take the protection of your personal data very seriously. Personal data is only collected on this website to the extent technically necessary. Processing is carried out in accordance with the General Data Protection Regulation (GDPR)."
+      },
+      {
+        "number": "3",
+        "title": "Hosting",
+        "type": "text",
+        "body": "Our website is hosted by {provider}. A data processing agreement in accordance with Art. 28 GDPR has been concluded with Hostinger.",
+        "provider": "Hostinger"
+      },
+      {
+        "number": "4",
+        "title": "Access Data (Server Log Files)",
+        "type": "list",
+        "intro": "When you visit this website, the following information is automatically collected:",
+        "items": [
+          "IP address",
+          "Date and time",
+          "Browser type and version",
+          "Operating system",
+          "Referrer URL",
+          "Requested file"
+        ],
+        "legal_basis": "Art. 6(1)(f) GDPR (legitimate interest in technical security)."
+      },
+      {
+        "number": "5",
+        "title": "Cookies",
+        "type": "text",
+        "body": "We use cookies to improve the user experience. On your first visit, a cookie banner (provided by {provider}) will be displayed, where you can manage your consent.\n\nThe cookie policy and an overview of cookies can be found here: [View Cookie Policy] (automatically inserted by CookieYes)",
+        "provider": "CookieYes"
+      },
+      {
+        "number": "6",
+        "title": "Contact Form & Communication",
+        "type": "text_with_legal",
+        "body": "If you contact us via contact form or email, we will store your details in order to process your enquiry.",
+        "legal_basis": "Art. 6(1)(b) GDPR"
+      },
+      {
+        "number": "7",
+        "title": "Google Analytics",
+        "type": "text_with_legal_and_link",
+        "body": "This website uses Google Analytics. Google uses cookies to analyse how the website is used. The data collected is transmitted to Google servers in the USA.",
+        "legal_basis": "Your consent pursuant to Art. 6(1)(a) GDPR",
+        "link_label": "More information",
+        "link_url": "https://policies.google.com/privacy?hl=en"
+      },
+      {
+        "number": "8",
+        "title": "Integrated Third-Party Services",
+        "type": "services",
+        "services": [
+          {
+            "name": "Google Fonts",
+            "desc": "Used to display fonts. When loaded, data (e.g. IP address) is transmitted to Google."
+          },
+          {
+            "name": "Google Maps",
+            "desc": "Used to display interactive maps. Data (IP, location, possibly cookies) is sent to Google."
+          },
+          {
+            "name": "YouTube Videos",
+            "desc": "We use YouTube to embed videos. Personal data may be transmitted to Google when playing."
+          },
+          {
+            "name": "Instagram Feed",
+            "desc": "An Instagram feed is embedded on some pages. Instagram may collect data if you are logged in."
+          },
+          {
+            "name": "WhatsApp Contact Button",
+            "desc": "If you contact us via the WhatsApp button, your phone number will be visible. Use is voluntary."
+          }
+        ],
+        "note": "All services are only activated after active consent via the cookie banner."
+      },
+      {
+        "number": "9",
+        "title": "Your Rights as a Data Subject",
+        "type": "rights",
+        "intro": "You have the right to:",
+        "rights": [
+          {
+            "right": "Access",
+            "article": "Art. 15 GDPR"
+          },
+          {
+            "right": "Rectification",
+            "article": "Art. 16 GDPR"
+          },
+          {
+            "right": "Erasure",
+            "article": "Art. 17 GDPR"
+          },
+          {
+            "right": "Restriction of processing",
+            "article": "Art. 18 GDPR"
+          },
+          {
+            "right": "Data portability",
+            "article": "Art. 20 GDPR"
+          },
+          {
+            "right": "Objection",
+            "article": "Art. 21 GDPR"
+          },
+          {
+            "right": "Withdrawal of consent",
+            "article": "Art. 7(3) GDPR"
+          }
+        ]
+      },
+      {
+        "number": "10",
+        "title": "Right to Lodge a Complaint",
+        "type": "authority",
+        "intro": "If you believe that your data is being processed unlawfully, you can lodge a complaint with the competent supervisory authority:",
+        "authority_name": "The Hamburg Commissioner for Data Protection and Freedom of Information",
+        "authority_address": "Ludwig-Erhard-Str 22, 20459 Hamburg",
+        "authority_url": "https://datenschutz-hamburg.de"
+      },
+      {
+        "number": "11",
+        "title": "Currency",
+        "type": "text",
+        "body": "This privacy policy is valid from {date} and is updated regularly.",
+        "date": "20 June 2025"
+      }
+    ]
+  },
+  "impressum": {
+    "badge": "Tori Bau GmbH",
+    "title": "Legal Notice",
+    "subtitle": "Information in accordance with § 5 TMG",
+    "footer": "Tori Bau GmbH · Reeseberg 3 · 21079 Hamburg",
+    "sections": [
+      {
+        "title": "Company Information",
+        "items": [
+          {
+            "label": "Company",
+            "value": "Tori Bau GmbH"
+          },
+          {
+            "label": "Address",
+            "value": "Reeseberg 3\n21079 Hamburg\nGermany"
+          }
+        ]
+      },
+      {
+        "title": "Represented by",
+        "items": [
+          {
+            "label": "Managing Director",
+            "value": "Selman Yesilmen"
+          }
+        ]
+      },
+      {
+        "title": "Contact",
+        "items": [
+          {
+            "label": "Phone",
+            "value": "+49 40 30372206",
+            "type": "phone"
+          },
+          {
+            "label": "E-Mail",
+            "value": "info@toriplanen.de",
+            "type": "email"
+          }
+        ]
+      },
+      {
+        "title": "Commercial Register",
+        "items": [
+          {
+            "label": "Registration",
+            "value": "Entry in the commercial register"
+          },
+          {
+            "label": "Register Court",
+            "value": "Amtsgericht Hamburg"
+          },
+          {
+            "label": "Register Number",
+            "value": "HRB 134867"
+          }
+        ]
+      },
+      {
+        "title": "VAT",
+        "intro": "VAT identification number in accordance with § 27 a of the German VAT Act:",
+        "items": [
+          {
+            "label": "VAT ID",
+            "value": "DE303422084"
+          }
+        ]
+      },
+      {
+        "title": "Responsible for Content",
+        "intro": "Responsible for content in accordance with § 55 para. 2 RStV:",
+        "items": [
+          {
+            "label": "Name",
+            "value": "Selman Yesilmen"
+          },
+          {
+            "label": "Address",
+            "value": "Reeseberg 3, 21079 Hamburg"
+          }
+        ]
+      }
+    ]
   }
 }

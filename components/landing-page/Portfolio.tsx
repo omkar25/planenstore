@@ -6,12 +6,14 @@ import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import ProtectedImage from "@/components/shared/ProtectedImage";
 
-const productKeys = ["pvc", "dust", "blast", "weather"] as const;
+const productKeys = ["pvc", "keder", "oesenband", "blast", "dust", "personenauffang"] as const;
 const productImages: Record<string, string> = {
   pvc: "/images/pvc-planen.jpg",
-  dust: "/images/staubschutz.jpg",
+  keder: "/images/kederplanen.jpg",
+  oesenband: "/images/oesen_1.jpg",
   blast: "/images/strahlschutz.jpg",
-  weather: "/images/wetterschutz.jpg",
+  dust: "/images/staubschutz.jpg",
+  personenauffang: "/images/personenauffangnetze.jpg",
 };
 
 function ProductCard({
@@ -57,9 +59,9 @@ function ProductCard({
           {description}
         </p>
         <div className="flex flex-wrap gap-2">
-          {features.map((feature) => (
+          {features.map((feature, i) => (
             <span
-              key={feature}
+              key={i}
               className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20"
             >
               {feature}

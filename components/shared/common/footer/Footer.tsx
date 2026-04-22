@@ -15,6 +15,8 @@ import {
 } from "react-icons/fa6";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "@/i18n/navigation";
 
 const navLinks = [
   { key: "home", id: "hero" },
@@ -39,6 +41,9 @@ export default function Footer() {
   const tHeader = useTranslations("Header");
   const [showWeChatQR, setShowWeChatQR] = useState(false);
 
+  const pathname = usePathname();
+  const router = useRouter();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -49,9 +54,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-foreground font-bold text-xl mb-4">
-              <span className="text-primary">TORİ</span> {t("brandName")}
-            </h3>
+            <div className="relative h-16 w-48 mb-4 overflow-hidden">
+              <Image
+                src="/logo/footer-logo.jpg"
+                alt="TORİ Planen & Netze"
+                fill
+                sizes="192px"
+                className="object-contain object-left scale-[1.6] origin-left mix-blend-multiply dark:mix-blend-screen"
+              />
+            </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t("brandDescription")}
             </p>
@@ -65,6 +76,10 @@ export default function Footer() {
                 <li key={link.id}>
                   <button
                     onClick={() => {
+                      if (pathname !== "/") {
+                        router.push(`/#${link.id}`);
+                        return;
+                      }
                       document
                         .getElementById(link.id)
                         ?.scrollIntoView({ behavior: "smooth" });
@@ -118,81 +133,88 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <button
-              onClick={() => setShowWeChatQR(true)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg border border-border text-muted-foreground hover:text-[#07C160] hover:border-[#07C160]/30 transition-all duration-200 text-sm"
-            >
-              <FaWeixin className="w-5 h-5" />
-              WeChat
-            </button>
           </div>
         </div>
 
-        {/* WeChat QR Modal */}
-        {showWeChatQR && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
-            onClick={() => setShowWeChatQR(false)}
-          >
-            <div
-              className="relative bg-background rounded-2xl shadow-2xl border border-border p-6 max-w-xs w-full mx-4"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setShowWeChatQR(false)}
-                className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <HiX className="w-5 h-5" />
-              </button>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-48 h-48 relative mb-4 rounded-xl overflow-hidden border border-border">
-                  <Image
-                    src="/images/wechat-qr.png"
-                    alt="WeChat QR Code"
-                    fill
-                    className="object-contain p-2"
-                  />
-                </div>
-                <div className="flex items-center gap-2 mb-1">
-                  <FaWeixin className="w-6 h-6 text-[#07C160]" />
-                  <span className="text-foreground font-semibold text-lg">WeChat</span>
-                </div>
-                <p className="text-muted-foreground text-xs">{t("wechatScan")}</p>
-              </div>
-            </div>
-          </div>
-        )}
+      </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+      {/* Bottom bar – full-width line */}
+      <div className="mt-0 border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} TORİ {t("brandName")}. {t("copyright")}
           </p>
 
           <div className="flex items-center gap-6">
-            <a
-              href="#"
+            <Link
+              href="/impressum"
               className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               {t("imprint")}
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/datenschutz"
               className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               {t("privacy")}
-            </a>
+            </Link>
 
-            <button
-              onClick={scrollToTop}
-              className="w-10 h-10 bg-primary/10 hover:bg-primary/20 border border-primary/20 rounded-full flex items-center justify-center text-primary transition-all hover:scale-110"
-              aria-label={t("scrollTop")}
-            >
-              <HiArrowUp />
-            </button>
           </div>
         </div>
       </div>
+
+      {/* Fixed floating buttons – bottom right */}
+      <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+        <button
+          onClick={() => setShowWeChatQR(true)}
+          className="w-12 h-12 bg-[#07C160] hover:bg-[#06a853] rounded-full flex items-center justify-center text-white shadow-lg transition-all hover:scale-110"
+          aria-label="WeChat"
+        >
+          <FaWeixin className="w-5 h-5" />
+        </button>
+        <button
+          onClick={scrollToTop}
+          className="w-12 h-12 bg-primary hover:bg-primary/90 rounded-full flex items-center justify-center text-white shadow-lg transition-all hover:scale-110"
+          aria-label={t("scrollTop")}
+        >
+          <HiArrowUp className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* WeChat QR Modal */}
+      {showWeChatQR && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+          onClick={() => setShowWeChatQR(false)}
+        >
+          <div
+            className="relative bg-background rounded-2xl shadow-2xl border border-border p-6 max-w-xs w-full mx-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowWeChatQR(false)}
+              className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <HiX className="w-5 h-5" />
+            </button>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-48 h-48 relative mb-4 rounded-xl overflow-hidden border border-border">
+                <Image
+                  src="/images/wechat-qr.png"
+                  alt="WeChat QR Code"
+                  fill
+                  className="object-contain p-2"
+                />
+              </div>
+              <div className="flex items-center gap-2 mb-1">
+                <FaWeixin className="w-6 h-6 text-[#07C160]" />
+                <span className="text-foreground font-semibold text-lg">WeChat</span>
+              </div>
+              <p className="text-muted-foreground text-xs">{t("wechatScan")}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }
