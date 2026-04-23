@@ -143,7 +143,10 @@
       "message": "Nachricht *",
       "messagePlaceholder": "Beschreiben Sie Ihr Projekt...",
       "submit": "Nachricht senden",
+      "sending": "Wird gesendet...",
       "submitted": "✓ Nachricht gesendet!",
+      "successToast": "Ihre Nachricht wurde erfolgreich gesendet!",
+      "errorToast": "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
       "errors": {
         "nameRequired": "Bitte geben Sie Ihren Namen ein.",
         "nameMin": "Der Name muss mindestens 2 Zeichen lang sein.",

@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 import {
   HiLocationMarker,
   HiPhone,
@@ -36,6 +37,7 @@ export default function Kontakt() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const contactSchema = z.object({
@@ -60,7 +62,7 @@ export default function Kontakt() {
     return /^(\+49|0049|0)[\d\-/]{6,15}$/.test(cleaned);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = contactSchema.safeParse(formState);
     const fieldErrors: Record<string, string> = {};
@@ -81,9 +83,26 @@ export default function Kontakt() {
       return;
     }
     setErrors({});
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormState({ name: "", email: "", phone: "", message: "" });
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      if (!res.ok) throw new Error();
+
+      setSubmitted(true);
+      toast.success(t("form.successToast"));
+      setFormState({ name: "", email: "", phone: "", message: "" });
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch {
+      toast.error(t("form.errorToast"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   const updateField = (field: string, value: string) => {
@@ -298,7 +317,11 @@ export default function Kontakt() {
                   type="submit"
                   className="w-full py-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98]"
                 >
-                  {submitted ? t("form.submitted") : t("form.submit")}
+                  {loading
+                    ? t("form.sending")
+                    : submitted
+                      ? t("form.submitted")
+                      : t("form.submit")}
                 </button>
               </div>
             </form>

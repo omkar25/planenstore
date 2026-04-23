@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
+import { usePathname, useRouter, Link } from "@/i18n/navigation";
 
 const navItems = [
   { key: "home", sectionId: "hero" },
@@ -30,8 +31,19 @@ export function MobileNavToggle({ open, onToggle }: MobileNavProps) {
 
 export function MobileNav({ open, onToggle }: MobileNavProps) {
   const t = useTranslations("Header");
+  const pathname = usePathname();
+  const router = useRouter();
 
   if (!open) return null;
+
+  const scrollTo = (id: string) => {
+    if (pathname !== "/") {
+      router.push(`/#${id}`);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+    onToggle();
+  };
 
   return (
     <nav className="flex flex-col gap-1 border-t border-border bg-background px-6 py-4 md:hidden">
@@ -39,15 +51,19 @@ export function MobileNav({ open, onToggle }: MobileNavProps) {
         <button
           key={key}
           type="button"
-          onClick={() => {
-            document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-            onToggle();
-          }}
+          onClick={() => scrollTo(sectionId)}
           className="rounded-lg px-3 py-2 text-left text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
         >
           {t(key)}
         </button>
       ))}
+      <Link
+        href="/shop"
+        onClick={onToggle}
+        className="rounded-lg px-3 py-2 text-left text-sm font-semibold text-primary transition-colors hover:bg-accent"
+      >
+        {t("shop")}
+      </Link>
     </nav>
   );
 }

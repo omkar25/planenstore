@@ -62,7 +62,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
-      <div className="flex h-14 w-full items-center justify-between px-20">
+      <div className="flex h-14 w-full items-center justify-between px-4 md:px-20">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
@@ -95,18 +95,20 @@ export function Header() {
               </button>
             ))}
           </nav>
-          <ColorSwitcher />
+          {/* <div className="hidden md:flex">
+            <ColorSwitcher />
+          </div> */}
           <LanguageSelector />
           <Link
             href="/shop"
-            className="rounded-full bg-primary px-5 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+            className="hidden sm:inline-flex rounded-full bg-primary px-5 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
           >
             {t("shop")}
           </Link>
           <button
             type="button"
             onClick={() => toast(tCart("comingSoon"), { style: { background: "var(--primary)", color: "#fff" } })}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white transition-colors hover:bg-primary/90"
+            className="hidden sm:flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white transition-colors hover:bg-primary/90"
           >
             <ShoppingBag className="h-4 w-4" />
           </button>

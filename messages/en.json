@@ -143,7 +143,10 @@
       "message": "Message *",
       "messagePlaceholder": "Describe your project...",
       "submit": "Send Message",
+      "sending": "Sending...",
       "submitted": "✓ Message sent!",
+      "successToast": "Your message has been sent successfully!",
+      "errorToast": "An error occurred while sending. Please try again.",
       "errors": {
         "nameRequired": "Please enter your name.",
         "nameMin": "Name must be at least 2 characters.",

@@ -11,6 +11,6 @@ export function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     // Match all pathnames except Next.js internals and static files
-    "/((?!_next|_vercel|.*\\..*).*)",
+    "/((?!api|_next|_vercel|.*\\..*).*)",
   ],
 };
