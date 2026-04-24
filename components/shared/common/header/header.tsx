@@ -10,7 +10,6 @@ import Image from "next/image";
 import { MobileNav, MobileNavToggle } from "./mobile-nav";
 import { LanguageSelector } from "../language/language-selector";
 // import { ModeToggle } from "../theme/mode-toggle";
-import { ColorSwitcher } from "../theme/color-switcher";
 
 const navItems = [
   { key: "home", sectionId: "hero" },
@@ -62,24 +61,24 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
-      <div className="flex h-14 w-full items-center justify-between px-4 md:px-20">
+      <div className="flex h-14 w-full items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo/logo.png"
+            src="/logo/logo-old.png"
             alt="Tori Planen"
-            width={100}
-            height={100}
-            style={{ width: "auto", height: "6.5rem" }}
-            className="object-contain"
+            width={420}
+            height={120}
+            sizes="(max-width: 640px) 280px, 360px"
+            className="h-50 w-auto object-contain"
             priority
           />
         </Link>
 
         {/* Right side — Nav + Actions */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-5">
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-5">
             {navItems.map(({ key, sectionId }) => (
               <button
                 key={key}
@@ -95,9 +94,6 @@ export function Header() {
               </button>
             ))}
           </nav>
-          {/* <div className="hidden md:flex">
-            <ColorSwitcher />
-          </div> */}
           <LanguageSelector />
           <Link
             href="/shop"

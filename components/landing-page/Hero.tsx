@@ -1,66 +1,84 @@
-"use client";
+import React from "react";
+import Image from "next/image";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { useTranslations } from "next-intl";
-import { AuroraText } from "@/components/shared/aurora-text";
+const HERO_IMAGE = "/tori-pictures/IMG_3237.jpeg";
+const LOGO_PQ_VOB = "/tori-pictures/PHOTO-1.jpg";
+const LOGO_BUNDESINNUNG = "/tori-pictures/PHOTO-2.jpg";
+const LOGO_CERT = "/tori-pictures/PHOTO-3.jpg";
+const LOGO_CERT_2 = "/tori-pictures/PHOTO-4.jpg";
 
 export default function Hero() {
-  const t = useTranslations("Hero");
-  const taglines = [t("tagline1"), t("tagline2"), t("tagline3")];
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "99999px 0px -100px 0px" });
-
   return (
-    <section
-      id="hero"
-      ref={ref}
-      className="relative w-full h-[60vh] sm:h-[70vh] md:h-screen min-h-[400px] md:min-h-[600px] overflow-hidden mt-2"
-    >
-      {/* Background video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="none"
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/video/Tori-Video-Webbbb_1.mp4" type="video/mp4" />
-      </video>
+    <section className="sm:mt-6 lg:mt-8 mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="my-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 flex gap-3 lg:flex-justify lg:flex flex-col lg:flex-row">
+        {/* ── LEFT: Text Content ── */}
+        <div className="sm:text-center lg:text-left lg:w-2/3">
+          {/* Headline */}
+          <h1 className="text-4xl tracking-tight font-extrabold text-gray-800 sm:text-5xl md:text-6xl">
+            <span className="block xl:inline">
+              TORİ Planen 
+            </span>
+            <span className="block xl:inline"> & Netze</span>
+          </h1>
 
-      {/* Content: stacked on mobile, side-by-side on md+ */}
-      <div className="absolute inset-0 pb-8 z-10 flex flex-col justify-end px-6 sm:px-10 md:flex-row md:items-end md:justify-between md:px-16">
+          {/* Paragraph 1 */}
+          <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+            TORI BAU GmbH – Ihr Spezialist für Montage von Planen und Netzen
+            seit über 20 Jahren Willkommen bei der TORI BAU GmbH! Wir sind ein
+            erfahrenes Unternehmen, das sich auf die Montage von Planen und
+            Netzen spezialisiert hat. Seit über 20 Jahren sind wir stolz darauf,
+            unseren Kunden hochwertige Lösungen und erstklassigen Service zu
+            bieten. Unser Team besteht aus kompetenten Fachleuten, die über
+            umfangreiches Fachwissen und langjährige Erfahrung in der Branche
+            verfügen. Wir sind bestrebt, die Erwartungen unserer Kunden zu
+            übertreffen und ihnen maßgeschneiderte Lösungen anzubieten, die
+            ihren individuellen Anforderungen entsprechen.
+          </p>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 md:mb-2">
-          {/* <AuroraText as="span" className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black">
-            {t("titleLine1")}
-          </AuroraText>
-          <br />
-          <AuroraText as="span" className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black">
-            {t("titleLine2")}
-          </AuroraText> */}
-        </h1>
-
-        {/* Taglines staggered diagonally */}
-        <div className="flex flex-col items-start gap-2 sm:gap-3 md:gap-5">
-          {taglines.map((tag, i) => (
-            <motion.p
-              key={tag}
-              initial={{ opacity: 0, x: 30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.18, ease: "easeOut" }}
-              className="text-white/90 font-light tracking-widest m-0"
-              style={{
-                fontSize: "clamp(0.75rem, 1.6vw, 2.35rem)",
-                marginLeft: `${i * 20}px`,
-              }}
-            >
-              {tag}
-            </motion.p>
-          ))}
+          {/* Logos row */}
+          <div className="mt-5 sm:mt-8 flex items-center gap-5 flex-wrap sm:justify-center lg:justify-start">
+            <Image
+              src={LOGO_PQ_VOB}
+              alt="PQ VOB 0001.705216"
+              width={64}
+              height={64}
+              className="h-14 w-auto object-contain"
+            />
+            <Image
+              src={LOGO_BUNDESINNUNG}
+              alt="Bundesinnung Gerüstbau"
+              width={64}
+              height={64}
+              className="h-14 w-auto object-contain"
+            />
+            <Image
+              src={LOGO_CERT}
+              alt="Certification badge"
+              width={64}
+              height={64}
+              className="h-14 w-auto object-contain"
+            />
+            <Image
+              src={LOGO_CERT_2}
+              alt="Certification badge 2"
+              width={64}
+              height={64}
+              className="h-14 w-auto object-contain"
+            />
+          </div>
         </div>
 
+        {/* ── RIGHT: Hero Image ── */}
+        <div className="lg:inset-y-0 lg:right-0 lg:w-3/6 my-4">
+          <Image
+            src={HERO_IMAGE}
+            alt="Gerüstbekleidung auf einer Brücke"
+            width={1200}
+            height={800}
+            className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+            priority
+          />
+        </div>
       </div>
     </section>
   );
