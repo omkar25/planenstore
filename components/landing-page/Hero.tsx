@@ -14,12 +14,12 @@ export default function Hero() {
         {/* ── LEFT: Text Content ── */}
         <div className="sm:text-center lg:text-left lg:w-2/3">
           {/* Headline */}
-          <h1 className="text-4xl tracking-tight font-extrabold text-gray-800 sm:text-5xl md:text-6xl">
+          <h2 className="text-4xl text-gray-500 sm:text-5xl md:text-6xl">
             <span className="block xl:inline">
               TORİ Planen 
             </span>
             <span className="block xl:inline"> & Netze</span>
-          </h1>
+          </h2>
 
           {/* Paragraph 1 */}
           <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
