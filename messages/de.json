@@ -40,7 +40,7 @@
         "features": ["Normgerecht", "Hochfest", "Geprüft", "Sicher"]
       },
       "oesenband": {
-        "title": "Gerüstplanen Montage",
+        "title": "Gerüstplanen",
         "description": "Professionelle Ösenbandplanen für Sandstrahl- und Kugelstrahlarbeiten. Maximale Sicherheit bei industriellen Strahlverfahren.",
         "features": ["Ösenbandplanen", "Ösenbandplanen", "Ösenbandplanen", "Ösenbandplanen"]
       },
@@ -86,17 +86,17 @@
     "subtitle": "Ausgewählte Projekte, die unsere Kompetenz und Erfahrung in der Planen- und Netzmontage demonstrieren.",
     "projects": {
       "pvcInstall": {
-        "title": "PVC-Planen Montage",
+        "title": "PVC-Planen",
         "category": "Hochbau",
         "description": "Komplettverkleidung eines Hochbauprojekts mit maßgeschneiderten PVC-Planen für ganzjährigen Wetterschutz."
       },
       "kederInstall": {
-        "title": "Kederplanen Montage",
+        "title": "Kederplanen",
         "category": "Gewerbebau",
         "description": "Professionelle Montage von Kederplanen für ein Gewerbeprojekt. Passgenaue Lösungen für optimalen Schutz."
       },
       "oesenbandInstall": {
-        "title": "Gerüstplanen Montage",
+        "title": "Gerüstplanen",
         "category": "Industriebau",
         "description": "Installation von Ösenbandplanen für industrielle Anwendungen. Robuste und flexible Befestigungslösungen."
       },
