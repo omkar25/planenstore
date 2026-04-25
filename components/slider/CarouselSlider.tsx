@@ -19,7 +19,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    src: "/images/Slider_1.webp",
+    src: "/images/slider1.JPG",
     alt: "PVC Planen nach Maß",
     title: "PVC Planen nach Maß",
     subtitle: "In jeder Farbe und Form konfigurierbar",
@@ -28,7 +28,7 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    src: "/images/Slider_2.webp",
+    src: "/images/slider2.JPG",
     alt: "Abdeckhauben",
     title: "Abdeckhauben",
     subtitle: "Moderne Terrasse mit Korbsitzen und überdachtem Grill neben großen Glasschiebetüren. Zwei leuchtende Laternen beleuchten den Steinboden und im Inneren ist ein Wohnbereich mit Fernseher sichtbar. Die Terrasse ist von Grün umgeben.",
@@ -37,7 +37,7 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    src: "/images/Slider_3.webp",
+    src: "/images/slider3.jpg",
     alt: "Aufblasbare Poolplane",
     title: "Aufblasbare Poolplane",
     subtitle: "Premium Qualität direkt vom Hersteller.",
