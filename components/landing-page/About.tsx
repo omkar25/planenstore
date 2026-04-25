@@ -3,13 +3,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import { HiShieldCheck, HiGlobe, HiLightningBolt, HiUserGroup } from "react-icons/hi";
+import { HiShieldCheck, HiGlobe, HiLightningBolt, HiUserGroup, HiCloud } from "react-icons/hi";
 import { IconType } from "react-icons";
 
-const valueKeys = ["safety", "environment", "fastInstall", "team"] as const;
+const valueKeys = ["safety", "environment","wetterschutz", "fastInstall", "team"] as const;
 const valueIcons: Record<string, IconType> = {
   safety: HiShieldCheck,
   environment: HiGlobe,
+  wetterschutz: HiCloud,
   fastInstall: HiLightningBolt,
   team: HiUserGroup,
 };
@@ -51,7 +52,7 @@ export default function About() {
         </motion.div>
 
         {/* Values */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-20">
           {valueKeys.map((key, i) => {
             const Icon = valueIcons[key];
             return (

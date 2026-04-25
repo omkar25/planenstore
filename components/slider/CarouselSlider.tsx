@@ -19,7 +19,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    src: "/images/slider_1.JPG",
+    src: "/images/slider/slider1.png",
     alt: "PVC Planen nach Maß",
     title: "PVC Planen nach Maß",
     subtitle: "In jeder Farbe und Form konfigurierbar",
@@ -28,7 +28,7 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    src: "/images/slider2.JPG",
+    src: "/images/slider/slider2.png",
     alt: "Abdeckhauben",
     title: "Abdeckhauben",
     subtitle: "Moderne Terrasse mit Korbsitzen und überdachtem Grill neben großen Glasschiebetüren. Zwei leuchtende Laternen beleuchten den Steinboden und im Inneren ist ein Wohnbereich mit Fernseher sichtbar. Die Terrasse ist von Grün umgeben.",
@@ -37,7 +37,7 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    src: "/images/slider3.jpg",
+    src: "/images/slider/slider3.png",
     alt: "Aufblasbare Poolplane",
     title: "Aufblasbare Poolplane",
     subtitle: "Premium Qualität direkt vom Hersteller.",
@@ -85,7 +85,7 @@ export default function CarouselSlider({
 
   return (
     <div
-      className="relative w-full overflow-hidden max-h-[500px] md:max-h-[600px] aspect-video"
+      className="relative w-full overflow-hidden  max-h-[800px] min-h-[500px] aspect-video"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       role="region"

@@ -64,6 +64,10 @@
         "title": "Umweltschutz",
         "description": "Nachhaltige Materialien und umweltfreundliche Prozesse. Wir schützen die Umgebung Ihrer Baustelle."
       },
+      "wetterschutz": {
+        "title": "Wetterschutz",
+        "description": "Zuverlässiger Schutz vor Wind, Wetter und Umwelteinflüssen. Unsere Planen und Netze halten stand."
+      },
       "fastInstall": {
         "title": "Schnelle Montage",
         "description": "Professionelle und schnelle Montage durch erfahrene Teams. Termingerecht und zuverlässig."

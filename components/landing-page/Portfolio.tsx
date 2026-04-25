@@ -12,7 +12,7 @@ const productImages: Record<string, string> = {
   keder: "/images/keder_planen.jpg",
   oesenband: "/images/geruste-planen.jpg",
   blast: "/images/strahlschutz.jpg",
-  dust: "/images/staubschutznetze1.jpg",
+  dust: "/images/staubschutznetze_1.jpg",
   personenauffang: "/images/personenauffangnetze.jpg",
 };
 

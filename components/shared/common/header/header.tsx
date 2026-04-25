@@ -65,14 +65,14 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo/logo-old.png"
-            alt="Tori Planen"
-            width={420}
-            height={120}
-            sizes="(max-width: 640px) 250px, 160px"
-            className="h-30 w-auto object-contain"
-            priority
-          />
+  src="/logo/logo-old.png"
+  alt="Tori Planen"
+  width={420}
+  height={120}
+  sizes="(max-width: 640px) 250px, 160px"
+  className="w-40 h-auto object-contain sm:w-50"
+  priority
+/>
         </Link>
 
         {/* Right side — Nav + Actions */}
