@@ -40,7 +40,7 @@
         "features": ["Normgerecht", "Hochfest", "Geprüft", "Sicher"]
       },
       "oesenband": {
-        "title": "Ösenbandplanen",
+        "title": "Gerüstplanen Montage",
         "description": "Professionelle Ösenbandplanen für Sandstrahl- und Kugelstrahlarbeiten. Maximale Sicherheit bei industriellen Strahlverfahren.",
         "features": ["Ösenbandplanen", "Ösenbandplanen", "Ösenbandplanen", "Ösenbandplanen"]
       },
@@ -96,7 +96,7 @@
         "description": "Professionelle Montage von Kederplanen für ein Gewerbeprojekt. Passgenaue Lösungen für optimalen Schutz."
       },
       "oesenbandInstall": {
-        "title": "Ösenbandplanen Montage",
+        "title": "Gerüstplanen Montage",
         "category": "Industriebau",
         "description": "Installation von Ösenbandplanen für industrielle Anwendungen. Robuste und flexible Befestigungslösungen."
       },

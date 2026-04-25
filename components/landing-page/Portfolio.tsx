@@ -9,8 +9,8 @@ import ProtectedImage from "@/components/shared/ProtectedImage";
 const productKeys = ["pvc", "keder", "oesenband", "blast", "dust", "personenauffang"] as const;
 const productImages: Record<string, string> = {
   pvc: "/images/pvc-planen.jpg",
-  keder: "/images/kederplanen.jpg",
-  oesenband: "/images/oesen_1.jpg",
+  keder: "/images/keder_planen.jpg",
+  oesenband: "/images/geruste-planen.jpg",
   blast: "/images/strahlschutz.jpg",
   dust: "/images/staubschutz.jpg",
   personenauffang: "/images/personenauffangnetze.jpg",

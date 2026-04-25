@@ -70,7 +70,7 @@ export function Header() {
             width={420}
             height={120}
             sizes="(max-width: 640px) 250px, 160px"
-            className="h-40 w-auto object-contain"
+            className="h-30 w-auto object-contain"
             priority
           />
         </Link>
