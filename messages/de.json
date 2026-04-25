@@ -74,10 +74,10 @@
       }
     },
     "stats": {
-      "experience": { "number": "15+", "label": "Jahre Erfahrung" },
-      "projects": { "number": "500+", "label": "Projekte" },
-      "clients": { "number": "200+", "label": "Zufriedene Kunden" },
-      "employees": { "number": "50+", "label": "Mitarbeiter" }
+      "experience": { "number": "20+", "label": "Jahre Erfahrung" },
+      "projects": { "number": "1000+", "label": "Projekte" },
+      "clients": { "number": "100+", "label": "Zufriedene Kunden" },
+      "employees": { "number": "20+", "label": "Mitarbeiter" }
     }
   },
   "Referenzen": {
