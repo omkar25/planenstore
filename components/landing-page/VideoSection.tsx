@@ -12,7 +12,7 @@ export default function VideoSection() {
 
   return (
     <section className="py-10 bg-background">
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-2xl mx-auto px-1">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 40 }}

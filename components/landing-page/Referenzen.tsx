@@ -44,9 +44,9 @@ function ProjectCard({
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: (index % 3) * 0.15 }}
-      className="group relative rounded-2xl overflow-hidden bg-card/50 border border-border hover:border-primary/30 transition-all duration-500 cursor-pointer"
+      className="group relative bg-card/50 rounded-2xl overflow-hidden  hover:border-primary/30 transition-all duration-500"
     >
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative aspect-video overflow-hidden">
         <ProtectedImage
           src={projectImages[projectKey]}
           alt={title}
@@ -80,8 +80,8 @@ export default function Referenzen() {
   const titleInView = useInView(titleRef, { once: true, margin: "99999px 0px -100px 0px" });
 
   return (
-    <section id="referenzen" className="relative pt-5 pb-24 bg-muted scroll-mt-16">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="referenzen" className="relative pt-5 pb-24 bg-background scroll-mt-16">
+      <div className="max-w-screen-2xl mx-auto px-1">
         <motion.div
           ref={titleRef}
           initial={{ opacity: 0, y: 30 }}

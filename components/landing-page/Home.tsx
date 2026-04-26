@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Hero from "@/components/landing-page/Hero";
+//import Hero from "@/components/landing-page/Hero";
 import CarouselSlider from "@/components/slider/CarouselSlider";
 
 const VideoSection = dynamic(() => import("@/components/landing-page/VideoSection"));
