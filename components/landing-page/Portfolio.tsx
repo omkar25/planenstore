@@ -59,7 +59,7 @@ function ProductCard({
         <p className="text-muted-foreground text-sm leading-relaxed mb-4">
           {description}
         </p>
-        <div className="flex flex-wrap gap-2">
+      {/*   <div className="flex flex-wrap gap-2">
           {features.map((feature, i) => (
             <span
               key={i}
@@ -68,7 +68,7 @@ function ProductCard({
               {feature}
             </span>
           ))}
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );
