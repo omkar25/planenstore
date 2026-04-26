@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import ProtectedImage from "@/components/shared/ProtectedImage";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -114,26 +113,8 @@ export default function CarouselSlider({
         </motion.div>
       </AnimatePresence>
 
-      {/* Prev arrow */}
-      <button
-        onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white/70 transition hover:text-white"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="h-5 w-5 sm:h-8 sm:w-8" strokeWidth={1.5} />
-      </button>
-
-      {/* Next arrow */}
-      <button
-        onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/70 transition hover:text-white"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="h-5 w-5 sm:h-8 sm:w-8" strokeWidth={1.5} />
-      </button>
-
       {/* Dot indicators */}
-      <div className="absolute bottom-3 sm:bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-1.5 sm:gap-2">
+      <div className="absolute bottom-3 sm:bottom-5 left-4 sm:left-6 flex items-center gap-1.5 sm:gap-2">
         {slides.map((_, i) => (
           <button
             key={i}

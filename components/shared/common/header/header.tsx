@@ -36,7 +36,11 @@ export function Header() {
       return;
     }
     setActiveSection(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    if (id === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   useEffect(() => {

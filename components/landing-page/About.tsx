@@ -25,7 +25,7 @@ export default function About() {
   const statsInView = useInView(statsRef, { once: true, margin: "99999px 0px -100px 0px" });
 
   return (
-    <section id="about" className="relative pt-5 pb-24 overflow-hidden">
+    <section id="about" className="relative pt-5 pb-24 overflow-hidden scroll-mt-16">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-bottom bg-fixed"

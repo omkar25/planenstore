@@ -122,7 +122,7 @@ export default function Kontakt() {
   };
 
   return (
-    <section id="kontakt" className="relative pt-5 pb-24 bg-background">
+    <section id="kontakt" className="relative pt-5 pb-24 bg-background scroll-mt-16">
       {/* Decorative gradient */}
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent" />
 
