@@ -48,6 +48,19 @@ function ProductCard({
           loading={index < 6 ? "eager" : "lazy"}
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
+        <div className="absolute top-3 right-3 flex flex-col gap-1.5">
+          {[1, 2, 3, 4].map((num) => (
+            <div key={num} className="w-10 h-10 relative rounded overflow-hidden shadow-md">
+              <ProtectedImage
+                src={`/images/portfolio/photo-${num}.jpg`}
+                alt={`Portfolio ${num}`}
+                fill
+                sizes="40px"
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
           <h3 className="text-2xl font-bold text-white drop-shadow-lg">
             {title}
@@ -56,19 +69,9 @@ function ProductCard({
       </div>
 
       <div className="p-6">
-        <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+        <p className="text-muted-foreground text-sm leading-relaxed">
           {description}
         </p>
-      {/*   <div className="flex flex-wrap gap-2">
-          {features.map((feature, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20"
-            >
-              {feature}
-            </span>
-          ))}
-        </div> */}
       </div>
     </motion.div>
   );
