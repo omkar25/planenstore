@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiArrowUp, HiX } from "react-icons/hi";
 import {
   FaFacebookF,
@@ -40,9 +40,18 @@ export default function Footer() {
   const t = useTranslations("Footer");
   const tHeader = useTranslations("Header");
   const [showWeChatQR, setShowWeChatQR] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const pathname = usePathname();
   const router = useRouter();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -172,13 +181,15 @@ export default function Footer() {
         >
           <FaWeixin className="w-5 h-5" />
         </button>
-        <button
-          onClick={scrollToTop}
-          className="w-12 h-12 bg-primary hover:bg-primary/90 rounded-full flex items-center justify-center text-white shadow-lg transition-all hover:scale-110"
-          aria-label={t("scrollTop")}
-        >
-          <HiArrowUp className="w-5 h-5" />
-        </button>
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="w-12 h-12 bg-primary hover:bg-primary/90 rounded-full flex items-center justify-center text-white shadow-lg transition-all hover:scale-110"
+            aria-label={t("scrollTop")}
+          >
+            <HiArrowUp className="w-5 h-5" />
+          </button>
+        )}
       </div>
 
       {/* WeChat QR Modal */}

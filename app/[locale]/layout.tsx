@@ -41,7 +41,9 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider>
             <Header />
-            {children}
+            <div className="pt-14">
+              {children}
+            </div>
             <Footer />
             <Toaster position="top-center" richColors />
           </ThemeProvider>
