@@ -18,7 +18,7 @@ const projectImages: Record<string, string> = {
   pvcInstall: "/images/pvc-planen.jpg",
   kederInstall: "/images/kederplanen.jpg",
   oesenbandInstall: "/images/oesen_1.jpg",
-  blastNets: "/images/strahlschutz.jpg",
+  blastNets: "/images/blast-protection.jpg",
   dustNets: "/images/staubschutz.jpg",
   personenauffangInstall: "/images/personenauffangnetze.jpg",
 };
@@ -54,15 +54,12 @@ function ProjectCard({
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-background via-background/30 to-transparent" />
 
-        <span className="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-primary bg-primary/20 backdrop-blur-sm rounded-full border border-primary/30">
+        <span className="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-primary bg-primary/20 rounded-full border border-primary/30">
           {projectYears[projectKey]}
         </span>
 
-        <span className="absolute bottom-4 left-4 px-3 py-1 text-xs font-medium text-muted-foreground bg-muted/80 backdrop-blur-sm rounded-full">
-          {category}
-        </span>
+        
       </div>
 
       <div className="p-5">
@@ -83,7 +80,7 @@ export default function Referenzen() {
   const titleInView = useInView(titleRef, { once: true, margin: "99999px 0px -100px 0px" });
 
   return (
-    <section id="referenzen" className="relative py-24 bg-muted">
+    <section id="referenzen" className="relative pt-5 pb-24 bg-muted">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={titleRef}

@@ -25,13 +25,13 @@ export default function About() {
   const statsInView = useInView(statsRef, { once: true, margin: "99999px 0px -100px 0px" });
 
   return (
-    <section id="about" className="relative py-24 overflow-hidden">
+    <section id="about" className="relative pt-5 pb-24 overflow-hidden">
       {/* Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: "url('/images/about-bg.jpg')" }}
+        className="absolute inset-0 bg-cover bg-bottom bg-fixed"
+        style={{ backgroundImage: "url('/images/about_us_bg.jpg')" }}
       />
-      <div className="absolute inset-0 bg-background/90" />
+      <div className="absolute inset-0 bg-background/85" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Title */}

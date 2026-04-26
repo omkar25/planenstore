@@ -85,7 +85,7 @@ export default function CarouselSlider({
 
   return (
     <div
-      className="relative w-full overflow-hidden  max-h-[800px] min-h-[500px] aspect-video"
+      className="relative w-full overflow-hidden max-h-[800px] min-h-[500px] aspect-video"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       role="region"
@@ -107,7 +107,7 @@ export default function CarouselSlider({
             alt={slides[current].alt}
             fill
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-center"
             priority={current === 0}
             loading={current === 0 ? "eager" : "lazy"}
           />
