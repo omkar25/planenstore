@@ -59,14 +59,14 @@ function ProductCard({
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         {productIcons[productKey]?.length > 0 && (
-          <div className="absolute top-3 right-3 flex flex-col gap-1.5">
+          <div className="absolute top-2 right-4 flex flex-col gap-2">
             {productIcons[productKey].map((num) => (
-              <div key={num} className="w-10 h-10 relative rounded overflow-hidden shadow-md">
+              <div key={num} className="w-15 h-15 relative rounded-lg overflow-hidden shadow-lg">
                 <ProtectedImage
                   src={`/images/portfolio/photo-${num}.jpg`}
                   alt={`Portfolio ${num}`}
                   fill
-                  sizes="40px"
+                  sizes="60px"
                   className="object-cover"
                 />
               </div>

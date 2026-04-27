@@ -60,16 +60,16 @@ export default function Footer() {
   return (
     <footer className="relative bg-muted border-t border-border">
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
           {/* Brand */}
           <div>
-            <div className="relative h-16 w-48 mb-4 overflow-hidden">
+            <div className="h-5 flex items-center mb-4">
               <Image
-                src="/logo/footer-logo.jpg"
+                src="/logo/logo-old.png"
                 alt="TORİ Planen & Netze"
-                fill
-                sizes="192px"
-                className="object-contain object-left scale-[1.6] origin-left mix-blend-multiply dark:mix-blend-screen"
+                width={180}
+                height={60}
+                className="object-contain"
               />
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -79,7 +79,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-foreground font-semibold mb-4">{t("quickLinks")}</h4>
+            <h4 className="text-foreground font-semibold mb-4 h-1 flex items-center">{t("quickLinks")}</h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.id}>
@@ -104,7 +104,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-foreground font-semibold mb-4">{t("services")}</h4>
+            <h4 className="text-foreground font-semibold mb-4 h-5 flex items-center">{t("services")}</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
               {serviceKeys.map((key) => (
                 <li key={key}>{t(`servicesList.${key}`)}</li>
@@ -114,7 +114,7 @@ export default function Footer() {
 
           {/* Social & WeChat */}
           <div>
-            <h4 className="text-foreground font-semibold mb-4">{t("followUs")}</h4>
+            <h4 className="text-foreground font-semibold mb-4 h-5 flex items-center">{t("followUs")}</h4>
             <div className="flex flex-wrap gap-2.5 mb-4">
               {socialLinks.map(({ icon: Icon, href, label, color, bg }) => (
                 <a
