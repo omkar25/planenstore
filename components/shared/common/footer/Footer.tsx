@@ -63,13 +63,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
           {/* Brand */}
           <div>
-            <div className="h-5 flex items-center mb-4">
+            <div className="h-5 flex items-center mb-6">
               <Image
                 src="/logo/logo-old.png"
                 alt="TORİ Planen & Netze"
                 width={180}
                 height={60}
                 className="object-contain"
+                style={{ width: 'auto', height: 'auto' }}
               />
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
