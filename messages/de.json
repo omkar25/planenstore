@@ -99,10 +99,10 @@
         "category": "Gewerbebau",
         "description": "Professionelle Montage von Kederplanen für ein Gewerbeprojekt. Passgenaue Lösungen für optimalen Schutz."
       },
-      "oesenbandInstall": {
+      "geruestbandInstall": {
         "title": "Gerüstplanen Montage",
         "category": "Industriebau",
-        "description": "Installation von Ösenbandplanen für industrielle Anwendungen. Robuste und flexible Befestigungslösungen."
+        "description": "Installation von Gerüstplanen für industrielle Anwendungen. Robuste und flexible Befestigungslösungen."
       },
       "blastNets": {
         "title": "Strahlschutznetze Montage",

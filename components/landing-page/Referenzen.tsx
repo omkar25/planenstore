@@ -5,19 +5,19 @@ import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import ProtectedImage from "@/components/shared/ProtectedImage";
 
-const projectKeys = ["pvcInstall", "kederInstall", "oesenbandInstall", "blastNets", "dustNets", "personenauffangInstall"] as const;
+const projectKeys = ["pvcInstall", "kederInstall", "geruestbandInstall", "blastNets", "dustNets", "personenauffangInstall"] as const;
 const projectYears: Record<string, string> = {
   pvcInstall: "2023",
   kederInstall: "2023",
-  oesenbandInstall: "2024",
+  geruestbandInstall: "2024",
   blastNets: "2024",
   dustNets: "2024",
   personenauffangInstall: "2025",
 };
 const projectImages: Record<string, string> = {
-  pvcInstall: "/images/pvc-planen.jpg",
+  pvcInstall: "/images/pvc-planen2.jpg",
   kederInstall: "/images/kederplanen.jpg",
-  oesenbandInstall: "/images/oesen_1.jpg",
+  geruestbandInstall: "/images/geruestplanen.jpg",
   blastNets: "/images/blast-protection.jpg",
   dustNets: "/images/staubschutz.jpg",
   personenauffangInstall: "/images/personenauffangnetze.jpg",
