@@ -23,8 +23,9 @@ export default function VideoSection() {
         >
           {/* Left Video */}
           <div className="relative aspect-video rounded-2xl overflow-hidden bg-muted border border-border shadow-lg">
-            <video
-              src={VIDEO_LEFT}
+            
+             <video
+              src={VIDEO_CENTER}
               className="w-full h-full object-cover"
               autoPlay
               muted
@@ -38,8 +39,8 @@ export default function VideoSection() {
 
           {/* Center Video */}
           <div className="relative aspect-video rounded-2xl overflow-hidden bg-muted border border-border shadow-lg">
-            <video
-              src={VIDEO_CENTER}
+           <video
+              src={VIDEO_LEFT}
               className="w-full h-full object-cover"
               autoPlay
               muted

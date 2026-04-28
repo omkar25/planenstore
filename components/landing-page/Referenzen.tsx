@@ -15,12 +15,12 @@ const projectYears: Record<string, string> = {
   personenauffangInstall: "2025",
 };
 const projectImages: Record<string, string> = {
-  pvcInstall: "/images/pvc-planen2.jpg",
-  kederInstall: "/images/kederplanen.jpg",
-  geruestbandInstall: "/images/geruestplanen.jpg",
+  pvcInstall: "/images/PVC_Muster_referenzen.png",
+  kederInstall: "/images/Keder_Plane_referenzen.jpg",
+  geruestbandInstall: "/images/Gersuetplane_referenzen.jpg",
   blastNets: "/images/blast-protection.jpg",
-  dustNets: "/images/staubschutz.jpg",
-  personenauffangInstall: "/images/personenauffangnetze.jpg",
+  dustNets: "/images/Staubschutznetze_referenzen.jpg",
+  personenauffangInstall: "/images/Personauffangnetze_Muster_2.jpg",
 };
 
 function ProjectCard({

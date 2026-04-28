@@ -11,17 +11,17 @@ const productImages: Record<string, string> = {
   pvc: "/images/pvc-planen_1.jpg",
   keder: "/images/keder_planen.jpg",
   oesenband: "/images/geruste-planen.jpg",
-  blast: "/images/blast-protection.jpg",
-  dust: "/images/staubschutznetze_converted.jpg",
-  personenauffang: "/images/personenauffangnetze.jpg",
+  blast: "/images/Strahlschutznetze_porfolio.jpg",
+  dust: "/images/staubschutznetze_1.jpg",
+  personenauffang: "/images/Personauffangnetze_Muster_2.jpg",
 };
 
 // Portfolio icons to show per product (array of photo numbers)
 const productIcons: Record<string, number[]> = {
   pvc: [1, 2, 3, 4],
   keder: [1, 2, 3, 4],
-  oesenband: [1, 2, 4],  // Gerüstplanen - no photo-3
-  blast: [1, 2, 4],      // Strahlschutznetze - no photo-3
+  oesenband: [1, 2,3, 4],  // Gerüstplanen - no photo-3
+  blast: [1, 2,3, 4],      // Strahlschutznetze - no photo-3
   dust: [],              // Staubschutznetze - no icons
   personenauffang: [],   // Personenauffangnetze - no icons
 };

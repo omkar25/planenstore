@@ -12,6 +12,7 @@ import {
 } from "react-icons/hi";
 import { IconType } from "react-icons";
 import { z } from "zod";
+import Image from "next/image";
 
 const contactKeys = ["address", "phone", "email", "hours"] as const;
 const contactIcons: Record<string, IconType> = {
@@ -208,7 +209,7 @@ export default function Kontakt() {
             </div>
 
             {/* Google Maps Embed */}
-            <div className="relative rounded-xl overflow-hidden border border-border h-64 group">
+            <div className="relative rounded-xl overflow-hidden border border-border h-80 group">
               <iframe
                 title={t("map.location")}
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2376.0246857143693!2d9.985808176992455!3d53.450144966951676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b191a08662a451%3A0xd7d3b1b5397f8486!2sTori%20Bau%20GmbH%20Ger%C3%BCstplanen!5e0!3m2!1sde!2sde!4v1732471376758!5m2!1sde!2sde"
@@ -242,6 +243,7 @@ export default function Kontakt() {
                 </div>
               </div>
             </div>
+
           </motion.div>
 
           {/* Contact Form */}
@@ -315,7 +317,7 @@ export default function Kontakt() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98]"
+                  className="w-full py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98]"
                 >
                   {loading
                     ? t("form.sending")
@@ -323,6 +325,26 @@ export default function Kontakt() {
                       ? t("form.submitted")
                       : t("form.submit")}
                 </button>
+
+                {/* Certification Logos */}
+                <div className="flex items-center justify-center gap-8 mt-6 pt-6 border-t border-border">
+                  <Image
+                    src="/logo/Logo_BGBau_190716.jpg"
+                    alt="BG Bau Logo"
+                    width={120}
+                    height={70}
+                    className="object-contain"
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
+                  <Image
+                    src="/logo/PQ_Registrier_Nr.1.jpeg"
+                    alt="PQ Registrier Logo"
+                    width={120}
+                    height={70}
+                    className="object-contain"
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
+                </div>
               </div>
             </form>
           </motion.div>

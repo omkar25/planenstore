@@ -18,7 +18,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    src: "/images/slider/slider1_new.png",
+    src: "/images/slider/slider1.jpg",
     alt: "PVC Planen nach Maß",
     title: "PVC Planen nach Maß",
     subtitle: "In jeder Farbe und Form konfigurierbar",
@@ -27,7 +27,7 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    src: "/images/slider/slider2_new.png",
+    src: "/images/slider/slider2.jpg",
     alt: "Abdeckhauben",
     title: "Abdeckhauben",
     subtitle: "Moderne Terrasse mit Korbsitzen und überdachtem Grill neben großen Glasschiebetüren. Zwei leuchtende Laternen beleuchten den Steinboden und im Inneren ist ein Wohnbereich mit Fernseher sichtbar. Die Terrasse ist von Grün umgeben.",
@@ -36,7 +36,7 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    src: "/images/slider/slider3.png",
+    src: "/images/slider/slider3.jpg",
     alt: "Aufblasbare Poolplane",
     title: "Aufblasbare Poolplane",
     subtitle: "Premium Qualität direkt vom Hersteller.",
@@ -114,7 +114,7 @@ export default function CarouselSlider({
       </AnimatePresence>
 
       {/* Dot indicators */}
-      <div className="absolute bottom-3 sm:bottom-5 left-4 sm:left-6 flex items-center gap-1.5 sm:gap-2">
+      <div className="absolute bottom-3 sm:bottom-5 right-4 sm:right-6 flex items-center gap-1.5 sm:gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
