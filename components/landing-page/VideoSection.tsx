@@ -3,8 +3,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const VIDEO_LEFT = "/video/video_1.mp4";
-const VIDEO_RIGHT = "/video/video_2.mp4";
+const VIDEO_LEFT = "https://onlinestorede.in/images/video/video_1.mp4";
+const VIDEO_RIGHT = "https://onlinestorede.in/images/video/video_2.mp4";
 
 export default function VideoSection() {
   const ref = useRef(null);

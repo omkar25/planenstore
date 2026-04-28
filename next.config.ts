@@ -7,6 +7,15 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: import.meta.dirname,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'onlinestorede.in',
+        pathname: '/images/**',
+      },
+    ],
+  },
   async headers() {
     return [
       {
