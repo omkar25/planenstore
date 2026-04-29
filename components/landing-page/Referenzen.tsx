@@ -3,9 +3,19 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import ProtectedImage from "@/components/shared/ProtectedImage";
 
 const projectKeys = ["pvcInstall", "kederInstall", "geruestbandInstall", "blastNets", "dustNets", "personenauffangInstall"] as const;
+
+const projectSlugs: Record<string, string> = {
+  pvcInstall: "pvc-planen-montage",
+  kederInstall: "keder-planen-montage",
+  geruestbandInstall: "geruestband-montage",
+  blastNets: "strahlschutznetze",
+  dustNets: "staubschutznetze",
+  personenauffangInstall: "personenauffangnetze-montage",
+};
 const projectYears: Record<string, string> = {
   pvcInstall: "2023",
   kederInstall: "2023",
@@ -38,39 +48,41 @@ function ProjectCard({
   const category = t(`projects.${projectKey}.category`);
   const description = t(`projects.${projectKey}.description`);
 
+  const slug = projectSlugs[projectKey];
+
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: (index % 3) * 0.15 }}
-      className="group relative bg-card/50 rounded-2xl overflow-hidden  hover:border-primary/30 transition-all duration-500"
-    >
-      <div className="relative aspect-video overflow-hidden">
-        <ProtectedImage
-          src={projectImages[projectKey]}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
-        />
+    <Link href={`/referenzen/${slug}`}>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: (index % 3) * 0.15 }}
+        className="group relative bg-card/50 rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-500 cursor-pointer"
+      >
+        <div className="relative aspect-video overflow-hidden">
+          <ProtectedImage
+            src={projectImages[projectKey]}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+          />
 
-        <span className="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-primary bg-primary/20 rounded-full border border-primary/30">
-          {projectYears[projectKey]}
-        </span>
+          <span className="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-primary bg-primary/20 rounded-full border border-primary/30">
+            {projectYears[projectKey]}
+          </span>
+        </div>
 
-        
-      </div>
-
-      <div className="p-5">
-        <h3 className="text-foreground font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-          {title}
-        </h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">
-          {description}
-        </p>
-      </div>
-    </motion.div>
+        <div className="p-5">
+          <h3 className="text-foreground font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+            {title}
+          </h3>
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            {description}
+          </p>
+        </div>
+      </motion.div>
+    </Link>
   );
 }
 

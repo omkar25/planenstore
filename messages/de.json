@@ -339,6 +339,18 @@
       }
     ]
   },
+  "ReferenzDetail": {
+    "backToReferenzen": "Zurück zu Referenzen",
+    "projectOverview": "Projektübersicht",
+    "projectDetails": "Projektdetails",
+    "qualityMaterials": "Hochwertige Materialien",
+    "professionalInstallation": "Professionelle Montage",
+    "customSolutions": "Maßgeschneiderte Lösungen",
+    "gallery": "Bildergalerie",
+    "ctaTitle": "Interesse an einem ähnlichen Projekt?",
+    "ctaDescription": "Kontaktieren Sie uns für ein unverbindliches Angebot. Wir beraten Sie gerne zu Ihrem individuellen Projekt.",
+    "ctaButton": "Jetzt Kontakt aufnehmen"
+  },
   "impressum": {
     "badge": "Tori Bau GmbH",
     "title": "Impressum",

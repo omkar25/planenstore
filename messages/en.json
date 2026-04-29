@@ -99,10 +99,10 @@
         "category": "Commercial Construction",
         "description": "Professional keder tarp installation for a commercial project. Precision-fit solutions for optimal protection."
       },
-      "oesenbandInstall": {
-        "title": "Eyelet Band Tarp Installation",
+      "geruestbandInstall": {
+        "title": "Scaffolding Tarp Installation",
         "category": "Industrial Construction",
-        "description": "Installation of eyelet band tarps for industrial applications. Robust and flexible fastening solutions."
+        "description": "Installation of scaffolding tarps for industrial applications. Robust and flexible fastening solutions."
       },
       "blastNets": {
         "title": "Blast Protection Nets",
@@ -338,6 +338,18 @@
         "date": "20 June 2025"
       }
     ]
+  },
+  "ReferenzDetail": {
+    "backToReferenzen": "Back to References",
+    "projectOverview": "Project Overview",
+    "projectDetails": "Project Details",
+    "qualityMaterials": "High-quality Materials",
+    "professionalInstallation": "Professional Installation",
+    "customSolutions": "Custom Solutions",
+    "gallery": "Gallery",
+    "ctaTitle": "Interested in a similar project?",
+    "ctaDescription": "Contact us for a free quote. We are happy to advise you on your individual project.",
+    "ctaButton": "Contact Us Now"
   },
   "impressum": {
     "badge": "Tori Bau GmbH",
