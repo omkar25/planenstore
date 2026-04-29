@@ -129,7 +129,7 @@ export default function Footer() {
                   aria-label={label}
                   className="w-9 h-9 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:shadow-md overflow-hidden"
                 >
-                  <img
+                  <Image
                     src={image}
                     alt={label}
                     width={36}
