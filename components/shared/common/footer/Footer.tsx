@@ -2,17 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { HiArrowUp, HiX } from "react-icons/hi";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaYoutube,
-  FaXTwitter,
-  FaWeixin,
-  FaTiktok,
-  FaPinterestP,
-  FaWhatsapp,
-} from "react-icons/fa6";
+import { FaWeixin } from "react-icons/fa6";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,14 +16,20 @@ const navLinks = [
   { key: "contact", id: "kontakt" },
 ] as const;
 
-const serviceKeys = ["pvc", "dust", "blast", "weather", "custom"] as const;
+const serviceLinks = [
+  { key: "pvc", href: "/referenzen/pvc-planen-montage" },
+  { key: "keder", href: "/referenzen/keder-planen-montage" },
+  { key: "geruestband", href: "/referenzen/geruestband-montage" },
+  { key: "blast", href: "/referenzen/strahlschutznetze" },
+  { key: "dust", href: "/referenzen/staubschutznetze" },
+  { key: "personenauffang", href: "/referenzen/personenauffangnetze-montage" },
+] as const;
 
 const socialLinks = [
-  { icon: FaFacebookF, href: "#", label: "Facebook", color: "#1877F2", bg: "#1877F2" },
-  { icon: FaInstagram, href: "https://www.instagram.com/tori_planen/", label: "Instagram", color: "#E4405F", bg: "#E4405F" },
-  { icon: FaYoutube, href: "#", label: "YouTube", color: "#FF0000", bg: "#FF0000" },
-  { icon: FaXTwitter, href: "#", label: "X", color: "#000000", bg: "#000000" },
-  { icon: FaWhatsapp, href: "https://api.whatsapp.com/send/?phone=4917610319001&text&type=phone_number&app_absent=0", label: "WhatsApp", color: "#25D366", bg: "#25D366" },
+  { image: "/images/social/facebook.png", href: "#", label: "Facebook" },
+  { image: "/images/social/instagram.png", href: "https://www.instagram.com/tori_planen/", label: "Instagram" },
+  { image: "/images/social/youtube.png", href: "#", label: "YouTube" },
+  { image: "/images/social/social.png", href: "https://api.whatsapp.com/send/?phone=4917610319001&text&type=phone_number&app_absent=0", label: "WhatsApp" },
 ];
 
 export default function Footer() {
@@ -106,9 +102,16 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h4 className="text-foreground font-semibold mb-4 h-5 flex items-center">{t("services")}</h4>
-            <ul className="space-y-2 text-muted-foreground text-sm">
-              {serviceKeys.map((key) => (
-                <li key={key}>{t(`servicesList.${key}`)}</li>
+            <ul className="space-y-2 text-sm">
+              {serviceLinks.map(({ key, href }) => (
+                <li key={key}>
+                  <Link
+                    href={href}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {t(`servicesList.${key}`)}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -116,30 +119,23 @@ export default function Footer() {
           {/* Social & WeChat */}
           <div>
             <h4 className="text-foreground font-semibold mb-4 h-5 flex items-center">{t("followUs")}</h4>
-            <div className="flex flex-wrap gap-2.5 mb-4">
-              {socialLinks.map(({ icon: Icon, href, label, color, bg }) => (
+            <div className="flex flex-wrap gap-3 mb-4">
+              {socialLinks.map(({ image, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 flex items-center justify-center rounded-full border transition-all duration-200 hover:scale-110 hover:shadow-md"
-                  style={{
-                    color: color,
-                    borderColor: color + "30",
-                    backgroundColor: bg + "10",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = bg + "25";
-                    e.currentTarget.style.borderColor = color + "60";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = bg + "10";
-                    e.currentTarget.style.borderColor = color + "30";
-                  }}
+                  className="w-9 h-9 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:shadow-md overflow-hidden"
                 >
-                  <Icon className="w-4 h-4" />
+                  <img
+                    src={image}
+                    alt={label}
+                    width={36}
+                    height={36}
+                    className="object-cover w-9 h-9"
+                  />
                 </a>
               ))}
             </div>

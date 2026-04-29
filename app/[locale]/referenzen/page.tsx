@@ -16,7 +16,7 @@ export async function generateMetadata({
 
 export default function ReferenzenPage() {
   return (
-    <main className="min-h-screen bg-background pt-10">
+    <main className="min-h-screen pt-0">
       <Referenzen />
     </main>
   );

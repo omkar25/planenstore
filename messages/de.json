@@ -176,11 +176,12 @@
     "quickLinks": "Schnellzugriff",
     "services": "Leistungen",
     "servicesList": {
-      "pvc": "PVC-Planen",
-      "dust": "Staubschutznetze",
+      "pvc": "PVC-Planen Montage",
+      "keder": "Keder-Planen Montage",
+      "geruestband": "Gerüstband Montage",
       "blast": "Strahlschutznetze",
-      "weather": "Wetterschutzplanen",
-      "custom": "Individuelle Lösungen"
+      "dust": "Staubschutznetze",
+      "personenauffang": "Personenauffangnetze"
     },
     "followUs": "Folgen Sie uns",
     "wechatScan": "Scannen Sie den Code, um sich auf WeChat zu verbinden",

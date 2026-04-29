@@ -92,7 +92,7 @@ export default function Referenzen() {
   const titleInView = useInView(titleRef, { once: true, margin: "99999px 0px -100px 0px" });
 
   return (
-    <section id="referenzen" className="relative pt-5 pb-24 bg-background scroll-mt-16">
+    <section id="referenzen" className="relative pt-5 pb-20 scroll-mt-16">
       <div className="max-w-screen-2xl mx-auto px-1">
         <motion.div
           ref={titleRef}

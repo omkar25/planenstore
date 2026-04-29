@@ -176,11 +176,12 @@
     "quickLinks": "Quick Links",
     "services": "Services",
     "servicesList": {
-      "pvc": "PVC Tarps",
-      "dust": "Dust Protection Nets",
+      "pvc": "PVC Tarps Installation",
+      "keder": "Keder Tarps Installation",
+      "geruestband": "Scaffolding Tarps Installation",
       "blast": "Blast Protection Nets",
-      "weather": "Weather Protection Tarps",
-      "custom": "Custom Solutions"
+      "dust": "Dust Protection Nets",
+      "personenauffang": "Safety Nets"
     },
     "followUs": "Follow Us",
     "wechatScan": "Scan to connect on WeChat",
