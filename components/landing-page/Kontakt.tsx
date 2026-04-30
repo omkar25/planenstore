@@ -144,12 +144,13 @@ export default function Kontakt() {
           <div className="w-20 h-1 bg-primary mx-auto mt-6 rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex flex-col"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {contactKeys.map((key, i) => {
@@ -209,7 +210,7 @@ export default function Kontakt() {
             </div>
 
             {/* Google Maps Embed */}
-            <div className="relative rounded-xl overflow-hidden border border-border h-80 group">
+            <div className="relative rounded-xl overflow-hidden border border-border flex-1 min-h-[320px] group">
               <iframe
                 title={t("map.location")}
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2376.0246857143693!2d9.985808176992455!3d53.450144966951676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b191a08662a451%3A0xd7d3b1b5397f8486!2sTori%20Bau%20GmbH%20Ger%C3%BCstplanen!5e0!3m2!1sde!2sde!4v1732471376758!5m2!1sde!2sde"
@@ -221,27 +222,6 @@ export default function Kontakt() {
                 sandbox="allow-scripts allow-same-origin"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-              {/* Info card overlay */}
-              <div className="absolute bottom-3 left-3 z-10 rounded-xl bg-background/95 backdrop-blur-sm shadow-xl border border-border px-4 py-3 max-w-[260px]">
-                <p className="text-foreground font-bold text-sm leading-snug">
-                  Tori Bau GmbH<br />Gerüstplanen
-                </p>
-                <p className="text-muted-foreground text-xs mt-1">
-                  Reeseberg 3, 21079 Hamburg
-                </p>
-                <div className="flex items-center gap-1 mt-1.5">
-                  <span className="text-xs font-semibold text-foreground">5.0</span>
-                  <span className="text-amber-400 text-xs">★</span>
-                  <a
-                    href="https://www.google.com/maps/place/Reeseberg+3,+21079+Hamburg,+Germany"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-primary hover:underline ml-0.5"
-                  >
-                    (3)
-                  </a>
-                </div>
-              </div>
             </div>
 
           </motion.div>
@@ -327,28 +307,28 @@ export default function Kontakt() {
                 </button>
 
                 {/* Certification Logos */}
-                <div className="flex items-center justify-center gap-8 mt-6 pt-6 border-t border-border">
+                <div className="flex items-center justify-center gap-10 mt-6 pt-6 border-t border-border -mx-6 px-6">
                   <Image
                     src="/logo/bng_mitglied.png"
                     alt="BG Bau Logo"
-                    width={120}
-                    height={70}
+                    width={150}
+                    height={90}
                     className="object-contain"
                     style={{ width: 'auto', height: 'auto' }}
                   />
                   <Image
                     src="/logo/Logo_BGBau_190716.jpg"
                     alt="BG Bau Logo"
-                    width={120}
-                    height={70}
+                    width={150}
+                    height={90}
                     className="object-contain"
                     style={{ width: 'auto', height: 'auto' }}
                   />
                   <Image
                     src="/logo/PQ_Registrier_Nr.1.jpeg"
                     alt="PQ Registrier Logo"
-                    width={120}
-                    height={70}
+                    width={150}
+                    height={90}
                     className="object-contain"
                     style={{ width: 'auto', height: 'auto' }}
                   />
