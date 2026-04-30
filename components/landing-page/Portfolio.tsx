@@ -9,7 +9,7 @@ import ProtectedImage from "@/components/shared/ProtectedImage";
 const productKeys = ["pvc", "keder", "oesenband", "blast", "dust", "personenauffang"] as const;
 const productImages: Record<string, string> = {
   pvc: "/images/pvc-planen_1.jpg",
-  keder: "/images/keder_planen.jpg",
+  keder: "/images/Keder_Plane_referenzen.jpg",
   oesenband: "/images/Gersuetplane_referenzen.jpg",
   blast: "/images/Strahlschutznetze_porfolio.jpg",
   dust: "/images/staubschutznetze_1.jpg",
@@ -49,14 +49,14 @@ function ProductCard({
       transition={{ duration: 0.7, delay: index * 0.15 }}
       className="group relative bg-card/50 rounded-2xl overflow-hidden  hover:border-primary/30 transition-all duration-500"
     >
-      <div className="relative aspect-video overflow-hidden">
+      <div className="relative h-64 bg-card overflow-hidden">
         <ProtectedImage
           src={productImages[productKey]}
           alt={title}
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           loading={index < 6 ? "eager" : "lazy"}
-          className="w-full h-full transition-transform duration-700 group-hover:scale-110"
+          className="object-contain transition-transform duration-700 group-hover:scale-115"
         />
         {productIcons[productKey]?.length > 0 && (
           <div className="absolute top-3 right-3 flex flex-col gap-1.5 md:gap-2">
