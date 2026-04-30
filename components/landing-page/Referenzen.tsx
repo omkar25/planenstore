@@ -16,14 +16,7 @@ const projectSlugs: Record<string, string> = {
   dustNets: "staubschutznetze",
   personenauffangInstall: "personenauffangnetze-montage",
 };
-const projectYears: Record<string, string> = {
-  pvcInstall: "2023",
-  kederInstall: "2023",
-  geruestbandInstall: "2024",
-  blastNets: "2024",
-  dustNets: "2024",
-  personenauffangInstall: "2025",
-};
+
 const projectImages: Record<string, string> = {
   pvcInstall: "/images/PVC_Muster_referenzen.png",
   kederInstall: "/images/Keder_Plane_referenzen.jpg",
@@ -45,7 +38,6 @@ function ProjectCard({
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "99999px 0px -50px 0px" });
   const title = t(`projects.${projectKey}.title`);
-  const category = t(`projects.${projectKey}.category`);
   const description = t(`projects.${projectKey}.description`);
 
   const slug = projectSlugs[projectKey];
@@ -67,10 +59,6 @@ function ProjectCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
-
-          <span className="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-primary bg-primary/20 rounded-full border border-primary/30">
-            {projectYears[projectKey]}
-          </span>
         </div>
 
         <div className="p-5">
