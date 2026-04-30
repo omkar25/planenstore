@@ -20,12 +20,12 @@ const slugToProjectKey: Record<string, string> = {
 
 // Main images (shown as hero) - keep original
 const mainImages: Record<string, string> = {
-  pvcInstall: "/images/PVC_Muster_referenzen.png",
-  kederInstall: "/images/Keder_Plane_referenzen.jpg",
-  geruestbandInstall: "/images/Gersuetplane_referenzen.jpg",
+  pvcInstall: "/images/references/pvc-referenzen/pvc-23.jpg",
+  kederInstall: "/images/references/keder-plane-referenzen/keder-plane-9.jpeg",
+  geruestbandInstall: "/images/references/geruestplane-referenzen/geruestplane--wsk-1.jpg",
   blastNets: "/images/blast-protection.jpg",
   dustNets: "/images/Staubschutznetze_referenzen.jpg",
-  personenauffangInstall: "/images/Personauffangnetze_Muster_2.jpg",
+  personenauffangInstall: "/images/references/personauffangnetze-referenzen/personauffangnetze-2.jpg",
 };
 
 // Gallery images from references folder
@@ -54,32 +54,21 @@ const galleryImages: Record<string, string[]> = {
     "/images/references/pvc-referenzen/pvc-43.jpg",
     "/images/references/pvc-referenzen/pvc-44.jpg",
     "/images/references/pvc-referenzen/pvc-45.jpg",
-    "/images/references/pvc-referenzen/pvc-46.jpg",
-    "/images/references/pvc-referenzen/pvc-47.jpg",
     "/images/references/pvc-referenzen/pvc-48.jpg",
     "/images/references/pvc-referenzen/pvc-50.jpg",
     "/images/references/pvc-referenzen/pvc-52.jpg",
-    "/images/references/pvc-referenzen/pvc-53.jpg",
-    "/images/references/pvc-referenzen/pvc-54.jpg",
-    "/images/references/pvc-referenzen/pvc-55.jpg",
     "/images/references/pvc-referenzen/pvc-56.jpg",
     "/images/references/pvc-referenzen/pvc-58.jpg",
     "/images/references/pvc-referenzen/pvc-59.jpg",
-    "/images/references/pvc-referenzen/pvc-60.jpg",
-    "/images/references/pvc-referenzen/pvc-62.jpg",
-    "/images/references/pvc-referenzen/pvc-63.jpg",
     "/images/references/pvc-referenzen/pvc-montage.jpg",
     "/images/references/pvc-referenzen/pvc-dach-1.jpg",
     "/images/references/pvc-referenzen/pvc-transparent-1.jpg",
     "/images/references/pvc-referenzen/pvc-transparent-2.jpg",
   ],
   kederInstall: [
-    "/images/references/keder-plane-referenzen/keder-plane-1.jpg",
     "/images/references/keder-plane-referenzen/keder-plane-2.jpg",
     "/images/references/keder-plane-referenzen/keder-plane-3.jpg",
     "/images/references/keder-plane-referenzen/keder-plane-4.jpg",
-    "/images/references/keder-plane-referenzen/keder-plane-6.jpg",
-    "/images/references/keder-plane-referenzen/keder-plane-7.jpeg",
     "/images/references/keder-plane-referenzen/keder-plane-8.jpeg",
     "/images/references/keder-plane-referenzen/keder-plane-9.jpeg",
     "/images/references/keder-plane-referenzen/keder-plane-10.jpeg",
@@ -90,8 +79,6 @@ const galleryImages: Record<string, string[]> = {
     "/images/references/keder-plane-referenzen/keder-plane--gerüstplane.jpg",
     "/images/references/keder-plane-referenzen/keder-plane--pvc-2.jpg",
     "/images/references/keder-plane-referenzen/keder-plane-pvc-1.jpg",
-    "/images/references/keder-plane-referenzen/keder--pvc-1.jpg",
-    "/images/references/keder-plane-referenzen/keder--pvc-2.jpg",
     "/images/references/keder-plane-referenzen/keder--gerüstplane.jpg",
     "/images/references/keder-plane-referenzen/keder--gerüstplane-8.jpg",
     "/images/references/keder-plane-referenzen/keder--gerüstplane-25.jpg",
@@ -133,7 +120,6 @@ const galleryImages: Record<string, string[]> = {
     "/images/references/geruestplane-referenzen/geruestplane-24.jpg",
     "/images/references/geruestplane-referenzen/geruestplane-25.jpg",
     "/images/references/geruestplane-referenzen/geruestplane-26.jpg",
-    "/images/references/geruestplane-referenzen/geruestplane-30.jpg",
     "/images/references/geruestplane-referenzen/geruestplane-31.jpg",
     "/images/references/geruestplane-referenzen/geruestplane--wsk-1.jpg",
     "/images/references/geruestplane-referenzen/geruestplane-als-wsk.jpg",
@@ -170,8 +156,6 @@ const galleryImages: Record<string, string[]> = {
     "/images/references/staubschutznetze-referenzen/staubschutznetze-9.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze-10.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze-11.jpg",
-    "/images/references/staubschutznetze-referenzen/staubschutznetze-12.jpg",
-    "/images/references/staubschutznetze-referenzen/staubschutznetze-13.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze-14.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze-15.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze-16.jpg",
@@ -196,7 +180,6 @@ const galleryImages: Record<string, string[]> = {
     "/images/references/staubschutznetze-referenzen/staubschutznetze-36.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze-37.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze-38.jpg",
-    "/images/references/staubschutznetze-referenzen/staubschutznetze-39.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze-40.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze-41.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze-42.jpg",
@@ -208,7 +191,6 @@ const galleryImages: Record<string, string[]> = {
     "/images/references/staubschutznetze-referenzen/staubschutznetze-48.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze--wsk.jpg",
     "/images/references/staubschutznetze-referenzen/staubschutznetze--wsk-1.jpg",
-    "/images/references/staubschutznetze-referenzen/staubschutznetze.jpg",
   ],
   personenauffangInstall: [
     "/images/references/personauffangnetze-referenzen/personauffangnetze-1.jpg",
@@ -458,9 +440,6 @@ export default function ReferenzDetailPage({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full mb-2">
-              {category}
-            </span>
             <h5 className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-bold tracking-tight mb-2">
               {title}
             </h5>
