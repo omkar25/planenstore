@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { ArrowLeft, Calendar, CheckCircle, X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import { ArrowLeft, CheckCircle, X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import ProtectedImage from "@/components/shared/ProtectedImage";
 import { notFound } from "next/navigation";
 import { use, useState, useCallback, useEffect } from "react";
@@ -348,15 +348,6 @@ function ImageLightbox({
   );
 }
 
-const projectYears: Record<string, string> = {
-  pvcInstall: "2023",
-  kederInstall: "2023",
-  geruestbandInstall: "2024",
-  blastNets: "2024",
-  dustNets: "2024",
-  personenauffangInstall: "2025",
-};
-
 export default function ReferenzDetailPage({
   params,
 }: {
@@ -405,9 +396,7 @@ export default function ReferenzDetailPage({
   }
 
   const title = t(`projects.${projectKey}.title`);
-  const category = t(`projects.${projectKey}.category`);
   const description = t(`projects.${projectKey}.description`);
-  const year = projectYears[projectKey];
   const gallery = galleryImages[projectKey];
   const mainImage = gallery[0] ?? mainImages[projectKey];
 
@@ -443,12 +432,7 @@ export default function ReferenzDetailPage({
             <h5 className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-bold tracking-tight mb-2">
               {title}
             </h5>
-            <div className="flex items-center gap-4 text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                {year}
-              </span>
-            </div>
+           
           </motion.div>
         </div>
       </div>
