@@ -329,6 +329,14 @@ export default function Kontakt() {
                 {/* Certification Logos */}
                 <div className="flex items-center justify-center gap-8 mt-6 pt-6 border-t border-border">
                   <Image
+                    src="/logo/bng_mitglied.png"
+                    alt="BG Bau Logo"
+                    width={120}
+                    height={70}
+                    className="object-contain"
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
+                  <Image
                     src="/logo/Logo_BGBau_190716.jpg"
                     alt="BG Bau Logo"
                     width={120}

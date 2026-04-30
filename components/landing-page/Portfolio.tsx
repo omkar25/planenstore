@@ -10,7 +10,7 @@ const productKeys = ["pvc", "keder", "oesenband", "blast", "dust", "personenauff
 const productImages: Record<string, string> = {
   pvc: "/images/pvc-planen_1.jpg",
   keder: "/images/keder_planen.jpg",
-  oesenband: "/images/geruste-planen.jpg",
+  oesenband: "/images/Gersuetplane_referenzen.jpg",
   blast: "/images/Strahlschutznetze_porfolio.jpg",
   dust: "/images/staubschutznetze_1.jpg",
   personenauffang: "/images/Personauffangnetze_Muster_2.jpg",

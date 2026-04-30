@@ -426,8 +426,8 @@ export default function ReferenzDetailPage({
   const category = t(`projects.${projectKey}.category`);
   const description = t(`projects.${projectKey}.description`);
   const year = projectYears[projectKey];
-  const mainImage = mainImages[projectKey];
   const gallery = galleryImages[projectKey];
+  const mainImage = gallery[0] ?? mainImages[projectKey];
 
   return (
     <main className="min-h-screen bg-background">
@@ -444,10 +444,10 @@ export default function ReferenzDetailPage({
 
       {/* Hero Section */}
       <div className="border-b border-border bg-muted/40">
-        <div className="max-w-6xl mx-auto px-6 pt-20 pb-12">
+        <div className="max-w-6xl mx-auto px-6 pt-12 pb-6">
           <Link
             href="/referenzen"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-lime-500 hover:text-lime-400 transition-colors mb-4"
           >
             <ArrowLeft className="w-4 h-4" />
             {tPage("backToReferenzen")}
@@ -458,12 +458,12 @@ export default function ReferenzDetailPage({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full mb-4">
+            <span className="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full mb-2">
               {category}
             </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-4">
+            <h5 className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-bold tracking-tight mb-2">
               {title}
-            </h1>
+            </h5>
             <div className="flex items-center gap-4 text-muted-foreground">
               <span className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
@@ -481,13 +481,13 @@ export default function ReferenzDetailPage({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative aspect-video rounded-2xl overflow-hidden mb-12"
+          className="relative aspect-video max-w-4xl mx-auto rounded-[2rem] overflow-hidden mb-12"
         >
           <ProtectedImage
             src={mainImage}
             alt={title}
             fill
-            sizes="(max-width: 1200px) 100vw, 1200px"
+            sizes="(max-width: 768px) 100vw, 1200px"
             className="object-cover"
             priority
           />
@@ -501,7 +501,7 @@ export default function ReferenzDetailPage({
           className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12"
         >
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl font-bold text-muted-foreground mb-4">
               {tPage("projectOverview")}
             </h2>
             <p className="text-muted-foreground leading-relaxed text-lg">
@@ -511,7 +511,7 @@ export default function ReferenzDetailPage({
 
           <div className="space-y-6">
             <div className="bg-card rounded-xl border border-border p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-4">
+              <h3 className="text-lg font-semibold text-muted-foreground mb-4">
                 {tPage("projectDetails")}
               </h3>
               <ul className="space-y-3">
@@ -545,7 +545,7 @@ export default function ReferenzDetailPage({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h2 className="text-2xl font-bold text-foreground mb-6">
+            <h2 className="text-2xl font-bold text-muted-foreground mb-6">
               {tPage("gallery")} ({gallery.length} {gallery.length === 1 ? "Bild" : "Bilder"})
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -581,7 +581,7 @@ export default function ReferenzDetailPage({
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-16 text-center bg-primary/5 rounded-2xl border border-primary/20 p-8"
         >
-          <h2 className="text-2xl font-bold text-foreground mb-3">
+          <h2 className="text-2xl font-bold text-muted-foreground mb-3">
             {tPage("ctaTitle")}
           </h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
@@ -589,7 +589,7 @@ export default function ReferenzDetailPage({
           </p>
           <Link
             href="/#kontakt"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors"
           >
             {tPage("ctaButton")}
           </Link>
