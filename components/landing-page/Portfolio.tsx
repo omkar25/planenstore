@@ -56,7 +56,7 @@ function ProductCard({
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           loading={index < 6 ? "eager" : "lazy"}
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full transition-transform duration-700 group-hover:scale-110"
         />
         {productIcons[productKey]?.length > 0 && (
           <div className="absolute top-3 right-3 flex flex-col gap-1.5 md:gap-2">
