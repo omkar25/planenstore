@@ -163,9 +163,33 @@
     }
   },
   "Shop": {
-    "title": "Demnächst verfügbar",
-    "description": "Unser Online-Shop wird gerade für Sie vorbereitet. Bald können Sie hier unsere Produkte direkt bestellen.",
-    "backHome": "Zurück zur Startseite"
+    "title": "Unser Shop",
+    "description": "Entdecken Sie unser umfangreiches Sortiment an hochwertigen Planen und Netzen für den professionellen Einsatz.",
+    "backHome": "Zurück zur Startseite",
+    "filters": "Filter",
+    "clearFilters": "Filter zurücksetzen",
+    "category": "Kategorie",
+    "price": "Preis",
+    "rating": "Bewertung",
+    "availability": "Verfügbarkeit",
+    "inStockOnly": "Nur auf Lager",
+    "andUp": "& mehr",
+    "products": "Produkte",
+    "search": "Produkte suchen...",
+    "sortBy": "Sortieren nach",
+    "popularity": "Beliebtheit",
+    "newest": "Neueste",
+    "priceLowHigh": "Preis: Niedrig → Hoch",
+    "priceHighLow": "Preis: Hoch → Niedrig",
+    "noProducts": "Keine Produkte gefunden",
+    "noProductsDesc": "Versuchen Sie, Ihre Filter anzupassen oder nach etwas anderem zu suchen.",
+    "addToCart": "In den Warenkorb",
+    "add": "Hinzufügen",
+    "soldOut": "Ausverkauft",
+    "new": "NEU",
+    "bestseller": "BESTSELLER",
+    "previous": "Zurück",
+    "next": "Weiter"
   },
   "Cart": {
     "comingSoon": "Warenkorb – Demnächst verfügbar"

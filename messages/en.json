@@ -163,9 +163,33 @@
     }
   },
   "Shop": {
-    "title": "Coming Soon",
-    "description": "Our online shop is being prepared for you. Soon you will be able to order our products directly here.",
-    "backHome": "Back to Home"
+    "title": "Our Shop",
+    "description": "Discover our extensive range of high-quality tarpaulins and nets for professional use.",
+    "backHome": "Back to Home",
+    "filters": "Filters",
+    "clearFilters": "Clear all filters",
+    "category": "Category",
+    "price": "Price",
+    "rating": "Rating",
+    "availability": "Availability",
+    "inStockOnly": "In stock only",
+    "andUp": "& up",
+    "products": "Products",
+    "search": "Search products...",
+    "sortBy": "Sort by",
+    "popularity": "Popularity",
+    "newest": "Newest",
+    "priceLowHigh": "Price: Low → High",
+    "priceHighLow": "Price: High → Low",
+    "noProducts": "No products found",
+    "noProductsDesc": "Try adjusting your filters or searching for something else.",
+    "addToCart": "Add to Cart",
+    "add": "Add",
+    "soldOut": "Sold Out",
+    "new": "NEW",
+    "bestseller": "BESTSELLER",
+    "previous": "Previous",
+    "next": "Next"
   },
   "Cart": {
     "comingSoon": "Shopping Cart – Coming Soon"
