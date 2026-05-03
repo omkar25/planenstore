@@ -92,32 +92,32 @@
       "pvcInstall": {
         "title": "PVC-Planen Montage",
         "category": "Hochbau",
-        "description": "Komplettverkleidung eines Hochbauprojekts mit maßgeschneiderten PVC-Planen für ganzjährigen Wetterschutz."
+        "description": "Komplettverkleidung einer Brückenkonstruktion  ( in… ) mit maßgefertigten PVC – Planen für ganzjährigen Wetterschutz."
       },
       "kederInstall": {
         "title": "Kederplanen Montage",
         "category": "Gewerbebau",
-        "description": "Professionelle Montage von Kederplanen für ein Gewerbeprojekt. Passgenaue Lösungen für optimalen Schutz."
+        "description": "Professionelle Montage von Kederplanen an einem Bauvorhaben ( in … ) mit passgenauen Lösungen für optimalen Schutz."
       },
       "geruestbandInstall": {
         "title": "Gerüstplanen Montage",
         "category": "Industriebau",
-        "description": "Installation von Gerüstplanen für industrielle Anwendungen. Robuste und flexible Befestigungslösungen."
+        "description": "Montage von Gerüstplanen zum Schutz vor Witterungseinflüssen ( in … )."
       },
       "blastNets": {
         "title": "Strahlschutznetze Montage",
         "category": "Industriebau",
-        "description": "Installation von Strahlschutznetzen für ein großes Industrieprojekt in Hamburg. Schutz von umliegenden Gebäuden während Sandstrahlarbeiten."
+        "description": "Verkleidung eines großen Industrieprojektes ( in … ) zum Schutz von Gebäuden und Personen währenden der Ausführung von Sandstrahlarbeiten."
       },
       "dustNets": {
         "title": "Staubschutznetze Montage",
         "category": "Sanierung",
-        "description": "Großflächige Staubschutznetze für die Sanierung eines historischen Gebäudes in der Hamburger Innenstadt."
+        "description": "Montage von Gerüstnetzen ( in … )"
       },
       "personenauffangInstall": {
         "title": "Personenauffangnetze Montage",
         "category": "Hochbau",
-        "description": "Installation von Personenauffangnetzen für maximale Arbeitssicherheit auf einer Großbaustelle."
+        "description": "Installation von Personen – Auffangnetzen für maximale Arbeitssicherheit auf einer Großbaustelle ( in … )"
       }
     }
   },
