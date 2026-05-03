@@ -21,32 +21,32 @@
     "products": {
       "pvc": {
         "title": "PVC-Planen",
-        "description": "Hochwertige PVC-Planen für den professionellen Einsatz auf Baustellen. Robust, wetterfest und langlebig – ideal für den Schutz von Gebäuden und Materialien.",
+        "description": "PVC Planen sind besonders geeignet für staubdichte Einhausungen, z.B. für Sandsrtahl und Korrosionssuchtzatbeiten. Sie schützen vor Schmutz, Wind; Regen und Schnee.",
         "features": ["Wetterfest", "UV-beständig", "Reißfest", "Individuell"]
       },
       "dust": {
         "title": "Staubschutznetze",
-        "description": "Effektive Staubschutznetze reduzieren die Staubbelastung auf Baustellen erheblich. Sie schützen Anwohner und die Umwelt vor Feinstaubpartikeln.",
+        "description": "Gerüstnetze bieten zuverlässigen Schutz vor Staub, Schmutz, herabfallenden kleinen Gegenständen und halten leichten Regen und Wind ab.",
         "features": ["Staubreduktion", "Luftdurchlässig", "Leicht", "Vielseitig"]
       },
       "blast": {
         "title": "Strahlschutznetze",
-        "description": "Professionelle Strahlschutznetze für Sandstrahl- und Kugelstrahlarbeiten. Maximale Sicherheit bei industriellen Strahlverfahren.",
+        "description": "Strahlschutznetze sind aus extrem reißfesten und sehr dichten Gewebe, aber trotzdem Luftdurchlässig. Sie bieten sehr guten Schutz, besonders bei Strahlarbeiten und längeren Standzeiten. ( Ausführung auch in schwer entflammbar )",
         "features": ["Hochfest", "Abriebfest", "Normgerecht", "Sicher"]
       },
       "personenauffang": {
         "title": "Personenauffangnetze",
-        "description": "Zuverlässige Personenauffangnetze für maximale Sicherheit auf Baustellen. Schützen Arbeiter bei Arbeiten in der Höhe nach geltenden Normen.",
+        "description": "PA – Netze dienen zur vorgeschriebenen Absturzsicherung für Personen im z.B. Hallen und Brückenbau, für Dachdecker und Zimmereiarbeiten, des weiteren schützen  sie die Baustelle vor herabfallenden Gegenständen.",
         "features": ["Normgerecht", "Hochfest", "Geprüft", "Sicher"]
       },
       "oesenband": {
         "title": "Gerüstplanen",
-        "description": "Professionelle Ösenbandplanen für Sandstrahl- und Kugelstrahlarbeiten. Maximale Sicherheit bei industriellen Strahlverfahren.",
+        "description": "Ösenbandplanen und Polybandplanen ( Gittergewebe) für jeden Einsatzweck. Sie schützen vor Regen, Wind und Verschmutzung. Ösenbandplanen ( Ausführung auch in schwer entflammbar )",
         "features": ["Ösenbandplanen", "Ösenbandplanen", "Ösenbandplanen", "Ösenbandplanen"]
       },
       "keder": {
         "title": "Kederplanen",
-        "description": "Zuverlässiger Kederplanen für Baustellen bei Wind, Regen und Schnee. Ermöglichen ganzjähriges Arbeiten unter optimalen Bedingungen.",
+        "description": "Kederplanen sind besonders geeignet für staubdichte Einhausungen, z.B. für Sandsrtahl und Korrosionssuchtzatbeiten. Sie schützen vor Schmutz, Wind; Regen und Schnee.",
         "features": ["Kederplanen", "Kederplanen", "Kederplanen", "Kederplanen"]
       }
     }
