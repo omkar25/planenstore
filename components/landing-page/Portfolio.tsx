@@ -4,9 +4,20 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import ProtectedImage from "@/components/shared/ProtectedImage";
 
 const productKeys = ["pvc", "keder", "oesenband", "blast", "dust", "personenauffang"] as const;
+
+// Product key to slug mapping for portfolio detail pages
+const productSlugs: Record<string, string> = {
+  pvc: "pvc-planen",
+  keder: "kederplanen",
+  oesenband: "geruestplanen",
+  blast: "strahlschutznetze",
+  dust: "staubschutznetze",
+  personenauffang: "personenauffangnetze",
+};
 const productImages: Record<string, string> = {
   pvc: "/images/pvc-planen_1.jpg",
   keder: "/images/Keder_Plane_referenzen.jpg",
@@ -115,7 +126,9 @@ export default function Portfolio() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
           {productKeys.map((key, i) => (
-            <ProductCard key={key} productKey={key} index={i} t={t} />
+            <Link key={key} href={`/portfolio/${productSlugs[key]}`}>
+              <ProductCard productKey={key} index={i} t={t} />
+            </Link>
           ))}
         </div>
       </div>

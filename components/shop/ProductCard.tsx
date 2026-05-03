@@ -223,7 +223,7 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
           <span className="text-xs text-muted-foreground">({product.reviewCount})</span>
         </div>
 
-        <div className="flex items-baseline gap-2 mt-3">
+        {/* <div className="flex items-baseline gap-2 mt-3">
           <span className="text-lg font-bold text-foreground">
             €{product.price.toFixed(2)}
           </span>
@@ -232,7 +232,7 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
               €{product.originalPrice.toFixed(2)}
             </span>
           )}
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );

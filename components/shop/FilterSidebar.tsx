@@ -126,6 +126,7 @@ export default function FilterSidebar({
         </AnimatePresence>
       </div>
 
+{/* Price Range Filter - Hidden
       <div className="border-b border-border pb-6">
         <button
           onClick={() => toggleSection("price")}
@@ -182,6 +183,7 @@ export default function FilterSidebar({
           )}
         </AnimatePresence>
       </div>
+      */}
 
       <div className="border-b border-border pb-6">
         <button
