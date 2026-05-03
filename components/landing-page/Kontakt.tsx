@@ -307,31 +307,30 @@ export default function Kontakt() {
                 </button>
 
                 {/* Certification Logos */}
-                <div className="flex items-center justify-center gap-10 mt-6 pt-6 border-t border-border -mx-6 px-6">
+                <div className="-mx-8 mt-6 pt-6 border-t border-border">
+                  <div className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8 px-2">
                   <Image
                     src="/logo/bng_mitglied.png"
                     alt="BG Bau Logo"
                     width={150}
                     height={90}
-                    className="object-contain"
-                    style={{ width: 'auto', height: 'auto' }}
+                    className="object-contain w-20 h-12 sm:w-28 sm:h-16 md:w-36 md:h-20 lg:w-44 lg:h-24"
                   />
                   <Image
                     src="/logo/Logo_BGBau_190716.jpg"
                     alt="BG Bau Logo"
                     width={150}
                     height={90}
-                    className="object-contain"
-                    style={{ width: 'auto', height: 'auto' }}
+                    className="object-contain w-20 h-12 sm:w-28 sm:h-16 md:w-36 md:h-20 lg:w-44 lg:h-24"
                   />
                   <Image
                     src="/logo/PQ_Registrier_Nr.1.jpeg"
                     alt="PQ Registrier Logo"
                     width={150}
                     height={90}
-                    className="object-contain"
-                    style={{ width: 'auto', height: 'auto' }}
+                    className="object-contain w-20 h-12 sm:w-28 sm:h-16 md:w-36 md:h-20 lg:w-44 lg:h-24"
                   />
+                  </div>
                 </div>
               </div>
             </form>
