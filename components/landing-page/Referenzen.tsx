@@ -18,7 +18,7 @@ const projectSlugs: Record<string, string> = {
 };
 
 const projectImages: Record<string, string> = {
-  pvcInstall: "/images/PVC_Muster_referenzen.png",
+  pvcInstall: "/images/references/pvc-referenzen/pvc-19.jpg",
   kederInstall: "/images/Keder_Plane_referenzen.jpg",
   geruestbandInstall: "/images/Gersuetplane_referenzen.jpg",
   blastNets: "/images/blast-protection.jpg",
