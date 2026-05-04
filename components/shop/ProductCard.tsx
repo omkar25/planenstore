@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Heart, ShoppingCart, Star, Eye } from "lucide-react";
+import { Heart, Send, Star, Eye, X } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
+import { Link } from "@/i18n/navigation";
 import type { Product } from "@/data/products";
 
 interface ProductCardProps {
@@ -16,6 +18,7 @@ interface ProductCardProps {
 export default function ProductCard({ product, locale, viewMode = "grid", index = 0 }: ProductCardProps) {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [showImagePopup, setShowImagePopup] = useState(false);
 
   const name = locale === "de" ? product.name : product.nameEn;
   const description = locale === "de" ? product.description : product.descriptionEn;
@@ -112,17 +115,13 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
                 >
                   <Heart className={`w-5 h-5 ${isWishlisted ? "fill-current" : ""}`} />
                 </button>
-                <button
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
-                    product.inStock
-                      ? "bg-primary text-white hover:bg-primary/90"
-                      : "bg-muted text-muted-foreground cursor-not-allowed"
-                  }`}
-                  disabled={!product.inStock}
+                <Link
+                  href="/#kontakt"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all bg-primary text-white hover:bg-primary/90"
                 >
-                  <ShoppingCart className="w-4 h-4" />
-                  {product.inStock ? (locale === "de" ? "In den Warenkorb" : "Add to Cart") : (locale === "de" ? "Ausverkauft" : "Sold Out")}
-                </button>
+                  <Send className="w-4 h-4" />
+                  {locale === "de" ? "Anfrage senden" : "Send Inquiry"}
+                </Link>
               </div>
             </div>
           </div>
@@ -132,6 +131,7 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
   }
 
   return (
+    <>
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -192,20 +192,19 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
             >
               <Heart className={`w-5 h-5 ${isWishlisted ? "fill-current" : ""}`} />
             </button>
-            <button className="p-2.5 rounded-lg bg-white/90 text-foreground hover:bg-white backdrop-blur-sm transition-all">
+            <button 
+              onClick={() => setShowImagePopup(true)}
+              className="p-2.5 rounded-lg bg-white/90 text-foreground hover:bg-white backdrop-blur-sm transition-all"
+            >
               <Eye className="w-5 h-5" />
             </button>
-            <button
-              className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg font-medium transition-all ${
-                product.inStock
-                  ? "bg-primary text-white hover:bg-primary/90"
-                  : "bg-muted text-muted-foreground cursor-not-allowed"
-              }`}
-              disabled={!product.inStock}
+            <Link
+              href="/#kontakt"
+              className="flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg font-medium transition-all bg-primary text-white hover:bg-primary/90"
             >
-              <ShoppingCart className="w-4 h-4" />
-              <span className="text-sm">{locale === "de" ? "Hinzufügen" : "Add"}</span>
-            </button>
+              <Send className="w-4 h-4" />
+              <span className="text-sm">{locale === "de" ? "Anfrage" : "Inquiry"}</span>
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -235,5 +234,58 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
         </div> */}
       </div>
     </motion.div>
+
+      {/* Image Preview Popup */}
+      <AnimatePresence>
+        {showImagePopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+            onClick={() => setShowImagePopup(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", duration: 0.4 }}
+              className="relative max-w-4xl w-full max-h-[90vh] bg-card rounded-2xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowImagePopup(false)}
+                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              
+              <div className="relative aspect-square md:aspect-4/3">
+                <Image
+                  src={product.image}
+                  alt={name}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 80vw"
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              
+              <div className="p-4 border-t border-border">
+                <span className="text-xs text-primary font-medium uppercase tracking-wide">
+                  {category}
+                </span>
+                <h3 className="text-lg font-semibold text-foreground mt-1">
+                  {name}
+                </h3>
+                <p className="text-sm text-muted-foreground mt-2">
+                  {description}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
