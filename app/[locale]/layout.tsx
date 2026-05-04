@@ -9,6 +9,7 @@ import Footer from "@/components/shared/common/footer/Footer";
 import { ThemeProvider } from "@/components/shared/common/theme/theme-provider";
 import { Toaster } from "sonner";
 import Script from "next/script";
+import { LocalBusinessJsonLd, WebsiteJsonLd } from "@/components/shared/seo/JsonLd";
 import "../globals.css";
 
 const nunitoSans = Nunito_Sans({
@@ -18,19 +19,28 @@ const nunitoSans = Nunito_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Tori Planen - Hochwertige Planen & Abdeckungen",
-    template: "%s | Tori Planen",
+    default: "PVC Planen & Gerüstplanen kaufen | Tori Planen Hamburg",
+    template: "%s | Tori Planen - PVC Planen Spezialist",
   },
   description:
-    "Tori Planen - Ihr zuverlässiger Partner für hochwertige Gerüstplanen, PVC-Planen, Abdeckplanen und maßgeschneiderte Planenlösungen in Deutschland.",
+    "PVC Planen, Gerüstplanen, Kederplanen & Schutznetze vom Spezialisten ✓ Über 20 Jahre Erfahrung ✓ Montage deutschlandweit ✓ Maßanfertigung ✓ Jetzt anfragen!",
   keywords: [
-    "Planen",
+    "PVC Planen",
+    "PVC Planen kaufen",
     "Gerüstplanen",
-    "PVC-Planen",
+    "Gerüstplanen Montage",
+    "Kederplanen",
+    "Tori Planen",
+    "Planen Hamburg",
     "Abdeckplanen",
     "Schutzplanen",
-    "Tori Planen",
-    "Deutschland",
+    "Staubschutznetze",
+    "Strahlschutznetze",
+    "Personenauffangnetze",
+    "Baustellenplanen",
+    "Planen Montage Deutschland",
+    "Gerüstverkleidung",
+    "Wetterschutzplanen",
   ],
   authors: [{ name: "Tori Planen" }],
   creator: "Tori Planen",
@@ -49,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "de_DE",
-    url: "https://onlinestorede.in",
+    url: "https://toriplanen.de",
     siteName: "Tori Planen",
     title: "Tori Planen - Hochwertige Planen & Abdeckungen",
     description:
@@ -70,7 +80,7 @@ export const metadata: Metadata = {
       "Ihr zuverlässiger Partner für hochwertige Gerüstplanen, PVC-Planen und maßgeschneiderte Planenlösungen.",
     images: ["/images/og-image.jpg"],
   },
-  metadataBase: new URL("https://www.onlinestorede.in"),
+  metadataBase: new URL("https://toriplanen.de"),
   alternates: {
     canonical: "/",
     languages: {
@@ -106,6 +116,8 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
+        <LocalBusinessJsonLd locale={locale} />
+        <WebsiteJsonLd />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider>
             <Header />

@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'onlinestorede.in',
+        hostname: 'toriplanen.de',
         pathname: '/images/**',
       },
     ],

@@ -3,9 +3,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const VIDEO_LEFT = "https://onlinestorede.in/images/video/video_1.mp4";
-const VIDEO_RIGHT = "https://onlinestorede.in/images/video/video_2.mp4";
-const VIDEO_CENTER = "https://onlinestorede.in/images/video/video_3.mp4";
+const VIDEO_LEFT = "https://toriplanen.de/images/video/video_1.mp4";
+const VIDEO_RIGHT = "https://toriplanen.de/images/video/video_2.mp4";
+const VIDEO_CENTER = "https://toriplanen.de/images/video/video_3.mp4";
 
 export default function VideoSection() {
   const ref = useRef(null);
