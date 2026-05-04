@@ -26,7 +26,7 @@ const serviceLinks = [
 ] as const;
 
 const socialLinks = [
-  { image: "/images/social/facebook.png", href: "#", label: "Facebook" },
+  { image: "/images/social/facebook.png", href: "https://www.facebook.com/profile.php?id=61562384693963&mibextid=wwXIfr&rdid=l977Lh2KxB626sd2&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18e6y1Ybqq%2F%3Fmibextid%3DwwXIfr#", label: "Facebook" },
   { image: "/images/social/instagram.png", href: "https://www.instagram.com/tori_planen/", label: "Instagram" },
   { image: "/images/social/youtube.png", href: "#", label: "YouTube" },
   { image: "/images/social/social.png", href: "https://api.whatsapp.com/send/?phone=4917610319001&text&type=phone_number&app_absent=0", label: "WhatsApp" },

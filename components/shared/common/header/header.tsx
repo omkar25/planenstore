@@ -60,7 +60,17 @@ export function Header() {
       observers.push(observer);
     });
 
-    return () => observers.forEach((o) => o.disconnect());
+    const handleScroll = () => {
+      if (window.scrollY < 100) {
+        setActiveSection("hero");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      observers.forEach((o) => o.disconnect());
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (

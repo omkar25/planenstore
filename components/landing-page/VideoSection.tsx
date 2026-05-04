@@ -32,6 +32,8 @@ export default function VideoSection() {
               loop
               playsInline
               preload="auto"
+              disablePictureInPicture
+              controlsList="nodownload nofullscreen noremoteplayback"
             >
               Your browser does not support the video tag.
             </video>
@@ -47,6 +49,8 @@ export default function VideoSection() {
               loop
               playsInline
               preload="auto"
+              disablePictureInPicture
+              controlsList="nodownload nofullscreen noremoteplayback"
             >
               Your browser does not support the video tag.
             </video>
@@ -62,6 +66,8 @@ export default function VideoSection() {
               loop
               playsInline
               preload="auto"
+              disablePictureInPicture
+              controlsList="nodownload nofullscreen noremoteplayback"
             >
               Your browser does not support the video tag.
             </video>
