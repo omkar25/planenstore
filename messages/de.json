@@ -21,7 +21,7 @@
     "products": {
       "pvc": {
         "title": "PVC-Planen",
-        "description": "PVC Planen sind besonders geeignet für staubdichte Einhausungen, z.B. für Sandsrtahl und Korrosionssuchtzatbeiten. Sie schützen vor Schmutz, Wind; Regen und Schnee.",
+        "description": "Hochwertige PVC – Planen für den professionellen Einsatz auf Baustellen.Robust, wetterfest und langlebig – ideal für den Schutz von Gebäuden und Material.",
         "features": ["Wetterfest", "UV-beständig", "Reißfest", "Individuell"]
       },
       "dust": {
@@ -31,22 +31,22 @@
       },
       "blast": {
         "title": "Strahlschutznetze",
-        "description": "Strahlschutznetze sind aus extrem reißfesten und sehr dichten Gewebe, aber trotzdem Luftdurchlässig. Sie bieten sehr guten Schutz, besonders bei Strahlarbeiten und längeren Standzeiten. ( Ausführung auch in schwer entflammbar )",
+        "description": "Strahlschutznetze sind aus extrem reißfesten und sehr dichten Gewebe, aber trotzdem luftdurchlässig. Sie bieten sehr guten Schutz, besonders bei Strahlarbeiten und längeren Standzeiten. ( Ausführung auch in schwer entflammbar )",
         "features": ["Hochfest", "Abriebfest", "Normgerecht", "Sicher"]
       },
       "personenauffang": {
-        "title": "Personenauffangnetze",
-        "description": "PA – Netze dienen zur vorgeschriebenen Absturzsicherung für Personen im z.B. Hallen und Brückenbau, für Dachdecker und Zimmereiarbeiten, des weiteren schützen  sie die Baustelle vor herabfallenden Gegenständen.",
+        "title": "Personen - Auffangnetze",
+        "description": "PA – Netze dienen zur vorgeschriebenen Absturzsicherung für Personen im z.B. Hallen - und Brückenbau, für Dachdecker und Zimmereiarbeiten, des weiteren schützen  sie die Baustelle vor herabfallenden Gegenständen.",
         "features": ["Normgerecht", "Hochfest", "Geprüft", "Sicher"]
       },
       "oesenband": {
         "title": "Gerüstplanen",
-        "description": "Ösenbandplanen und Polybandplanen ( Gittergewebe) für jeden Einsatzweck. Sie schützen vor Regen, Wind und Verschmutzung. Ösenbandplanen ( Ausführung auch in schwer entflammbar )",
+        "description": "Ösenbandplanen und Polybandplanen ( Gittergewebe) für jeden Einsatzzweck. Sie schützen vor Regen, Wind und Verschmutzung. Ösenbandplanen ( Ausführung auch in schwer entflammbar )",
         "features": ["Ösenbandplanen", "Ösenbandplanen", "Ösenbandplanen", "Ösenbandplanen"]
       },
       "keder": {
         "title": "Kederplanen",
-        "description": "Kederplanen sind besonders geeignet für staubdichte Einhausungen, z.B. für Sandsrtahl und Korrosionssuchtzatbeiten. Sie schützen vor Schmutz, Wind; Regen und Schnee.",
+        "description": "Kederplanen sind besonders geeignet für staubdichte Einhausungen, z.B. für Sandstrahl - und Korrosionsschutzarbeiten. Sie schützen vor Schmutz, Wind; Regen und Schnee.",
         "features": ["Kederplanen", "Kederplanen", "Kederplanen", "Kederplanen"]
       }
     }
@@ -92,32 +92,32 @@
       "pvcInstall": {
         "title": "PVC-Planen Montage",
         "category": "Hochbau",
-        "description": "Komplettverkleidung einer Brückenkonstruktion (in…) mit maßgefertigten PVC – Planen für ganzjährigen Wetterschutz."
+        "description": "Komplettverkleidung einer Brückenkonstruktion mit maßgefertigten PVC – Planen für ganzjährigen Wetterschutz."
       },
       "kederInstall": {
         "title": "Kederplanen Montage",
         "category": "Gewerbebau",
-        "description": "Professionelle Montage von Kederplanen an einem Bauvorhaben (in …) mit passgenauen Lösungen für optimalen Schutz."
+        "description": "Professionelle Montage von Kederplanen an einem Bauvorhaben mit passgenauen Lösungen für optimalen Schutz."
       },
       "geruestbandInstall": {
         "title": "Gerüstplanen Montage",
         "category": "Industriebau",
-        "description": "Montage von Gerüstplanen zum Schutz vor Witterungseinflüssen (in …)."
+        "description": "Montage von Gerüstplanen zum Schutz vor Witterungseinflüssen."
       },
       "blastNets": {
         "title": "Strahlschutznetze Montage",
         "category": "Industriebau",
-        "description": "Verkleidung eines großen Industrieprojektes (in …) zum Schutz von Gebäuden und Personen währenden der Ausführung von Sandstrahlarbeiten."
+        "description": "Verkleidung eines großen Industrieprojektes zum Schutz von Gebäuden und Personen währenden der Ausführung von Sandstrahlarbeiten."
       },
       "dustNets": {
         "title": "Staubschutznetze Montage",
         "category": "Sanierung",
-        "description": "Montage von Gerüstnetzen (in …)"
+        "description": "Montage von Gerüstnetzen."
       },
       "personenauffangInstall": {
-        "title": "Personenauffangnetze Montage",
+        "title": "Personen - Auffangnetze Montage",
         "category": "Hochbau",
-        "description": "Installation von Personen – Auffangnetzen für maximale Arbeitssicherheit auf einer Großbaustelle (in …)"
+        "description": "Installation von Personen – Auffangnetzen für maximale Arbeitssicherheit auf einer Großbaustelle."
       }
     }
   },
