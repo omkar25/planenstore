@@ -76,12 +76,12 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
 
           <div className="flex-1 p-5 flex flex-col justify-between">
             <div>
-              <span className="text-xs text-primary font-medium uppercase tracking-wide">
-                {category}
-              </span>
-              <h3 className="text-lg font-semibold text-foreground mt-1 group-hover:text-primary transition-colors">
+              <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                 {name}
               </h3>
+              <span className="text-xs text-primary font-medium uppercase tracking-wide mt-1 block">
+                {category}
+              </span>
               <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
                 {description}
               </p>
@@ -210,12 +210,12 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
       </div>
 
       <div className="p-4">
-        <span className="text-xs text-primary font-medium uppercase tracking-wide">
-          {category}
-        </span>
-        <h3 className="text-sm font-semibold text-foreground mt-1 line-clamp-2 group-hover:text-primary transition-colors min-h-10">
+        <h3 className="text-sm font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors min-h-10">
           {name}
         </h3>
+        <span className="text-xs text-primary font-medium uppercase tracking-wide mt-1 block">
+          {category}
+        </span>
 
         <div className="flex items-center gap-1.5 mt-2">
           <div className="flex items-center">{renderStars(product.rating)}</div>
@@ -272,12 +272,12 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
               </div>
               
               <div className="p-4 border-t border-border">
-                <span className="text-xs text-primary font-medium uppercase tracking-wide">
-                  {category}
-                </span>
-                <h3 className="text-lg font-semibold text-foreground mt-1">
+                <h3 className="text-lg font-semibold text-foreground">
                   {name}
                 </h3>
+                <span className="text-xs text-primary font-medium uppercase tracking-wide mt-1 block">
+                  {category}
+                </span>
                 <p className="text-sm text-muted-foreground mt-2">
                   {description}
                 </p>

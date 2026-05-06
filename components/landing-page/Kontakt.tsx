@@ -188,7 +188,8 @@ export default function Kontakt() {
                           <a
                             key={detail}
                             href={`mailto:${detail}`}
-                            rel="noopener"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="block text-muted-foreground hover:text-primary text-sm leading-relaxed font-semibold transition-colors"
                           >
                             {detail}
