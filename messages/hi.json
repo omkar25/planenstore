@@ -65,5 +65,19 @@
         "description": "टिकाऊ भविष्य के लिए पुनर्चक्रण योग्य सामग्रियों से निर्मित।"
       }
     }
+  },
+  "signIn": {
+    "title": "साइन इन करें",
+    "submitButton": "साइन इन करें",
+    "noAccount": "खाता नहीं है?",
+    "signUpLink": "साइन अप करें",
+    "username": "उपयोगकर्ता नाम",
+    "password": "पासवर्ड",
+    "usernamePlaceholder": "अपना उपयोगकर्ता नाम दर्ज करें",
+    "passwordPlaceholder": "अपना पासवर्ड दर्ज करें",
+    "validation": {
+      "usernameRequired": "उपयोगकर्ता नाम आवश्यक है",
+      "passwordRequired": "पासवर्ड आवश्यक है"
+    }
   }
 }

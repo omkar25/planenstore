@@ -194,6 +194,20 @@
   "Cart": {
     "comingSoon": "Warenkorb – Demnächst verfügbar"
   },
+  "signIn": {
+    "title": "Anmelden",
+    "submitButton": "Anmelden",
+    "noAccount": "Noch kein Konto?",
+    "signUpLink": "Registrieren",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "usernamePlaceholder": "Benutzername eingeben",
+    "passwordPlaceholder": "Passwort eingeben",
+    "validation": {
+      "usernameRequired": "Benutzername ist erforderlich",
+      "passwordRequired": "Passwort ist erforderlich"
+    }
+  },
   "Footer": {
     "brandName": "Planen & Netze",
     "brandDescription": "Ihr zuverlässiger Partner für professionelle Planen- und Netzlösungen im Bauwesen. Sicherheit, Umweltschutz und Wetterschutz – alles aus einer Hand.",

@@ -194,6 +194,20 @@
   "Cart": {
     "comingSoon": "Shopping Cart – Coming Soon"
   },
+  "signIn": {
+    "title": "Sign In",
+    "submitButton": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signUpLink": "Sign Up",
+    "username": "Username",
+    "password": "Password",
+    "usernamePlaceholder": "Enter your username",
+    "passwordPlaceholder": "Enter your password",
+    "validation": {
+      "usernameRequired": "Username is required",
+      "passwordRequired": "Password is required"
+    }
+  },
   "Footer": {
     "brandName": "Tarps & Nets",
     "brandDescription": "Your reliable partner for professional tarp and net solutions in construction. Safety, environmental protection and weather protection – all from one source.",

@@ -11,6 +11,7 @@ import { Toaster } from "sonner";
 import Script from "next/script";
 import { LocalBusinessJsonLd, WebsiteJsonLd } from "@/components/shared/seo/JsonLd";
 import "../globals.css";
+import AuthProvider from "@/components/auth/auth-provider";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -119,6 +120,7 @@ export default async function LocaleLayout({
         <LocalBusinessJsonLd locale={locale} />
         <WebsiteJsonLd />
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <AuthProvider>
           <ThemeProvider>
             <Header />
             <div className="pt-14">
@@ -127,6 +129,7 @@ export default async function LocaleLayout({
             <Footer />
             <Toaster position="top-center" richColors />
           </ThemeProvider>
+          </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>
