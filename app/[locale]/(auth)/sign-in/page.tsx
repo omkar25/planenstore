@@ -35,7 +35,8 @@ function SignInContent() {
   useEffect(() => {
     if (status === 'authenticated' && session?.user) {
       const userRole = (session.user as { role?: string }).role;
-      if (userRole === 'admin') {
+      // Check for SUPER ADMIN or admin roles
+      if (userRole === 'SUPER ADMIN' || userRole === 'admin') {
         router.push('/admin/overview')
       } else {
         router.push('/')
