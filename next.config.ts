@@ -14,6 +14,14 @@ const nextConfig: NextConfig = {
         hostname: 'toriplanen.de',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
     ],
   },
   async headers() {
