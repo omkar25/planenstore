@@ -16,7 +16,9 @@ import {
   Settings,
   LogOut,
   Menu,
-  X
+  X,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -41,7 +43,8 @@ export default function AdminLayout({
   const { data: session } = useSession();
   const router = useRouter();
   const pathname = usePathname();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false); // Mobile sidebar
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false); // Desktop sidebar collapse
 
   const handleLogout = async () => {
     await signOut({ redirect: false });
@@ -98,24 +101,36 @@ export default function AdminLayout({
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-16 left-0 z-40 w-64 h-[calc(100vh-4rem)] bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-transform duration-300 ${
+        className={`fixed top-16 left-0 z-40 h-[calc(100vh-4rem)] bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-all duration-300 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0`}
+        } lg:translate-x-0 ${sidebarCollapsed ? 'lg:w-20' : 'lg:w-64'} w-64`}
       >
-        <nav className="p-4 space-y-2">
+        {/* Toggle Button */}
+        <button
+          onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+          className="hidden lg:flex absolute -right-3 top-6 w-6 h-6 bg-primary text-white rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-colors"
+          title={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+        >
+          {sidebarCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+        </button>
+
+        <nav className={`p-4 space-y-2 ${sidebarCollapsed ? 'lg:p-2' : ''}`}>
           {adminLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setSidebarOpen(false)}
+              title={sidebarCollapsed ? t(link.titleKey) : undefined}
               className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                sidebarCollapsed ? 'lg:justify-center lg:px-2' : ''
+              } ${
                 isActiveLink(link.href)
                   ? 'bg-primary text-white'
                   : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
             >
               {iconMap[link.href] || <LayoutDashboard className="w-5 h-5" />}
-              <span className="font-medium">{t(link.titleKey)}</span>
+              <span className={`font-medium ${sidebarCollapsed ? 'lg:hidden' : ''}`}>{t(link.titleKey)}</span>
             </Link>
           ))}
         </nav>
@@ -130,14 +145,14 @@ export default function AdminLayout({
       )}
 
       {/* Main Content */}
-      <main className="lg:ml-64 pt-16 min-h-screen">
+      <main className={`pt-16 min-h-screen transition-all duration-300 ${sidebarCollapsed ? 'lg:ml-20' : 'lg:ml-64'}`}>
         <div className="p-6">
           {children}
         </div>
       </main>
 
       {/* Admin Footer */}
-      <footer className="lg:ml-64 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-4">
+      <footer className={`bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-4 transition-all duration-300 ${sidebarCollapsed ? 'lg:ml-20' : 'lg:ml-64'}`}>
         <div className="px-6 text-center text-sm text-gray-500 dark:text-gray-400">
           {t('admin.copyright', { year: new Date().getFullYear() })}
         </div>
