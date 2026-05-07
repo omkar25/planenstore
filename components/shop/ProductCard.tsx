@@ -72,7 +72,7 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
           </div>
 
           <div className="flex-1 p-5 flex flex-col justify-between">
-            <div>
+            <Link href={`/shop/${product.slug}`}>
               <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                 {name}
               </h3>
@@ -88,7 +88,7 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
                   ({reviewCount})
                 </span>
               </div>
-            </div>
+            </Link>
 
             <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
               <div className="flex items-baseline gap-2">
@@ -194,7 +194,7 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
         </motion.div>
       </div>
 
-      <div className="p-4">
+      <Link href={`/shop/${product.slug}`} className="block p-4">
         <h3 className="text-sm font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors min-h-10">
           {name}
         </h3>
@@ -206,7 +206,7 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
           <div className="flex items-center">{renderStars(rating)}</div>
           <span className="text-xs text-muted-foreground">({reviewCount})</span>
         </div>
-      </div>
+      </Link>
     </motion.div>
 
       {/* Image Preview Popup */}
