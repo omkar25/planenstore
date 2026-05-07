@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Heart, Send, Star, Eye, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/navigation";
-import type { Product } from "@/data/products";
+import type { Product } from "@/services/product-service";
 
 interface ProductCardProps {
   product: Product;
@@ -20,18 +20,25 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
   const [isHovered, setIsHovered] = useState(false);
   const [showImagePopup, setShowImagePopup] = useState(false);
 
-  const name = locale === "de" ? product.name : product.nameEn;
-  const description = locale === "de" ? product.description : product.descriptionEn;
-  const category = locale === "de" ? product.category : product.categoryEn;
+  const name = product.name;
+  const description = product.description;
+  const category = product.category.name;
+  const image = product.images?.[0]?.url || "/images/product-bild/placeholder.jpg";
+  const inStock = product.countInStock > 0;
+  const rating = product.avgRating;
+  const reviewCount = product.numReviews;
+  const discount = product.listPrice > product.price 
+    ? Math.round(((product.listPrice - product.price) / product.listPrice) * 100) 
+    : undefined;
 
-  const renderStars = (rating: number) => {
+  const renderStars = (ratingValue: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
         className={`w-3.5 h-3.5 ${
-          i < Math.floor(rating)
+          i < Math.floor(ratingValue)
             ? "text-amber-400 fill-amber-400"
-            : i < rating
+            : i < ratingValue
               ? "text-amber-400 fill-amber-400/50"
               : "text-gray-300"
         }`}
@@ -50,26 +57,16 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
         <div className="flex flex-col sm:flex-row">
           <div className="relative w-full sm:w-64 h-48 sm:h-auto shrink-0 overflow-hidden">
             <Image
-              src={product.image}
+              src={image}
               alt={name}
               fill
               sizes="(max-width: 640px) 100vw, 256px"
               className="object-cover group-hover:scale-105 transition-transform duration-500"
               priority={index < 6}
             />
-            {product.discount && (
+            {discount && (
               <span className="absolute top-3 left-3 px-2 py-1 bg-red-500 text-white text-xs font-bold rounded-md">
-                -{product.discount}%
-              </span>
-            )}
-            {product.isNew && (
-              <span className="absolute top-3 right-3 px-2 py-1 bg-primary text-white text-xs font-bold rounded-md">
-                NEU
-              </span>
-            )}
-            {product.isBestseller && !product.isNew && (
-              <span className="absolute top-3 right-3 px-2 py-1 bg-amber-500 text-white text-xs font-bold rounded-md">
-                BESTSELLER
+                -{discount}%
               </span>
             )}
           </div>
@@ -86,9 +83,9 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
                 {description}
               </p>
               <div className="flex items-center gap-2 mt-3">
-                <div className="flex items-center">{renderStars(product.rating)}</div>
+                <div className="flex items-center">{renderStars(rating)}</div>
                 <span className="text-sm text-muted-foreground">
-                  ({product.reviewCount})
+                  ({reviewCount})
                 </span>
               </div>
             </div>
@@ -98,9 +95,9 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
                 <span className="text-xl font-bold text-foreground">
                   €{product.price.toFixed(2)}
                 </span>
-                {product.originalPrice && (
+                {product.listPrice > product.price && (
                   <span className="text-sm text-muted-foreground line-through">
-                    €{product.originalPrice.toFixed(2)}
+                    €{product.listPrice.toFixed(2)}
                   </span>
                 )}
               </div>
@@ -142,7 +139,7 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
     >
       <div className="relative aspect-square overflow-hidden bg-muted">
         <Image
-          src={product.image}
+          src={image}
           alt={name}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -150,25 +147,13 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
           priority={index < 6}
         />
 
-        {product.discount && (
+        {discount && (
           <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-500 text-white text-xs font-bold rounded-md shadow-lg">
-            -{product.discount}%
+            -{discount}%
           </span>
         )}
 
-        {product.isNew && (
-          <span className="absolute top-3 right-3 px-2.5 py-1 bg-primary text-white text-xs font-bold rounded-md shadow-lg">
-            NEU
-          </span>
-        )}
-
-        {product.isBestseller && !product.isNew && (
-          <span className="absolute top-3 right-3 px-2.5 py-1 bg-amber-500 text-white text-xs font-bold rounded-md shadow-lg">
-            BESTSELLER
-          </span>
-        )}
-
-        {!product.inStock && (
+        {!inStock && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <span className="px-4 py-2 bg-white/90 text-foreground font-semibold rounded-lg">
               {locale === "de" ? "Ausverkauft" : "Sold Out"}
@@ -218,20 +203,9 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
         </span>
 
         <div className="flex items-center gap-1.5 mt-2">
-          <div className="flex items-center">{renderStars(product.rating)}</div>
-          <span className="text-xs text-muted-foreground">({product.reviewCount})</span>
+          <div className="flex items-center">{renderStars(rating)}</div>
+          <span className="text-xs text-muted-foreground">({reviewCount})</span>
         </div>
-
-        {/* <div className="flex items-baseline gap-2 mt-3">
-          <span className="text-lg font-bold text-foreground">
-            €{product.price.toFixed(2)}
-          </span>
-          {product.originalPrice && (
-            <span className="text-sm text-muted-foreground line-through">
-              €{product.originalPrice.toFixed(2)}
-            </span>
-          )}
-        </div> */}
       </div>
     </motion.div>
 
@@ -262,7 +236,7 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
               
               <div className="relative aspect-square md:aspect-4/3">
                 <Image
-                  src={product.image}
+                  src={image}
                   alt={name}
                   fill
                   sizes="(max-width: 1024px) 100vw, 80vw"

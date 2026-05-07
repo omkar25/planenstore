@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
@@ -13,14 +13,15 @@ import {
   Search,
   ArrowUpDown,
 } from "lucide-react";
-import { products, priceRanges } from "@/data/products";
+import { priceRanges } from "@/data/products";
 import ProductCard from "@/components/shop/ProductCard";
 import FilterSidebar from "@/components/shop/FilterSidebar";
+import { ProductService, Product } from "@/services/product-service";
 
 type SortOption = "popular" | "newest" | "price-asc" | "price-desc" | "rating";
 
 export default function ShopPage() {
-  const t = useTranslations("Shop");
+  useTranslations("Shop");
   const params = useParams();
   const locale = (params.locale as string) || "de";
 
@@ -35,6 +36,32 @@ export default function ShopPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 9;
 
+  // API state
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [apiTotalPages, setApiTotalPages] = useState(0);
+
+  // Fetch products from API
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await ProductService.getProducts(currentPage - 1, productsPerPage);
+        setProducts(response.content);
+        setApiTotalPages(response.totalPages);
+      } catch (err) {
+        console.error("Failed to fetch products:", err);
+        setError(locale === "de" ? "Fehler beim Laden der Produkte" : "Failed to load products");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [currentPage, locale]);
+
   const filteredProducts = useMemo(() => {
     let result = [...products];
 
@@ -43,22 +70,12 @@ export default function ShopPage() {
       result = result.filter(
         (p) =>
           p.name.toLowerCase().includes(query) ||
-          p.nameEn.toLowerCase().includes(query) ||
-          p.description.toLowerCase().includes(query) ||
-          p.descriptionEn.toLowerCase().includes(query)
+          p.description.toLowerCase().includes(query)
       );
     }
 
     if (selectedCategory !== "all") {
-      const categoryMap: Record<string, string> = {
-        "pvc-planen": "PVC-Planen",
-        kederplanen: "Kederplanen",
-        geruestplanen: "Gerüstplanen",
-        staubschutznetze: "Staubschutznetze",
-        strahlschutznetze: "Strahlschutznetze",
-        personenauffangnetze: "Personenauffangnetze",
-      };
-      result = result.filter((p) => p.category === categoryMap[selectedCategory]);
+      result = result.filter((p) => p.category.code === selectedCategory || p.category.name === selectedCategory);
     }
 
     if (selectedPriceRange) {
@@ -69,11 +86,11 @@ export default function ShopPage() {
     }
 
     if (selectedRating > 0) {
-      result = result.filter((p) => p.rating >= selectedRating);
+      result = result.filter((p) => p.avgRating >= selectedRating);
     }
 
     if (inStockOnly) {
-      result = result.filter((p) => p.inStock);
+      result = result.filter((p) => p.countInStock > 0);
     }
 
     switch (sortBy) {
@@ -84,25 +101,21 @@ export default function ShopPage() {
         result.sort((a, b) => b.price - a.price);
         break;
       case "rating":
-        result.sort((a, b) => b.rating - a.rating);
+        result.sort((a, b) => b.avgRating - a.avgRating);
         break;
       case "newest":
-        result.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
+        result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
         break;
       case "popular":
       default:
-        result.sort((a, b) => b.reviewCount - a.reviewCount);
+        result.sort((a, b) => b.numReviews - a.numReviews);
         break;
     }
 
     return result;
-  }, [searchQuery, selectedCategory, selectedPriceRange, selectedRating, inStockOnly, sortBy]);
+  }, [products, searchQuery, selectedCategory, selectedPriceRange, selectedRating, inStockOnly, sortBy]);
 
-  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-  const paginatedProducts = filteredProducts.slice(
-    (currentPage - 1) * productsPerPage,
-    currentPage * productsPerPage
-  );
+  const paginatedProducts = filteredProducts;
 
   const sortOptions = [
     { value: "popular", label: locale === "de" ? "Beliebtheit" : "Popularity" },
@@ -218,7 +231,27 @@ export default function ShopPage() {
               </div>
             </div>
 
-            {paginatedProducts.length > 0 ? (
+            {loading ? (
+              <div className="flex flex-col items-center justify-center py-16">
+                <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4" />
+                <p className="text-muted-foreground">
+                  {locale === "de" ? "Produkte werden geladen..." : "Loading products..."}
+                </p>
+              </div>
+            ) : error ? (
+              <div className="flex flex-col items-center justify-center py-16 text-center">
+                <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                  <span className="text-3xl">⚠️</span>
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">{error}</h3>
+                <button
+                  onClick={() => setCurrentPage(1)}
+                  className="mt-4 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                >
+                  {locale === "de" ? "Erneut versuchen" : "Try again"}
+                </button>
+              </div>
+            ) : paginatedProducts.length > 0 ? (
               <>
                 <div
                   className={
@@ -229,7 +262,7 @@ export default function ShopPage() {
                 >
                   {paginatedProducts.map((product, index) => (
                     <ProductCard
-                      key={product.id}
+                      key={product.code}
                       product={product}
                       locale={locale}
                       viewMode={viewMode}
@@ -238,7 +271,7 @@ export default function ShopPage() {
                   ))}
                 </div>
 
-                {totalPages > 1 && (
+                {apiTotalPages > 1 && (
                   <div className="flex items-center justify-center gap-2 mt-10">
                     <button
                       onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
@@ -249,7 +282,7 @@ export default function ShopPage() {
                     </button>
 
                     <div className="flex items-center gap-1">
-                      {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      {Array.from({ length: apiTotalPages }, (_, i) => i + 1).map((page) => (
                         <button
                           key={page}
                           onClick={() => setCurrentPage(page)}
@@ -265,8 +298,8 @@ export default function ShopPage() {
                     </div>
 
                     <button
-                      onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                      disabled={currentPage === totalPages}
+                      onClick={() => setCurrentPage((p) => Math.min(apiTotalPages, p + 1))}
+                      disabled={currentPage === apiTotalPages}
                       className="px-4 py-2 bg-card border border-border rounded-lg text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:border-primary/30 transition-colors"
                     >
                       {locale === "de" ? "Weiter" : "Next"}
