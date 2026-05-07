@@ -392,7 +392,7 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                         <Button
                           variant="ghost"
                           size="sm"
-                          onClick={() => onView?.(product)}
+                          onClick={() => onView ? onView(product) : router.push(`/admin/products/${product.code}`)}
                           className="hover:bg-blue-50"
                         >
                           <Eye className="h-4 w-4 text-blue-600" />
@@ -400,7 +400,7 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                         <Button
                           variant="ghost"
                           size="sm"
-                          onClick={() => onEdit?.(product)}
+                          onClick={() => onEdit ? onEdit(product) : router.push(`/admin/products/${product.code}`)}
                           className="hover:bg-green-50"
                         >
                           <Edit className="h-4 w-4 text-green-600" />
