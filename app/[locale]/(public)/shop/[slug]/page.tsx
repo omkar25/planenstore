@@ -19,6 +19,7 @@ import {
   Share2,
   ZoomIn,
   X,
+  HelpCircle,
 } from "lucide-react";
 import { ProductService, Product } from "@/services/product-service";
 
@@ -32,6 +33,9 @@ export default function ProductDetailPage() {
   const [error, setError] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const [selectedBreite, setSelectedBreite] = useState<string | null>(null);
+  const [laenge, setLaenge] = useState<string>("100");
+  const [anmerkungen, setAnmerkungen] = useState<string>("");
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [showZoom, setShowZoom] = useState(false);
 
@@ -44,6 +48,15 @@ export default function ProductDetailPage() {
         setProduct(data);
         if (data.colors && data.colors.length > 0) {
           setSelectedColor(data.colors[0]);
+        }
+        // Set default Breite from sizes
+        if (data.sizes && data.sizes.length > 0) {
+          const breiteOptions = data.sizes.filter(s => 
+            s.toUpperCase().includes('BREITE') || s.toUpperCase().includes('CM')
+          );
+          if (breiteOptions.length > 0) {
+            setSelectedBreite(breiteOptions[0]);
+          }
         }
       } catch (err) {
         console.error("Failed to fetch product:", err);
@@ -137,6 +150,61 @@ export default function ProductDetailPage() {
 
   const getColorHex = (colorName: string): string => {
     return colorMap[colorName] || "#CCCCCC";
+  };
+
+  // Map color names to image indices based on color keywords in image URLs or color order
+  const getImageIndexForColor = (colorName: string, colors: string[], images: { id: number; url: string }[]): number => {
+    const colorLower = colorName.toLowerCase();
+    
+    // Try to find image by color name in URL
+    const imageIndex = images.findIndex(img => {
+      const urlLower = img.url.toLowerCase();
+      if (colorLower.includes('blau') && urlLower.includes('blau')) return true;
+      if (colorLower.includes('rot') && urlLower.includes('rot')) return true;
+      if (colorLower.includes('grün') && urlLower.includes('gruen')) return true;
+      if (colorLower.includes('grün') && urlLower.includes('grün')) return true;
+      if (colorLower.includes('gelb') && urlLower.includes('gelb')) return true;
+      if (colorLower.includes('oliv') && urlLower.includes('oliv')) return true;
+      if (colorLower.includes('schwarz') && urlLower.includes('schwarz')) return true;
+      if (colorLower.includes('weiß') && urlLower.includes('weiss')) return true;
+      if (colorLower.includes('weiss') && urlLower.includes('weiss')) return true;
+      if (colorLower.includes('grau') && urlLower.includes('grau')) return true;
+      if (colorLower.includes('braun') && urlLower.includes('braun')) return true;
+      if (colorLower.includes('beige') && urlLower.includes('beige')) return true;
+      return false;
+    });
+    
+    if (imageIndex !== -1) return imageIndex;
+    
+    // Fallback: use color index if within image bounds
+    const colorIndex = colors.indexOf(colorName);
+    if (colorIndex !== -1 && colorIndex < images.length) {
+      return colorIndex;
+    }
+    
+    return 0;
+  };
+
+  // Handle color selection and update image
+  const handleColorSelect = (color: string) => {
+    setSelectedColor(color);
+    if (product?.images && product?.colors) {
+      const newImageIndex = getImageIndexForColor(color, product.colors, product.images);
+      setSelectedImageIndex(newImageIndex);
+    }
+  };
+
+  // Parse sizes into Breite options
+  const parseBreiteOptions = (sizes: string[]): string[] => {
+    return sizes.filter(s => {
+      const upper = s.toUpperCase();
+      return upper.includes('BREITE') || (upper.includes('CM') && !upper.includes('LÄNGE'));
+    }).map(s => {
+      // Extract just the measurement value
+      const match = s.match(/(\d+)\s*CM/i);
+      if (match) return `${match[1]}cm`;
+      return s.replace(/BREITE[:\s]*/i, '').trim();
+    });
   };
 
   if (loading) {
@@ -307,10 +375,6 @@ export default function ProductDetailPage() {
                   </div>
                 );
               })}
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Users className="w-4 h-4 text-primary shrink-0" />
-                <span>150.000+ {locale === "de" ? "glückliche Kunden" : "happy customers"}</span>
-              </div>
             </div>
 
             {/* Rating */}
@@ -339,7 +403,7 @@ export default function ProductDetailPage() {
                     return (
                       <button
                         key={color}
-                        onClick={() => setSelectedColor(color)}
+                        onClick={() => handleColorSelect(color)}
                         className={`flex flex-col items-center p-2 rounded-lg border-2 transition-all ${
                           isSelected
                             ? "border-red-500 bg-red-50"
@@ -366,24 +430,75 @@ export default function ProductDetailPage() {
               </div>
             )}
 
-            {/* Size Selection */}
+            {/* Breite (Width) Selection */}
             {product.sizes && product.sizes.length > 0 && (
               <div className="mb-6">
                 <h3 className="text-sm font-semibold text-foreground mb-3">
-                  {locale === "de" ? "Größe" : "Size"}
+                  Breite:
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {product.sizes.map((size) => (
-                    <span
-                      key={size}
-                      className="px-3 py-1.5 bg-muted rounded-lg text-sm text-foreground"
+                  {parseBreiteOptions(product.sizes).map((breite) => (
+                    <button
+                      key={breite}
+                      onClick={() => setSelectedBreite(breite)}
+                      className={`px-6 py-3 rounded-lg text-sm font-medium transition-all border-2 ${
+                        selectedBreite === breite
+                          ? "border-red-500 bg-white text-foreground"
+                          : "border-border bg-white text-foreground hover:border-gray-400"
+                      }`}
                     >
-                      {size}
-                    </span>
+                      {breite}
+                    </button>
                   ))}
+                  <button
+                    onClick={() => setSelectedBreite("custom")}
+                    className={`px-4 py-3 rounded-lg text-sm font-medium transition-all border-2 ${
+                      selectedBreite === "custom"
+                        ? "border-red-500 bg-white text-foreground"
+                        : "border-border bg-white text-foreground hover:border-gray-400"
+                    }`}
+                  >
+                    {locale === "de" ? "Individuelle Größen" : "Custom Sizes"}
+                  </button>
                 </div>
               </div>
             )}
+
+            {/* Länge (Length) Input */}
+            <div className="mb-6">
+              <h3 className="text-sm font-semibold text-foreground mb-3">
+                Länge:
+              </h3>
+              <div className="flex items-center gap-2">
+                <input
+                  type="number"
+                  value={laenge}
+                  onChange={(e) => setLaenge(e.target.value)}
+                  min="40"
+                  max="6000"
+                  className="flex-1 px-4 py-3 border-2 border-border rounded-lg text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                />
+                <span className="text-sm text-muted-foreground">cm</span>
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">
+                min. 40cm | max. 6000cm
+              </p>
+            </div>
+
+            {/* Anmerkungen zur Bestellung (Order Notes) */}
+            <div className="mb-6">
+              <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                {locale === "de" ? "Anmerkungen zur Bestellung:" : "Order Notes:"}
+                <HelpCircle className="w-4 h-4 text-muted-foreground" />
+              </h3>
+              <textarea
+                value={anmerkungen}
+                onChange={(e) => setAnmerkungen(e.target.value)}
+                placeholder={locale === "de" ? "optional" : "optional"}
+                rows={3}
+                className="w-full px-4 py-3 border-2 border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-y"
+              />
+            </div>
 
             {/* Tags */}
             {product.tags && product.tags.length > 0 && (

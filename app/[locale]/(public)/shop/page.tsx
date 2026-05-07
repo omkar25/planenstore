@@ -15,8 +15,9 @@ import {
 } from "lucide-react";
 import { priceRanges } from "@/data/products";
 import ProductCard from "@/components/shop/ProductCard";
-import FilterSidebar from "@/components/shop/FilterSidebar";
+import FilterSidebar, { FilterCategory } from "@/components/shop/FilterSidebar";
 import { ProductService, Product } from "@/services/product-service";
+import { CategoryService } from "@/services/category-service";
 
 type SortOption = "popular" | "newest" | "price-asc" | "price-desc" | "rating";
 
@@ -41,6 +42,32 @@ export default function ShopPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [apiTotalPages, setApiTotalPages] = useState(0);
+
+  // Categories state
+  const [categories, setCategories] = useState<FilterCategory[]>([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
+
+  // Fetch categories from API
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        setCategoriesLoading(true);
+        const response = await CategoryService.getAllCategories();
+        const filterCategories: FilterCategory[] = response.map(cat => ({
+          code: cat.code,
+          name: cat.name,
+          productCount: cat.productCount,
+        }));
+        setCategories(filterCategories);
+      } catch (err) {
+        console.error("Failed to fetch categories:", err);
+      } finally {
+        setCategoriesLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   // Fetch products from API
   useEffect(() => {
@@ -146,6 +173,8 @@ export default function ShopPage() {
         <div className="flex flex-col lg:flex-row gap-8">
           <FilterSidebar
             locale={locale}
+            categories={categories}
+            categoriesLoading={categoriesLoading}
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
             selectedPriceRange={selectedPriceRange}

@@ -3,10 +3,17 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, X, SlidersHorizontal, Star } from "lucide-react";
-import { categories, priceRanges } from "@/data/products";
+
+export interface FilterCategory {
+  code: string;
+  name: string;
+  productCount?: number;
+}
 
 interface FilterSidebarProps {
   locale: string;
+  categories: FilterCategory[];
+  categoriesLoading?: boolean;
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
   selectedPriceRange: string;
@@ -21,6 +28,8 @@ interface FilterSidebarProps {
 
 export default function FilterSidebar({
   locale,
+  categories,
+  categoriesLoading = false,
   selectedCategory,
   setSelectedCategory,
   selectedPriceRange,
@@ -92,34 +101,70 @@ export default function FilterSidebar({
               className="overflow-hidden"
             >
               <div className="mt-4 space-y-2">
-                {categories.map((cat) => (
-                  <label
-                    key={cat.id}
-                    className="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="radio"
-                        name="category"
-                        checked={selectedCategory === cat.id}
-                        onChange={() => setSelectedCategory(cat.id)}
-                        className="w-4 h-4 text-primary border-border focus:ring-primary/20"
-                      />
-                      <span
-                        className={`text-sm transition-colors ${
-                          selectedCategory === cat.id
-                            ? "text-primary font-medium"
-                            : "text-muted-foreground group-hover:text-foreground"
-                        }`}
+                {categoriesLoading ? (
+                  <div className="space-y-2">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div key={i} className="h-6 bg-muted animate-pulse rounded" />
+                    ))}
+                  </div>
+                ) : (
+                  <>
+                    {/* All Products option */}
+                    <label
+                      className="flex items-center justify-between cursor-pointer group"
+                    >
+                      <div className="flex items-center gap-3">
+                        <input
+                          type="radio"
+                          name="category"
+                          checked={selectedCategory === "all"}
+                          onChange={() => setSelectedCategory("all")}
+                          className="w-4 h-4 text-primary border-border focus:ring-primary/20"
+                        />
+                        <span
+                          className={`text-sm transition-colors ${
+                            selectedCategory === "all"
+                              ? "text-primary font-medium"
+                              : "text-muted-foreground group-hover:text-foreground"
+                          }`}
+                        >
+                          {locale === "de" ? "Alle Produkte" : "All Products"}
+                        </span>
+                      </div>
+                    </label>
+                    {/* Dynamic categories */}
+                    {categories.map((cat) => (
+                      <label
+                        key={cat.code}
+                        className="flex items-center justify-between cursor-pointer group"
                       >
-                        {locale === "de" ? cat.name : cat.nameEn}
-                      </span>
-                    </div>
-                    <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
-                      {cat.count}
-                    </span>
-                  </label>
-                ))}
+                        <div className="flex items-center gap-3">
+                          <input
+                            type="radio"
+                            name="category"
+                            checked={selectedCategory === cat.code}
+                            onChange={() => setSelectedCategory(cat.code)}
+                            className="w-4 h-4 text-primary border-border focus:ring-primary/20"
+                          />
+                          <span
+                            className={`text-sm transition-colors ${
+                              selectedCategory === cat.code
+                                ? "text-primary font-medium"
+                                : "text-muted-foreground group-hover:text-foreground"
+                            }`}
+                          >
+                            {cat.name}
+                          </span>
+                        </div>
+                        {cat.productCount !== undefined && (
+                          <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+                            {cat.productCount}
+                          </span>
+                        )}
+                      </label>
+                    ))}
+                  </>
+                )}
               </div>
             </motion.div>
           )}
