@@ -96,9 +96,18 @@ export default function CredentialsSignInForm({ callbackUrl = '/' }: { callbackU
         router.refresh(); // Refresh to update auth state
         
       } catch (apiError: unknown) {
-        // If the API call fails, display the specific error message
+        // If the API call fails, display localized error message
+        // Check for specific error types and map to localized messages
         if (apiError && typeof apiError === 'object' && 'message' in apiError) {
-          setError((apiError as { message: string }).message);
+          const errorMessage = (apiError as { message: string }).message.toLowerCase();
+          // Map common backend errors to localized messages
+          if (errorMessage.includes('invalid') || errorMessage.includes('password') || errorMessage.includes('username')) {
+            setError(t('signIn.invalidCredentials'));
+          } else if (errorMessage.includes('authentication') || errorMessage.includes('failed')) {
+            setError(t('signIn.authenticationFailed'));
+          } else {
+            setError(t('signIn.invalidCredentials'));
+          }
         } else {
           setError(t('signIn.invalidCredentials'));
         }

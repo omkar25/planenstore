@@ -197,12 +197,16 @@
   "signIn": {
     "title": "Sign In",
     "submitButton": "Sign In",
+    "submitButtonLoading": "Signing in...",
     "noAccount": "Don't have an account?",
     "signUpLink": "Sign Up",
     "username": "Username",
     "password": "Password",
     "usernamePlaceholder": "Enter your username",
     "passwordPlaceholder": "Enter your password",
+    "authenticationFailed": "Authentication failed. Please try again.",
+    "invalidCredentials": "Invalid username or password.",
+    "unexpectedError": "An unexpected error occurred. Please try again.",
     "validation": {
       "usernameRequired": "Username is required",
       "passwordRequired": "Password is required"

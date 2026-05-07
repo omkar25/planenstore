@@ -197,12 +197,16 @@
   "signIn": {
     "title": "Anmelden",
     "submitButton": "Anmelden",
+    "submitButtonLoading": "Anmeldung läuft...",
     "noAccount": "Noch kein Konto?",
     "signUpLink": "Registrieren",
     "username": "Benutzername",
     "password": "Passwort",
     "usernamePlaceholder": "Benutzername eingeben",
     "passwordPlaceholder": "Passwort eingeben",
+    "authenticationFailed": "Authentifizierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "invalidCredentials": "Ungültiger Benutzername oder Passwort.",
+    "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     "validation": {
       "usernameRequired": "Benutzername ist erforderlich",
       "passwordRequired": "Passwort ist erforderlich"
