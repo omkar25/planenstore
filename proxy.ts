@@ -68,8 +68,8 @@ export async function proxy(request: NextRequest) {
     if (isAdminRoute) {
       const userRole = token.role as string;
 
-      // Allow SUPER ADMIN or admin roles
-      if (userRole !== "SUPER ADMIN" && userRole !== "admin") {
+      // Allow SUPER ADMIN role only
+      if (userRole !== "SUPER ADMIN") {
         // Redirect non-admin users to home page
         return NextResponse.redirect(new URL(`/${locale}`, request.url));
       }

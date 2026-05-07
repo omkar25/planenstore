@@ -1,16 +1,13 @@
 'use client';
 
-import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import React, { Suspense, useEffect } from 'react'
 import { toast } from 'sonner';
 
-import SeparatorWithOr from '@/components/ui/separator-with-or'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import CredentialsSignInForm from './credentials-signin-form'
-import { Button } from '@/components/ui/button'
 
 function SignInContent() {
   const t = useTranslations()
@@ -35,8 +32,8 @@ function SignInContent() {
   useEffect(() => {
     if (status === 'authenticated' && session?.user) {
       const userRole = (session.user as { role?: string }).role;
-      // Check for SUPER ADMIN or admin roles
-      if (userRole === 'SUPER ADMIN' || userRole === 'admin') {
+      // Check for SUPER ADMIN role
+      if (userRole === 'SUPER ADMIN') {
         router.push('/admin/overview')
       } else {
         router.push('/')
@@ -73,13 +70,13 @@ function SignInContent() {
               </div>
             </CardContent>
           </Card>
-          <SeparatorWithOr>{t('signIn.noAccount')}</SeparatorWithOr>
+          {/* <SeparatorWithOr>{t('signIn.noAccount')}</SeparatorWithOr>
 
           <Link href={`/sign-up?callbackUrl=${encodeURIComponent(callbackUrl)}`}>
             <Button className='w-full' variant='outline'>
               {t('signIn.signUpLink')}
             </Button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

@@ -208,6 +208,21 @@
       "passwordRequired": "Passwort ist erforderlich"
     }
   },
+  "admin": {
+    "panelTitle": "Admin-Bereich",
+    "logout": "Abmelden",
+    "copyright": "© {year} TORI Planen & Netze. Alle Rechte vorbehalten.",
+    "nav": {
+      "overview": "Übersicht",
+      "categories": "Kategorien",
+      "products": "Produkte",
+      "orders": "Bestellungen",
+      "users": "Benutzer",
+      "pages": "Seiten",
+      "carousels": "Karussells",
+      "settings": "Einstellungen"
+    }
+  },
   "Footer": {
     "brandName": "Planen & Netze",
     "brandDescription": "Ihr zuverlässiger Partner für professionelle Planen- und Netzlösungen im Bauwesen. Sicherheit, Umweltschutz und Wetterschutz – alles aus einer Hand.",

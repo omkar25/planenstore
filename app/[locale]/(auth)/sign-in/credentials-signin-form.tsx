@@ -20,7 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { createSignInSchema, SignInFormValues } from "@/lib/validators";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import SeparatorWithOr from "@/components/ui/separator-with-or";
+// import SeparatorWithOr from "@/components/ui/separator-with-or";
 
 export default function CredentialsSignInForm({ callbackUrl = '/' }: { callbackUrl?: string }) {
   const router = useRouter();
@@ -167,7 +167,7 @@ export default function CredentialsSignInForm({ callbackUrl = '/' }: { callbackU
           {isLoading ? t('signIn.submitButtonLoading') : t('signIn.submitButton')}
         </Button>
         
-        <SeparatorWithOr />
+        {/* <SeparatorWithOr /> */}
         
         {/* Add social sign-in buttons here if needed */}
       </form>

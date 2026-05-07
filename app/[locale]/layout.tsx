@@ -4,8 +4,6 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { Header } from "@/components/shared/common/header/header";
-import Footer from "@/components/shared/common/footer/Footer";
 import { ThemeProvider } from "@/components/shared/common/theme/theme-provider";
 import { Toaster } from "sonner";
 import Script from "next/script";
@@ -122,11 +120,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AuthProvider>
           <ThemeProvider>
-            <Header />
-            <div className="pt-14">
-              {children}
-            </div>
-            <Footer />
+            {children}
             <Toaster position="top-center" richColors />
           </ThemeProvider>
           </AuthProvider>

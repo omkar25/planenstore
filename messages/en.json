@@ -208,6 +208,21 @@
       "passwordRequired": "Password is required"
     }
   },
+  "admin": {
+    "panelTitle": "Admin Panel",
+    "logout": "Logout",
+    "copyright": "© {year} TORI Planen & Netze. All rights reserved.",
+    "nav": {
+      "overview": "Overview",
+      "categories": "Categories",
+      "products": "Products",
+      "orders": "Orders",
+      "users": "Users",
+      "pages": "Pages",
+      "carousels": "Carousels",
+      "settings": "Settings"
+    }
+  },
   "Footer": {
     "brandName": "Tarps & Nets",
     "brandDescription": "Your reliable partner for professional tarp and net solutions in construction. Safety, environmental protection and weather protection – all from one source.",
