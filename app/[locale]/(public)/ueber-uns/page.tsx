@@ -31,14 +31,14 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://toriplanen.de/${locale}/uberuns`,
+      url: `https://toriplanen.de/${locale}/ueber-uns`,
       type: "website",
     },
     alternates: {
-      canonical: `/${locale}/uberuns`,
+      canonical: `/${locale}/ueber-uns`,
       languages: {
-        "de-DE": "/de/uberuns",
-        "en-US": "/en/uberuns",
+        "de-DE": "/de/ueber-uns",
+        "en-US": "/en/ueber-uns",
       },
     },
   };
