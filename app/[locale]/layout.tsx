@@ -24,12 +24,14 @@ export const metadata: Metadata = {
   description:
     "PVC Planen, Gerüstplanen, Kederplanen & Schutznetze vom Spezialisten ✓ Über 20 Jahre Erfahrung ✓ Montage deutschlandweit ✓ Maßanfertigung ✓ Jetzt anfragen!",
   keywords: [
+    "Tori Planen",
+    "Toriplanen",
+    "TORI BAU GmbH",
     "PVC Planen",
     "PVC Planen kaufen",
     "Gerüstplanen",
     "Gerüstplanen Montage",
     "Kederplanen",
-    "Tori Planen",
     "Planen Hamburg",
     "Abdeckplanen",
     "Schutzplanen",
@@ -65,7 +67,7 @@ export const metadata: Metadata = {
       "Ihr zuverlässiger Partner für hochwertige Gerüstplanen, PVC-Planen und maßgeschneiderte Planenlösungen.",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "https://toriplanen.de/cropped-001-1.png",
         width: 1200,
         height: 630,
         alt: "Tori Planen",
@@ -77,7 +79,7 @@ export const metadata: Metadata = {
     title: "Tori Planen - Hochwertige Planen & Abdeckungen",
     description:
       "Ihr zuverlässiger Partner für hochwertige Gerüstplanen, PVC-Planen und maßgeschneiderte Planenlösungen.",
-    images: ["/images/og-image.jpg"],
+    images: ["https://toriplanen.de/cropped-001-1.png"],
   },
   metadataBase: new URL("https://toriplanen.de"),
   alternates: {
@@ -107,12 +109,37 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={nunitoSans.variable} suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="OCsrAPpgAB9zDBeWwxyken0bN45uRCu_ZmaFYswylns" />
         {/* ✅ Step 1: CookieYes loads FIRST — blocks everything until consent */}
         <Script
           id="cookieyes"
           src="https://cdn-cookieyes.com/client_data/1c86faf07d5d5edf7af1bd6c/script.js"
           strategy="beforeInteractive"
         />
+
+        {/* ✅ Organization schema — Google uses this to show logo in search */}
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Tori Planen",
+        "alternateName": ["Toriplanen", "TORI BAU GmbH", "Tori Bau"],
+        "url": "https://toriplanen.de",
+        "sameAs": [
+          "https://www.toriplanen.de",
+          "https://toriplanen.de"
+        ],
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://toriplanen.de/cropped-001-1.png",
+          "width": 512,
+          "height": 512
+        }
+      })
+    }}
+  />
       </head>
       <body className="min-h-full flex flex-col">
         <LocalBusinessJsonLd locale={locale} />
