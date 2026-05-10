@@ -71,8 +71,17 @@ export interface CategoryProductsResponse {
 export const ProductService = {
   /**
    * Get all products with pagination
+   * Uses proxy route for public requests to hide backend URL
    */
   getProducts: async (page = 0, size = 10): Promise<ProductsResponse> => {
+    // Use proxy route for client-side requests
+    if (typeof window !== 'undefined') {
+      const res = await fetch(`/api/shop/products?page=${page}&size=${size}`);
+      if (!res.ok) throw new Error('Failed to fetch products');
+      return res.json();
+    }
+    
+    // Server-side: use direct API
     return fetchApi<ProductsResponse>(`/products?page=${page}&size=${size}`);
   },
 

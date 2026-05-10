@@ -57,6 +57,7 @@ const cache = {
 export const CategoryService = {
   /**
    * Get all categories (with in-memory caching)
+   * Uses proxy route for public requests to hide backend URL
    */
   getAllCategories: async (forceRefresh = false): Promise<Category[]> => {
     // Return cached data if valid and not forcing refresh
@@ -67,6 +68,16 @@ export const CategoryService = {
       }
     }
     
+    // Use proxy route for client-side requests
+    if (typeof window !== 'undefined') {
+      const res = await fetch('/api/shop/categories');
+      if (!res.ok) throw new Error('Failed to fetch categories');
+      const response = await res.json();
+      cache.set(response);
+      return response;
+    }
+    
+    // Server-side: use direct API
     const response = await fetchApi<Category[]>('/categories');
     cache.set(response);
     return response;
