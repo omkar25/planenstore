@@ -1,29 +1,15 @@
 import { NextResponse } from "next/server";
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://toriplanen.de/shopbridgeapi";
+import { getService } from "@/services/service-registry";
 
 export async function GET() {
   try {
-    const response = await fetch(`${API_BASE_URL}/categories`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      next: { revalidate: 300 }, // Cache for 5 minutes
-    });
-
-    if (!response.ok) {
-      return NextResponse.json(
-        { error: "Failed to fetch categories" },
-        { status: response.status }
-      );
-    }
-
-    const data = await response.json();
-    return NextResponse.json(data);
+    const categoryService = getService('categoryService');
+    const categories = await categoryService.getAllCategories(true); // force refresh on server
+    return NextResponse.json(categories);
   } catch (error) {
     console.error("Categories proxy error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Failed to fetch categories" },
       { status: 500 }
     );
   }
