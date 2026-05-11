@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://toriplanen.de';
+  const baseUrl = 'https://www.toriplanen.de';
 
   return {
     rules: [

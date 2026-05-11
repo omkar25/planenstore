@@ -57,7 +57,7 @@ export async function POST(req: Request) {
       },
     });
 
-    const productUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'https://toriplanen.de'}/shop/${productSlug}`;
+    const productUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.toriplanen.de'}/shop/${productSlug}`;
 
     const htmlBody = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">

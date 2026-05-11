@@ -32,7 +32,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://toriplanen.de/${locale}/shop`,
+      url: `https://www.toriplanen.de/${locale}/shop`,
       type: "website",
     },
     alternates: {

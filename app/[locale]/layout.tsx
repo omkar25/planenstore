@@ -60,14 +60,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "de_DE",
-    url: "https://toriplanen.de",
+    url: "https://www.toriplanen.de",
     siteName: "Tori Planen",
     title: "Tori Planen - Hochwertige Planen & Abdeckungen",
     description:
       "Ihr zuverlässiger Partner für hochwertige Gerüstplanen, PVC-Planen und maßgeschneiderte Planenlösungen.",
     images: [
       {
-        url: "https://toriplanen.de/cropped-001-1.png",
+        url: "https://www.toriplanen.de/cropped-001-1.png",
         width: 1200,
         height: 630,
         alt: "Tori Planen",
@@ -79,9 +79,9 @@ export const metadata: Metadata = {
     title: "Tori Planen - Hochwertige Planen & Abdeckungen",
     description:
       "Ihr zuverlässiger Partner für hochwertige Gerüstplanen, PVC-Planen und maßgeschneiderte Planenlösungen.",
-    images: ["https://toriplanen.de/cropped-001-1.png"],
+    images: ["https://www.toriplanen.de/cropped-001-1.png"],
   },
-  metadataBase: new URL("https://toriplanen.de"),
+  metadataBase: new URL("https://www.toriplanen.de"),
   alternates: {
     canonical: "/",
     languages: {
@@ -126,14 +126,13 @@ export default async function LocaleLayout({
         "@type": "Organization",
         "name": "Tori Planen",
         "alternateName": ["Toriplanen", "TORI BAU GmbH", "Tori Bau"],
-        "url": "https://toriplanen.de",
+        "url": "https://www.toriplanen.de",
         "sameAs": [
-          "https://www.toriplanen.de",
-          "https://toriplanen.de"
+          "https://www.toriplanen.de"
         ],
         "logo": {
           "@type": "ImageObject",
-          "url": "https://toriplanen.de/cropped-001-1.png",
+          "url": "https://www.toriplanen.de/cropped-001-1.png",
           "width": 512,
           "height": 512
         }

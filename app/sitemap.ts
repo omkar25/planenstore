@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const BASE_URL = 'https://toriplanen.de';
+const BASE_URL = 'https://www.toriplanen.de';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locales = ['de', 'en', 'hi'];

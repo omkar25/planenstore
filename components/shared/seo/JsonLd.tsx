@@ -8,13 +8,13 @@ export function LocalBusinessJsonLd({ locale = 'de' }: LocalBusinessJsonLdProps)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': 'https://toriplanen.de/#organization',
+    '@id': 'https://www.toriplanen.de/#organization',
     name: 'Tori Bau GmbH - Planen & Netze',
     alternateName: ['Tori Planen', 'TORI BAU GmbH'],
     description: locale === 'de' 
       ? 'Ihr Spezialist für PVC-Planen, Gerüstplanen, Kederplanen, Staubschutznetze, Strahlschutznetze und Personenauffangnetze. Über 20 Jahre Erfahrung in der Montage von Planen und Netzen.'
       : 'Your specialist for PVC tarps, scaffolding tarps, keder tarps, dust protection nets, blast protection nets and safety nets. Over 20 years of experience.',
-    url: 'https://toriplanen.de',
+    url: 'https://www.toriplanen.de',
     telephone: '+49 40 30372206',
     email: 'info@toriplanen.de',
     address: {
@@ -38,8 +38,8 @@ export function LocalBusinessJsonLd({ locale = 'de' }: LocalBusinessJsonLdProps)
       },
     ],
     priceRange: '€€',
-    image: 'https://toriplanen.de/images/og-image.jpg',
-    logo: 'https://toriplanen.de/logo/tori-logo.png',
+    image: 'https://www.toriplanen.de/images/og-image.jpg',
+    logo: 'https://www.toriplanen.de/logo/tori-logo.png',
     sameAs: [],
     areaServed: {
       '@type': 'Country',
@@ -117,12 +117,12 @@ export function WebsiteJsonLd() {
     '@type': 'WebSite',
     name: 'Tori Planen - PVC Planen & Netze',
     alternateName: 'Tori Bau GmbH',
-    url: 'https://toriplanen.de',
+    url: 'https://www.toriplanen.de',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://toriplanen.de/de?search={search_term_string}',
+        urlTemplate: 'https://www.toriplanen.de/de?search={search_term_string}',
       },
       'query-input': 'required name=search_term_string',
     },

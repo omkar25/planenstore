@@ -54,13 +54,13 @@ export default async function PVCPlanenPage() {
       <ProductJsonLd
         name="PVC Planen"
         description="Hochwertige PVC Planen für staubdichte Einhausungen, Sandstrahl- und Korrosionsschutzarbeiten. Wetterfest, UV-beständig und reißfest."
-        image="https://toriplanen.de/images/portfolio/pvc-planen.jpg"
+        image="https://www.toriplanen.de/images/portfolio/pvc-planen.jpg"
         category="Bauplanen"
       />
       <BreadcrumbJsonLd
         items={[
-          { name: 'Startseite', url: 'https://toriplanen.de/de' },
-          { name: 'PVC Planen', url: 'https://toriplanen.de/de/pvc-planen' },
+          { name: 'Startseite', url: 'https://www.toriplanen.de/de' },
+          { name: 'PVC Planen', url: 'https://www.toriplanen.de/de/pvc-planen' },
         ]}
       />
       <FAQJsonLd faqs={faqs} />

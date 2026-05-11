@@ -49,13 +49,13 @@ export default async function GeruestplanenPage() {
       <ProductJsonLd
         name="Gerüstplanen"
         description="Ösenbandplanen und Polybandplanen für jeden Einsatzweck. Schutz vor Regen, Wind und Verschmutzung."
-        image="https://toriplanen.de/images/portfolio/geruestplanen.jpg"
+        image="https://www.toriplanen.de/images/portfolio/geruestplanen.jpg"
         category="Bauplanen"
       />
       <BreadcrumbJsonLd
         items={[
-          { name: 'Startseite', url: 'https://toriplanen.de/de' },
-          { name: 'Gerüstplanen', url: 'https://toriplanen.de/de/geruestplanen' },
+          { name: 'Startseite', url: 'https://www.toriplanen.de/de' },
+          { name: 'Gerüstplanen', url: 'https://www.toriplanen.de/de/geruestplanen' },
         ]}
       />
       <FAQJsonLd faqs={faqs} />

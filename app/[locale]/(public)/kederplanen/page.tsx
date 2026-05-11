@@ -48,13 +48,13 @@ export default async function KederplanenPage() {
       <ProductJsonLd
         name="Kederplanen"
         description="Kederplanen für staubdichte Einhausungen bei Sandstrahl- und Korrosionsschutzarbeiten. Schutz vor Schmutz, Wind, Regen und Schnee."
-        image="https://toriplanen.de/images/portfolio/kederplanen.jpg"
+        image="https://www.toriplanen.de/images/portfolio/kederplanen.jpg"
         category="Bauplanen"
       />
       <BreadcrumbJsonLd
         items={[
-          { name: 'Startseite', url: 'https://toriplanen.de/de' },
-          { name: 'Kederplanen', url: 'https://toriplanen.de/de/kederplanen' },
+          { name: 'Startseite', url: 'https://www.toriplanen.de/de' },
+          { name: 'Kederplanen', url: 'https://www.toriplanen.de/de/kederplanen' },
         ]}
       />
       <FAQJsonLd faqs={faqs} />
