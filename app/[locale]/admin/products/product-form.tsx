@@ -66,6 +66,7 @@ export default function ProductForm({ mode = 'create', initialData, onSubmit }: 
     description: "",
     sizes: [],
     colors: [],
+    salesUnit: "",
   };
 
   // Create localized schema
@@ -440,6 +441,28 @@ export default function ProductForm({ mode = 'create', initialData, onSubmit }: 
                       }}
                     />
                   </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Sales Unit */}
+            <FormField
+              control={form.control}
+              name="salesUnit"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('form.salesUnit')}</FormLabel>
+                  <FormControl>
+                    <Input 
+                      placeholder={t('form.salesUnitPlaceholder')}
+                      {...field}
+                      value={field.value || ''}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    {t('form.salesUnitDescription')}
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

@@ -37,6 +37,7 @@ export interface Product {
   images: ProductImage[];
   ratingDistribution: unknown[];
   published: boolean;
+  salesUnit?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -136,6 +137,7 @@ export const ProductService = {
       tags: productData.tags,
       sizes: productData.sizes,
       colors: productData.colors,
+      salesUnit: productData.salesUnit,
     };
     
  
@@ -184,6 +186,7 @@ export const ProductService = {
       tags: productData.tags,
       sizes: productData.sizes,
       colors: productData.colors,
+      salesUnit: productData.salesUnit,
     };
     
   

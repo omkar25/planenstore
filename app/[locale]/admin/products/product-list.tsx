@@ -141,11 +141,13 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
     }
   };
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-DE', {
+  const formatPrice = (price: number, salesUnit?: string) => {
+    const formattedPrice = new Intl.NumberFormat('de-DE', {
       style: 'currency',
       currency: 'EUR',
     }).format(price);
+    
+    return salesUnit ? `${formattedPrice} / ${salesUnit}` : formattedPrice;
   };
 
 
@@ -255,6 +257,7 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                   <TableHead>{t('tableBrand')}</TableHead>
                   <TableHead>{t('tableCategory')}</TableHead>
                   <TableHead>{t('tablePrice')}</TableHead>
+                  <TableHead>{t('tableSalesUnit')}</TableHead>
                   <TableHead>{t('tableStock')}</TableHead>
                   <TableHead>{t('tableTags')}</TableHead>
                   <TableHead>{t('tableSizes')}</TableHead>
@@ -314,6 +317,15 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                           </div>
                         )}
                       </div>
+                    </TableCell>
+                    <TableCell>
+                      {product.salesUnit ? (
+                        <Badge variant="outline" className="text-xs">
+                          {product.salesUnit}
+                        </Badge>
+                      ) : (
+                        <span className="text-gray-400 text-sm">-</span>
+                      )}
                     </TableCell>
                     <TableCell>
                       <Badge 

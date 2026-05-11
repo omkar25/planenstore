@@ -663,11 +663,14 @@ export default function ProductDetailPage() {
             {/* Price */}
             <div className="flex items-baseline gap-3 mb-6">
               <span className="text-3xl font-bold text-foreground">
-                €{product.price.toFixed(2)}
+                €{product.price.toFixed(2).replace('.', ',')}
+                {product.salesUnit && (
+                  <span className="text-xl font-normal text-muted-foreground"> / {product.salesUnit}</span>
+                )}
               </span>
               {product.listPrice > product.price && (
                 <span className="text-lg text-muted-foreground line-through">
-                  €{product.listPrice.toFixed(2)}
+                  €{product.listPrice.toFixed(2).replace('.', ',')}
                 </span>
               )}
               <span className="text-sm text-muted-foreground">

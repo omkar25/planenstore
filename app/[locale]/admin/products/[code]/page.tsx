@@ -30,6 +30,7 @@ function productToFormValues(product: Product): ProductFormValues {
     description: product.description,
     sizes: product.sizes,
     colors: product.colors,
+    salesUnit: product.salesUnit || '',
   };
 }
 

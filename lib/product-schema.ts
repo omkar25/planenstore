@@ -48,6 +48,7 @@ export const createProductSchema = (t: ProductSchemaTranslations) => z.object({
   description: z.string().min(10, { message: t.descriptionMin }),
   sizes: z.array(z.string()).default([]),
   colors: z.array(z.string()).default([]),
+  salesUnit: z.string().optional(),
 });
 
 // Create form schema with localized messages
@@ -83,6 +84,7 @@ export const productFormSchema = productSchema.omit({
   price: z.number().positive().optional(),
   brand: z.string().optional(),
   countInStock: z.number().int().min(0).optional(),
+  salesUnit: z.string().optional(),
 });
 
 export type ProductFormValues = z.infer<typeof productFormSchema>;
