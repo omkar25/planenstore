@@ -20,6 +20,7 @@ import {
   ZoomIn,
   X,
   HelpCircle,
+  Loader2,
 } from "lucide-react";
 import { ProductService, Product } from "@/services/product-service";
 
@@ -34,10 +35,21 @@ export default function ProductDetailPage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedBreite, setSelectedBreite] = useState<string | null>(null);
-  const [laenge, setLaenge] = useState<string>("100");
+  const [laenge, setLaenge] = useState<string>("");
   const [anmerkungen, setAnmerkungen] = useState<string>("");
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [showZoom, setShowZoom] = useState(false);
+  
+  // Custom size inquiry states
+  const [showInquiryModal, setShowInquiryModal] = useState(false);
+  const [customLaenge, setCustomLaenge] = useState<string>("");
+  const [customBreite, setCustomBreite] = useState<string>("");
+  const [inquiryName, setInquiryName] = useState<string>("");
+  const [inquiryEmail, setInquiryEmail] = useState<string>("");
+  const [inquiryPhone, setInquiryPhone] = useState<string>("");
+  const [inquirySubmitting, setInquirySubmitting] = useState(false);
+  const [inquirySuccess, setInquirySuccess] = useState(false);
+  const [inquiryError, setInquiryError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -49,13 +61,21 @@ export default function ProductDetailPage() {
         if (data.colors && data.colors.length > 0) {
           setSelectedColor(data.colors[0]);
         }
-        // Set default Breite from sizes
+        // Set default Breite and Länge from sizes
         if (data.sizes && data.sizes.length > 0) {
           const breiteOptions = data.sizes.filter(s => 
             s.toUpperCase().includes('BREITE') || s.toUpperCase().includes('CM')
           );
           if (breiteOptions.length > 0) {
             setSelectedBreite(breiteOptions[0]);
+          }
+          // Parse Länge from sizes
+          const laengeOption = data.sizes.find(s => s.toUpperCase().includes('LÄNGE'));
+          if (laengeOption) {
+            const match = laengeOption.match(/(\d+)/); 
+            if (match) {
+              setLaenge(match[1]);
+            }
           }
         }
       } catch (err) {
@@ -205,6 +225,63 @@ export default function ProductDetailPage() {
       if (match) return `${match[1]}cm`;
       return s.replace(/BREITE[:\s]*/i, '').trim();
     });
+  };
+
+  // Handle custom size inquiry submission
+  const handleInquirySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!product) return;
+
+    setInquirySubmitting(true);
+    setInquiryError(null);
+
+    try {
+      const response = await fetch('/api/product-inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: inquiryName,
+          email: inquiryEmail,
+          phone: inquiryPhone,
+          productName: product.name,
+          productSlug: slug,
+          productCategory: product.category.name,
+          productPrice: product.price,
+          customLaenge,
+          customBreite,
+          selectedColor,
+          anmerkungen,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send inquiry');
+      }
+
+      setInquirySuccess(true);
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setShowInquiryModal(false);
+        setInquirySuccess(false);
+        setCustomLaenge('');
+        setCustomBreite('');
+        setInquiryName('');
+        setInquiryEmail('');
+        setInquiryPhone('');
+        setAnmerkungen('');
+      }, 3000);
+    } catch {
+      setInquiryError(locale === 'de' ? 'Fehler beim Senden der Anfrage' : 'Failed to send inquiry');
+    } finally {
+      setInquirySubmitting(false);
+    }
+  };
+
+  // Open inquiry modal with custom sizes
+  const openInquiryModal = () => {
+    setShowInquiryModal(true);
+    setInquirySuccess(false);
+    setInquiryError(null);
   };
 
   if (loading) {
@@ -451,7 +528,7 @@ export default function ProductDetailPage() {
                     </button>
                   ))}
                   <button
-                    onClick={() => setSelectedBreite("custom")}
+                    onClick={() => setSelectedBreite(selectedBreite === "custom" ? null : "custom")}
                     className={`px-4 py-3 rounded-lg text-sm font-medium transition-all border-2 ${
                       selectedBreite === "custom"
                         ? "border-red-500 bg-white text-foreground"
@@ -464,41 +541,105 @@ export default function ProductDetailPage() {
               </div>
             )}
 
-            {/* Länge (Length) Input */}
-            <div className="mb-6">
-              <h3 className="text-sm font-semibold text-foreground mb-3">
-                Länge:
-              </h3>
-              <div className="flex items-center gap-2">
-                <input
-                  type="number"
-                  value={laenge}
-                  onChange={(e) => setLaenge(e.target.value)}
-                  min="40"
-                  max="6000"
-                  className="flex-1 px-4 py-3 border-2 border-border rounded-lg text-foreground focus:outline-none focus:border-primary/50 transition-colors"
-                />
-                <span className="text-sm text-muted-foreground">cm</span>
-              </div>
-              <p className="text-xs text-muted-foreground mt-1">
-                min. 40cm | max. 6000cm
-              </p>
-            </div>
+            {/* Custom Size Inputs - Show when "Individuelle Größen" is selected */}
+            {selectedBreite === "custom" && (
+              <div className="mb-6 p-4 bg-muted/30 rounded-xl border-2 border-primary/20">
+                <h3 className="text-sm font-semibold text-foreground mb-4">
+                  {locale === "de" ? "Ihre gewünschten Maße" : "Your Custom Dimensions"}
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      {locale === "de" ? "Länge in cm" : "Length in cm"}<span className="text-red-500">*</span>
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        inputMode="decimal"
+                        value={customLaenge}
+                        onChange={(e) => setCustomLaenge(e.target.value.replace(/\./g, ','))}
+                        placeholder="z.B. 1,24"
+                        className="flex-1 px-4 py-3 border-2 border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      {locale === "de" ? "Breite in cm" : "Width in cm"}<span className="text-red-500">*</span>
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        inputMode="decimal"
+                        value={customBreite}
+                        onChange={(e) => setCustomBreite(e.target.value.replace(/\./g, ','))}
+                        placeholder="z.B. 2,50"
+                        className="flex-1 px-4 py-3 border-2 border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Anmerkungen for custom sizes */}
+                <div className="mt-4">
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    {locale === "de" ? "Anmerkungen zur Bestellung / Sonderwünsche" : "Order Notes / Special Requests"}
+                  </label>
+                  <textarea
+                    value={anmerkungen}
+                    onChange={(e) => setAnmerkungen(e.target.value)}
+                    placeholder={locale === "de" ? "(optional)" : "(optional)"}
+                    rows={3}
+                    className="w-full px-4 py-3 border-2 border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-y"
+                  />
+                </div>
 
-            {/* Anmerkungen zur Bestellung (Order Notes) */}
-            <div className="mb-6">
-              <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
-                {locale === "de" ? "Anmerkungen zur Bestellung:" : "Order Notes:"}
-                <HelpCircle className="w-4 h-4 text-muted-foreground" />
-              </h3>
-              <textarea
-                value={anmerkungen}
-                onChange={(e) => setAnmerkungen(e.target.value)}
-                placeholder={locale === "de" ? "optional" : "optional"}
-                rows={3}
-                className="w-full px-4 py-3 border-2 border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-y"
-              />
-            </div>
+                {/* Send Inquiry Button for Custom Sizes */}
+                <button
+                  onClick={openInquiryModal}
+                  disabled={!customLaenge || !customBreite}
+                  className="mt-4 w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <Send className="w-5 h-5" />
+                  {locale === "de" ? "Anfrage für individuelle Größen senden" : "Send Custom Size Inquiry"}
+                </button>
+              </div>
+            )}
+
+            {/* Standard Länge (Length) Input - Hide when custom is selected */}
+            {selectedBreite !== "custom" && (
+              <div className="mb-6">
+                <h3 className="text-sm font-semibold text-foreground mb-3">
+                  Länge:
+                </h3>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="number"
+                    value={laenge}
+                    onChange={(e) => setLaenge(e.target.value)}
+                    className="flex-1 px-4 py-3 border-2 border-border rounded-lg text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                  />
+                  <span className="text-sm text-muted-foreground">cm</span>
+                </div>
+              </div>
+            )}
+
+            {/* Anmerkungen zur Bestellung (Order Notes) - Hide when custom is selected */}
+            {selectedBreite !== "custom" && (
+              <div className="mb-6">
+                <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                  {locale === "de" ? "Anmerkungen zur Bestellung:" : "Order Notes:"}
+                  <HelpCircle className="w-4 h-4 text-muted-foreground" />
+                </h3>
+                <textarea
+                  value={anmerkungen}
+                  onChange={(e) => setAnmerkungen(e.target.value)}
+                  placeholder={locale === "de" ? "optional" : "optional"}
+                  rows={3}
+                  className="w-full px-4 py-3 border-2 border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-y"
+                />
+              </div>
+            )}
 
             {/* Tags */}
             {product.tags && product.tags.length > 0 && (
@@ -684,6 +825,139 @@ export default function ProductDetailPage() {
                 ))}
               </div>
             )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Custom Size Inquiry Modal */}
+      <AnimatePresence>
+        {showInquiryModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+            onClick={() => setShowInquiryModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="bg-primary px-6 py-4 flex items-center justify-between">
+                <h2 className="text-lg font-bold text-white">
+                  {locale === "de" ? "Anfrage für individuelle Größen" : "Custom Size Inquiry"}
+                </h2>
+                <button
+                  onClick={() => setShowInquiryModal(false)}
+                  className="p-1 rounded-full hover:bg-white/20 transition-colors"
+                >
+                  <X className="w-5 h-5 text-white" />
+                </button>
+              </div>
+
+              {/* Success State */}
+              {inquirySuccess ? (
+                <div className="p-8 text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Check className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">
+                    {locale === "de" ? "Anfrage gesendet!" : "Inquiry Sent!"}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {locale === "de" 
+                      ? "Wir werden uns in Kürze bei Ihnen melden." 
+                      : "We will get back to you shortly."}
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleInquirySubmit} className="p-6 space-y-4">
+                  {/* Product Summary */}
+                  <div className="bg-muted/30 rounded-lg p-3 mb-4">
+                    <p className="text-sm font-medium text-foreground">{product?.name}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {locale === "de" ? "Gewünschte Maße:" : "Requested dimensions:"} {customLaenge} x {customBreite} cm
+                    </p>
+                    {selectedColor && (
+                      <p className="text-xs text-muted-foreground">
+                        {locale === "de" ? "Farbe:" : "Color:"} {selectedColor}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Name */}
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-1">
+                      {locale === "de" ? "Name" : "Name"}<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={inquiryName}
+                      onChange={(e) => setInquiryName(e.target.value)}
+                      required
+                      className="w-full px-4 py-2.5 border-2 border-border rounded-lg text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-1">
+                      E-Mail<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      value={inquiryEmail}
+                      onChange={(e) => setInquiryEmail(e.target.value)}
+                      required
+                      className="w-full px-4 py-2.5 border-2 border-border rounded-lg text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-1">
+                      {locale === "de" ? "Telefon" : "Phone"}
+                    </label>
+                    <input
+                      type="tel"
+                      value={inquiryPhone}
+                      onChange={(e) => setInquiryPhone(e.target.value)}
+                      className="w-full px-4 py-2.5 border-2 border-border rounded-lg text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                    />
+                  </div>
+
+                  {/* Error Message */}
+                  {inquiryError && (
+                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                      {inquiryError}
+                    </div>
+                  )}
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={inquirySubmitting}
+                    className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  >
+                    {inquirySubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        {locale === "de" ? "Wird gesendet..." : "Sending..."}
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        {locale === "de" ? "Anfrage senden" : "Send Inquiry"}
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

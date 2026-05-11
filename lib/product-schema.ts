@@ -57,6 +57,10 @@ export const createProductFormSchema = (t: ProductSchemaTranslations) =>
     numReviews: true,
     ratingDistribution: true,
     numSales: true,
+  }).extend({
+    price: z.number().positive({ message: t.pricePositive }).optional(),
+    brand: z.string().optional(),
+    countInStock: z.number().int().min(0).optional(),
   });
 
 // Default schema (for type inference)
@@ -75,6 +79,10 @@ export const productFormSchema = productSchema.omit({
   numReviews: true,
   ratingDistribution: true,
   numSales: true,
+}).extend({
+  price: z.number().positive().optional(),
+  brand: z.string().optional(),
+  countInStock: z.number().int().min(0).optional(),
 });
 
 export type ProductFormValues = z.infer<typeof productFormSchema>;
