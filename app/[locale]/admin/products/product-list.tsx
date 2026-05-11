@@ -142,7 +142,7 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('de-DE', {
+    return new Intl.NumberFormat('en-DE', {
       style: 'currency',
       currency: 'EUR',
     }).format(price);
