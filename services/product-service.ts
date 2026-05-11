@@ -101,8 +101,17 @@ export const ProductService = {
 
   /**
    * Get a single product by slug
+   * Uses proxy route for public requests to hide backend URL
    */
   getProductBySlug: async (slug: string): Promise<Product> => {
+    // Use proxy route for client-side requests
+    if (typeof window !== 'undefined') {
+      const res = await fetch(`/api/shop/products/${slug}`);
+      if (!res.ok) throw new Error('Failed to fetch product');
+      return res.json();
+    }
+    
+    // Server-side: use direct API
     return fetchApi<Product>(`/products/slug/${slug}`);
   },
 
