@@ -10,7 +10,6 @@ import { toast } from 'sonner';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -251,9 +250,6 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
           <>
             <div className="overflow-x-auto">
               <Table className="min-w-full">
-                <TableCaption>
-                  {isSearching ? t('searchResults', { query: searchQuery }) : t('listCaption')}
-                </TableCaption>
                 <TableHeader>
                   <TableRow>
                     <TableHead className="w-[160px]">{t('tableProduct')}</TableHead>
