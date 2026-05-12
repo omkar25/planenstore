@@ -337,6 +337,7 @@
       "deleteError": "Produkt konnte nicht gelöscht werden. Bitte versuchen Sie es erneut.",
       "loadError": "Produkte konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
       "showing": "Zeige {from} bis {to} von {total} Produkten",
+      "rowsPerPage": "Pro Seite",
       "previous": "Zurück",
       "next": "Weiter",
       "pageOf": "Seite {current} von {total}",

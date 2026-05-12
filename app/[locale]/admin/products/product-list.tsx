@@ -70,22 +70,22 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [totalProducts, setTotalProducts] = useState(0);
-  const [pageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(10);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
 
   // Fetch products
-  const fetchProducts = useCallback(async (page: number = 0, search: string = '') => {
+  const fetchProducts = useCallback(async (page: number = 0, search: string = '', size: number = pageSize) => {
     try {
       setLoading(true);
       let response: ProductsResponse;
       
       if (search.trim()) {
         setIsSearching(true);
-        response = await ProductService.searchProducts(search, page, pageSize);
+        response = await ProductService.searchProducts(search, page, size);
       } else {
         setIsSearching(false);
-        response = await ProductService.getProducts(page, pageSize);
+        response = await ProductService.getProducts(page, size);
       }
       
       setProducts(response.content || []);
@@ -256,13 +256,13 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                 </TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[180px] min-w-[180px]">{t('tableProduct')}</TableHead>
-                    <TableHead className="w-[100px]">{t('tableCategory')}</TableHead>
-                    <TableHead className="w-[100px]">{t('tablePrice')}</TableHead>
-                    <TableHead className="w-[80px]">{t('tableStock')}</TableHead>
-                    <TableHead className="w-[200px]">{t('tableAttributes')}</TableHead>
-                    <TableHead className="w-[80px]">{t('tableStatus')}</TableHead>
-                    <TableHead className="w-[100px] text-right">{t('tableActions')}</TableHead>
+                    <TableHead className="w-[160px]">{t('tableProduct')}</TableHead>
+                    <TableHead className="w-[90px]">{t('tableCategory')}</TableHead>
+                    <TableHead className="w-[90px]">{t('tablePrice')}</TableHead>
+                    <TableHead className="w-[50px] text-center">{t('tableStock')}</TableHead>
+                    <TableHead>{t('tableAttributes')}</TableHead>
+                    <TableHead className="w-[85px]">{t('tableStatus')}</TableHead>
+                    <TableHead className="w-[80px] text-right">{t('tableActions')}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -320,7 +320,7 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                       </TableCell>
 
                       {/* Stock */}
-                      <TableCell>
+                      <TableCell className="text-center">
                         <Badge 
                           className={`text-xs ${
                             product.countInStock === 0 
@@ -341,45 +341,35 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                         <div className="space-y-1.5">
                           {/* Tags */}
                           {product.tags && product.tags.length > 0 && (
-                            <div className="flex items-start gap-1">
-                              <Tag className="h-3 w-3 text-muted-foreground shrink-0 mt-0.5" />
-                              <div className="flex flex-wrap gap-0.5 max-w-[180px]">
-                                {product.tags.slice(0, 2).map((tag, idx) => (
-                                  <Badge key={idx} variant="outline" className="text-[10px] px-1.5 py-0.5 truncate max-w-[85px]" title={tag}>
+                            <div className="flex items-start gap-1.5">
+                              <Tag className="h-3 w-3 text-muted-foreground shrink-0 mt-1" />
+                              <div className="flex flex-wrap gap-1">
+                                {product.tags.map((tag, idx) => (
+                                  <Badge 
+                                    key={idx} 
+                                    variant="outline" 
+                                    className="text-[11px] px-2 py-0.5 whitespace-nowrap"
+                                  >
                                     {tag}
                                   </Badge>
                                 ))}
-                                {product.tags.length > 2 && (
-                                  <Badge 
-                                    variant="secondary" 
-                                    className="text-[10px] px-1.5 py-0.5 cursor-help bg-blue-50 text-blue-700 hover:bg-blue-100"
-                                    title={`Weitere: ${product.tags.slice(2).join(', ')}`}
-                                  >
-                                    +{product.tags.length - 2}
-                                  </Badge>
-                                )}
                               </div>
                             </div>
                           )}
                           {/* Sizes */}
                           {product.sizes && product.sizes.length > 0 && (
-                            <div className="flex items-start gap-1">
-                              <Ruler className="h-3 w-3 text-muted-foreground shrink-0 mt-0.5" />
-                              <div className="flex flex-wrap gap-0.5 max-w-[180px]">
-                                {product.sizes.slice(0, 2).map((size, idx) => (
-                                  <Badge key={idx} variant="secondary" className="text-[10px] px-1.5 py-0.5 truncate max-w-[85px]" title={size}>
+                            <div className="flex items-start gap-1.5">
+                              <Ruler className="h-3 w-3 text-muted-foreground shrink-0 mt-1" />
+                              <div className="flex flex-wrap gap-1">
+                                {product.sizes.map((size, idx) => (
+                                  <Badge 
+                                    key={idx} 
+                                    variant="secondary" 
+                                    className="text-[11px] px-2 py-0.5 whitespace-nowrap"
+                                  >
                                     {size}
                                   </Badge>
                                 ))}
-                                {product.sizes.length > 2 && (
-                                  <Badge 
-                                    variant="secondary" 
-                                    className="text-[10px] px-1.5 py-0.5 cursor-help bg-purple-50 text-purple-700 hover:bg-purple-100"
-                                    title={`Weitere: ${product.sizes.slice(2).join(', ')}`}
-                                  >
-                                    +{product.sizes.length - 2}
-                                  </Badge>
-                                )}
                               </div>
                             </div>
                           )}
@@ -501,11 +491,31 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
             </div>
             
             {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="flex items-center justify-between mt-6">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t">
+              <div className="flex items-center gap-4">
                 <div className="text-sm text-muted-foreground">
                   {t('showing', { from: currentPage * pageSize + 1, to: Math.min((currentPage + 1) * pageSize, totalProducts), total: totalProducts })}
                 </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-muted-foreground">{t('rowsPerPage')}:</span>
+                  <select
+                    value={pageSize}
+                    onChange={(e) => {
+                      const newSize = Number(e.target.value);
+                      setPageSize(newSize);
+                      setCurrentPage(0);
+                      fetchProducts(0, searchQuery, newSize);
+                    }}
+                    className="h-8 w-16 rounded-md border border-input bg-background px-2 text-sm focus:outline-none focus:ring-1 focus:ring-ring"
+                  >
+                    <option value={10}>10</option>
+                    <option value={25}>25</option>
+                    <option value={50}>50</option>
+                  </select>
+                </div>
+              </div>
+              
+              {totalPages > 0 && (
                 <div className="flex items-center gap-2">
                   <Button
                     variant="outline"
@@ -516,11 +526,37 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                     <ChevronLeft className="h-4 w-4 mr-1" />
                     {t('previous')}
                   </Button>
+                  
+                  {/* Page numbers */}
                   <div className="flex items-center gap-1">
-                    <span className="text-sm">
-                      {t('pageOf', { current: currentPage + 1, total: totalPages })}
-                    </span>
+                    {Array.from({ length: totalPages }, (_, i) => i).map((page) => {
+                      // Show first, last, current, and adjacent pages
+                      const showPage = page === 0 || 
+                                       page === totalPages - 1 || 
+                                       Math.abs(page - currentPage) <= 1;
+                      const showEllipsis = page === 1 && currentPage > 2 || 
+                                           page === totalPages - 2 && currentPage < totalPages - 3;
+                      
+                      if (showEllipsis && !showPage) {
+                        return <span key={page} className="px-1 text-muted-foreground">...</span>;
+                      }
+                      
+                      if (!showPage) return null;
+                      
+                      return (
+                        <Button
+                          key={page}
+                          variant={currentPage === page ? "default" : "outline"}
+                          size="sm"
+                          className="h-8 w-8 p-0"
+                          onClick={() => fetchProducts(page, searchQuery)}
+                        >
+                          {page + 1}
+                        </Button>
+                      );
+                    })}
                   </div>
+                  
                   <Button
                     variant="outline"
                     size="sm"
@@ -531,8 +567,8 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                     <ChevronRight className="h-4 w-4 ml-1" />
                   </Button>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </>
         )}
       </CardContent>

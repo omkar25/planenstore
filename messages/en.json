@@ -337,6 +337,7 @@
       "deleteError": "Failed to delete product. Please try again.",
       "loadError": "Failed to fetch products. Please try again.",
       "showing": "Showing {from} to {to} of {total} products",
+      "rowsPerPage": "Rows per page",
       "previous": "Previous",
       "next": "Next",
       "pageOf": "Page {current} of {total}",
