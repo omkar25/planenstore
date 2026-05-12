@@ -77,7 +77,9 @@ export const ProductService = {
   getProducts: async (page = 0, size = 10): Promise<ProductsResponse> => {
     // Use proxy route for client-side requests
     if (typeof window !== 'undefined') {
-      const res = await fetch(`/api/shop/products?page=${page}&size=${size}`);
+      const res = await fetch(`/api/shop/products?page=${page}&size=${size}`, {
+        cache: 'no-store',
+      });
       if (!res.ok) throw new Error('Failed to fetch products');
       return res.json();
     }
@@ -107,7 +109,9 @@ export const ProductService = {
   getProductBySlug: async (slug: string): Promise<Product> => {
     // Use proxy route for client-side requests
     if (typeof window !== 'undefined') {
-      const res = await fetch(`/api/shop/products/${slug}`);
+      const res = await fetch(`/api/shop/products/${slug}`, {
+        cache: 'no-store',
+      });
       if (!res.ok) throw new Error('Failed to fetch product');
       return res.json();
     }

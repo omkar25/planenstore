@@ -315,6 +315,7 @@
       "tablePrice": "Price",
       "tableSalesUnit": "Sales Unit",
       "tableStock": "Stock",
+      "tableAttributes": "Attributes",
       "tableTags": "Tags",
       "tableSizes": "Sizes",
       "tableColors": "Colors",

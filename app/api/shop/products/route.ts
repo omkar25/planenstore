@@ -9,7 +9,11 @@ export async function GET(request: NextRequest) {
     
     const productService = getService('productService');
     const products = await productService.getProducts(page, size);
-    return NextResponse.json(products);
+    return NextResponse.json(products, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate',
+      },
+    });
   } catch (error) {
     console.error("Products proxy error:", error);
     return NextResponse.json(

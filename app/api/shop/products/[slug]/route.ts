@@ -17,7 +17,11 @@ export async function GET(
 
     const productService = getService('productService');
     const product = await productService.getProductBySlug(slug);
-    return NextResponse.json(product);
+    return NextResponse.json(product, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate',
+      },
+    });
   } catch (error) {
     console.error("Product details proxy error:", error);
     return NextResponse.json(

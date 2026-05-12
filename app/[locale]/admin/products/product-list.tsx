@@ -45,7 +45,10 @@ import {
   Edit, 
   Trash2,
   Eye,
-  Package
+  Package,
+  Tag,
+  Ruler,
+  Palette
 } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -246,211 +249,235 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
           </div>
         ) : (
           <>
-            <Table>
-              <TableCaption>
-                {isSearching ? t('searchResults', { query: searchQuery }) : t('listCaption')}
-              </TableCaption>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>{t('tableCode')}</TableHead>
-                  <TableHead>{t('tableProduct')}</TableHead>
-                  <TableHead>{t('tableBrand')}</TableHead>
-                  <TableHead>{t('tableCategory')}</TableHead>
-                  <TableHead>{t('tablePrice')}</TableHead>
-                  <TableHead>{t('tableSalesUnit')}</TableHead>
-                  <TableHead>{t('tableStock')}</TableHead>
-                  <TableHead>{t('tableTags')}</TableHead>
-                  <TableHead>{t('tableSizes')}</TableHead>
-                  <TableHead>{t('tableColors')}</TableHead>
-                  <TableHead>{t('tableStatus')}</TableHead>
-                  <TableHead>{t('tableCreated')}</TableHead>
-                  <TableHead className="text-right">{t('tableActions')}</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {products.map((product, index) => (
-                  <TableRow key={product.id || product.code || `product-${index}`}>
-                    <TableCell>
-                      <span className="font-mono text-sm bg-muted px-2 py-1 rounded">
-                        {product.code}
-                      </span>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-3">
-                        {product.images && product.images.length > 0 ? (
-                          <Image 
-                            src={product.images[0].url} 
-                            alt={product.name}
-                            width={40}
-                            height={40}
-                            className="h-10 w-10 rounded object-cover"
-                          />
-                        ) : (
-                          <div className="h-10 w-10 rounded bg-muted flex items-center justify-center">
-                            <Package className="h-4 w-4 text-muted-foreground" />
-                          </div>
-                        )}
-                        <div className="min-w-0 flex-1">
-                          <div 
-                            className="font-medium truncate cursor-help max-w-[200px]" 
-                            title={product.name}
-                          >
-                            {product.name}
-                          </div>
-                          <div 
-                            className="text-sm text-muted-foreground truncate max-w-[200px]"
-                            title={product.slug}
-                          >
-                            {product.slug}
+            <div className="overflow-x-auto">
+              <Table className="min-w-full">
+                <TableCaption>
+                  {isSearching ? t('searchResults', { query: searchQuery }) : t('listCaption')}
+                </TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[180px] min-w-[180px]">{t('tableProduct')}</TableHead>
+                    <TableHead className="w-[100px]">{t('tableCategory')}</TableHead>
+                    <TableHead className="w-[100px]">{t('tablePrice')}</TableHead>
+                    <TableHead className="w-[80px]">{t('tableStock')}</TableHead>
+                    <TableHead className="w-[200px]">{t('tableAttributes')}</TableHead>
+                    <TableHead className="w-[80px]">{t('tableStatus')}</TableHead>
+                    <TableHead className="w-[100px] text-right">{t('tableActions')}</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {products.map((product, index) => (
+                    <TableRow key={product.id || product.code || `product-${index}`}>
+                      {/* Product Info - Combined Code, Image, Name */}
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          {product.images && product.images.length > 0 ? (
+                            <Image 
+                              src={product.images[0].url} 
+                              alt={product.name}
+                              width={36}
+                              height={36}
+                              className="h-9 w-9 rounded object-cover shrink-0"
+                            />
+                          ) : (
+                            <div className="h-9 w-9 rounded bg-muted flex items-center justify-center shrink-0">
+                              <Package className="h-4 w-4 text-muted-foreground" />
+                            </div>
+                          )}
+                          <div className="min-w-0">
+                            <div 
+                              className="font-medium text-sm truncate max-w-[120px]" 
+                              title={product.name}
+                            >
+                              {product.name}
+                            </div>
+                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                              <span className="font-mono bg-muted px-1 rounded">{product.code}</span>
+                              <span>•</span>
+                              <span>{product.brand}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </TableCell>
-                    <TableCell>{product.brand}</TableCell>
-                    <TableCell>{product.category.name}</TableCell>
-                    <TableCell>
-                      <div>
-                        <div className="font-medium">{formatPrice(product.price)}</div>
-                        {product.listPrice && product.listPrice > product.price && (
-                          <div className="text-sm text-muted-foreground line-through">
-                            {formatPrice(product.listPrice)}
-                          </div>
-                        )}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      {product.salesUnit ? (
-                        <Badge variant="outline" className="text-xs">
-                          {product.salesUnit}
-                        </Badge>
-                      ) : (
-                        <span className="text-gray-400 text-sm">-</span>
-                      )}
-                    </TableCell>
-                    <TableCell>
-                      <Badge 
-                        className={
-                          product.countInStock === 0 
-                            ? "bg-gray-100 text-gray-800 border-gray-300"
-                            : product.countInStock < 5 
-                            ? "bg-red-100 text-red-800 border-red-300"
-                            : product.countInStock <= 20 
-                            ? "bg-yellow-100 text-yellow-800 border-yellow-300"
-                            : "bg-green-100 text-green-800 border-green-300"
-                        }
-                      >
-                        {product.countInStock === 0 
-                          ? t('outOfStock') 
-                          : t('inStock', { count: product.countInStock })
-                        }
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex flex-wrap gap-1 max-w-[150px]">
-                        {product.tags && product.tags.length > 0 ? (
-                          product.tags.map((tag, index) => (
-                            <Badge key={index} variant="outline" className="text-xs px-2 py-1">
-                              {tag}
-                            </Badge>
-                          ))
-                        ) : (
-                          <span className="text-gray-400 text-sm">{t('noTags')}</span>
-                        )}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex flex-wrap gap-1 max-w-[120px]">
-                        {product.sizes && product.sizes.length > 0 ? (
-                          product.sizes.map((size, index) => (
-                            <Badge key={index} variant="secondary" className="text-xs px-2 py-1">
-                              {size}
-                            </Badge>
-                          ))
-                        ) : (
-                          <span className="text-gray-400 text-sm">{t('noSizes')}</span>
-                        )}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex flex-wrap gap-1 max-w-[120px]">
-                        {product.colors && product.colors.length > 0 ? (
-                          product.colors.map((color, index) => (
-                            <div key={index} className="flex items-center gap-1">
-                              <div 
-                                className="w-3 h-3 rounded-full border border-gray-300" 
-                                style={{ backgroundColor: color.toLowerCase() }}
-                                title={color}
-                              ></div>
-                              <Badge variant="outline" className="text-xs px-2 py-1">
-                                {color}
-                              </Badge>
+                      </TableCell>
+
+                      {/* Category */}
+                      <TableCell>
+                        <span className="text-sm">{product.category.name}</span>
+                      </TableCell>
+
+                      {/* Price with Sales Unit */}
+                      <TableCell>
+                        <div className="text-sm">
+                          <div className="font-medium">{formatPrice(product.price)}</div>
+                          {product.salesUnit && (
+                            <div className="text-xs text-muted-foreground">/ {product.salesUnit}</div>
+                          )}
+                          {product.listPrice && product.listPrice > product.price && (
+                            <div className="text-xs text-muted-foreground line-through">
+                              {formatPrice(product.listPrice)}
                             </div>
-                          ))
-                        ) : (
-                          <span className="text-gray-400 text-sm">{t('noColors')}</span>
-                        )}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant={product.published ? "default" : "secondary"}>
-                        {product.published ? t('published') : t('draft')}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      {new Date(product.createdAt).toLocaleDateString()}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex items-center justify-end gap-2">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => onView ? onView(product) : router.push(`/admin/products/${product.code}`)}
-                          className="hover:bg-blue-50"
+                          )}
+                        </div>
+                      </TableCell>
+
+                      {/* Stock */}
+                      <TableCell>
+                        <Badge 
+                          className={`text-xs ${
+                            product.countInStock === 0 
+                              ? "bg-gray-100 text-gray-800 border-gray-300"
+                              : product.countInStock < 5 
+                              ? "bg-red-100 text-red-800 border-red-300"
+                              : product.countInStock <= 20 
+                              ? "bg-yellow-100 text-yellow-800 border-yellow-300"
+                              : "bg-green-100 text-green-800 border-green-300"
+                          }`}
                         >
-                          <Eye className="h-4 w-4 text-blue-600" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => onEdit ? onEdit(product) : router.push(`/admin/products/${product.code}`)}
-                          className="hover:bg-green-50"
+                          {product.countInStock}
+                        </Badge>
+                      </TableCell>
+
+                      {/* Attributes - Tags, Sizes, Colors combined */}
+                      <TableCell>
+                        <div className="space-y-1">
+                          {/* Tags */}
+                          {product.tags && product.tags.length > 0 && (
+                            <div className="flex items-center gap-1 flex-wrap">
+                              <Tag className="h-3 w-3 text-muted-foreground shrink-0" />
+                              <div className="flex flex-wrap gap-0.5">
+                                {product.tags.slice(0, 2).map((tag, idx) => (
+                                  <Badge key={idx} variant="outline" className="text-[10px] px-1 py-0">
+                                    {tag}
+                                  </Badge>
+                                ))}
+                                {product.tags.length > 2 && (
+                                  <span 
+                                    className="text-[10px] text-muted-foreground cursor-help"
+                                    title={product.tags.join(', ')}
+                                  >
+                                    +{product.tags.length - 2}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                          {/* Sizes */}
+                          {product.sizes && product.sizes.length > 0 && (
+                            <div className="flex items-center gap-1 flex-wrap">
+                              <Ruler className="h-3 w-3 text-muted-foreground shrink-0" />
+                              <div className="flex flex-wrap gap-0.5">
+                                {product.sizes.slice(0, 2).map((size, idx) => (
+                                  <Badge key={idx} variant="secondary" className="text-[10px] px-1 py-0">
+                                    {size}
+                                  </Badge>
+                                ))}
+                                {product.sizes.length > 2 && (
+                                  <span 
+                                    className="text-[10px] text-muted-foreground cursor-help"
+                                    title={product.sizes.join(', ')}
+                                  >
+                                    +{product.sizes.length - 2}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                          {/* Colors */}
+                          {product.colors && product.colors.length > 0 && (
+                            <div className="flex items-center gap-1">
+                              <Palette className="h-3 w-3 text-muted-foreground shrink-0" />
+                              <div className="flex gap-0.5">
+                                {product.colors.slice(0, 4).map((color, idx) => (
+                                  <div 
+                                    key={idx}
+                                    className="w-4 h-4 rounded-full border border-gray-300" 
+                                    style={{ backgroundColor: color.toLowerCase() }}
+                                    title={color}
+                                  />
+                                ))}
+                                {product.colors.length > 4 && (
+                                  <span 
+                                    className="text-[10px] text-muted-foreground cursor-help ml-1"
+                                    title={product.colors.join(', ')}
+                                  >
+                                    +{product.colors.length - 4}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                          {(!product.tags || product.tags.length === 0) && 
+                           (!product.sizes || product.sizes.length === 0) && 
+                           (!product.colors || product.colors.length === 0) && (
+                            <span className="text-xs text-muted-foreground">-</span>
+                          )}
+                        </div>
+                      </TableCell>
+
+                      {/* Status */}
+                      <TableCell>
+                        <Badge 
+                          variant={product.published ? "default" : "secondary"}
+                          className="text-xs"
                         >
-                          <Edit className="h-4 w-4 text-green-600" />
-                        </Button>
-                        <AlertDialog>
-                          <AlertDialogTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="hover:bg-red-50"
-                            >
-                              <Trash2 className="h-4 w-4 text-red-600" />
-                            </Button>
-                          </AlertDialogTrigger>
-                          <AlertDialogContent>
-                            <AlertDialogHeader>
-                              <AlertDialogTitle>{t('deleteTitle')}</AlertDialogTitle>
-                              <AlertDialogDescription>
-                                {t('deleteDescription', { name: product.name })}
-                              </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                              <AlertDialogCancel>{t('cancel')}</AlertDialogCancel>
-                              <AlertDialogAction
-                                onClick={() => handleDelete(product.code)}
-                                className="bg-red-600 hover:bg-red-700"
+                          {product.published ? t('published') : t('draft')}
+                        </Badge>
+                      </TableCell>
+
+                      {/* Actions */}
+                      <TableCell className="text-right">
+                        <div className="flex items-center justify-end gap-1">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 hover:bg-blue-50"
+                            onClick={() => onView ? onView(product) : router.push(`/admin/products/${product.code}`)}
+                          >
+                            <Eye className="h-4 w-4 text-blue-600" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 hover:bg-green-50"
+                            onClick={() => onEdit ? onEdit(product) : router.push(`/admin/products/${product.code}`)}
+                          >
+                            <Edit className="h-4 w-4 text-green-600" />
+                          </Button>
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8 hover:bg-red-50"
                               >
-                                {t('delete')}
-                              </AlertDialogAction>
-                            </AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialog>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                                <Trash2 className="h-4 w-4 text-red-600" />
+                              </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>{t('deleteTitle')}</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  {t('deleteDescription', { name: product.name })}
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>{t('cancel')}</AlertDialogCancel>
+                                <AlertDialogAction
+                                  onClick={() => handleDelete(product.code)}
+                                  className="bg-red-600 hover:bg-red-700"
+                                >
+                                  {t('delete')}
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
             
             {/* Pagination */}
             {totalPages > 1 && (

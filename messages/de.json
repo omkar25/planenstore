@@ -315,6 +315,7 @@
       "tablePrice": "Preis",
       "tableSalesUnit": "Verkaufseinheit",
       "tableStock": "Lager",
+      "tableAttributes": "Attribute",
       "tableTags": "Tags",
       "tableSizes": "Größen",
       "tableColors": "Farben",
