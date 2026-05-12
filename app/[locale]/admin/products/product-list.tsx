@@ -144,13 +144,13 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
     }
   };
 
-  const formatPrice = (price: number, salesUnit?: string) => {
-    const formattedPrice = new Intl.NumberFormat('de-DE', {
-      style: 'currency',
-      currency: 'EUR',
+  const formatPrice = (price: number) => {
+    const formattedNumber = new Intl.NumberFormat('de-DE', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     }).format(price);
     
-    return salesUnit ? `${formattedPrice} / ${salesUnit}` : formattedPrice;
+    return `€ ${formattedNumber}`;
   };
 
 
@@ -308,13 +308,12 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                       {/* Price with Sales Unit */}
                       <TableCell>
                         <div className="text-sm">
-                          <div className="font-medium">{formatPrice(product.price)}</div>
-                          {product.salesUnit && (
-                            <div className="text-xs text-muted-foreground">/ {product.salesUnit}</div>
-                          )}
+                          <div className="font-medium">
+                            {formatPrice(product.price)}{product.salesUnit && ` / ${product.salesUnit}`}
+                          </div>
                           {product.listPrice && product.listPrice > product.price && (
                             <div className="text-xs text-muted-foreground line-through">
-                              {formatPrice(product.listPrice)}
+                              {formatPrice(product.listPrice)}{product.salesUnit && ` / ${product.salesUnit}`}
                             </div>
                           )}
                         </div>
@@ -339,45 +338,47 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
 
                       {/* Attributes - Tags, Sizes, Colors combined */}
                       <TableCell>
-                        <div className="space-y-1">
+                        <div className="space-y-1.5">
                           {/* Tags */}
                           {product.tags && product.tags.length > 0 && (
-                            <div className="flex items-center gap-1 flex-wrap">
-                              <Tag className="h-3 w-3 text-muted-foreground shrink-0" />
-                              <div className="flex flex-wrap gap-0.5">
+                            <div className="flex items-start gap-1">
+                              <Tag className="h-3 w-3 text-muted-foreground shrink-0 mt-0.5" />
+                              <div className="flex flex-wrap gap-0.5 max-w-[180px]">
                                 {product.tags.slice(0, 2).map((tag, idx) => (
-                                  <Badge key={idx} variant="outline" className="text-[10px] px-1 py-0">
+                                  <Badge key={idx} variant="outline" className="text-[10px] px-1.5 py-0.5 truncate max-w-[85px]" title={tag}>
                                     {tag}
                                   </Badge>
                                 ))}
                                 {product.tags.length > 2 && (
-                                  <span 
-                                    className="text-[10px] text-muted-foreground cursor-help"
-                                    title={product.tags.join(', ')}
+                                  <Badge 
+                                    variant="secondary" 
+                                    className="text-[10px] px-1.5 py-0.5 cursor-help bg-blue-50 text-blue-700 hover:bg-blue-100"
+                                    title={`Weitere: ${product.tags.slice(2).join(', ')}`}
                                   >
                                     +{product.tags.length - 2}
-                                  </span>
+                                  </Badge>
                                 )}
                               </div>
                             </div>
                           )}
                           {/* Sizes */}
                           {product.sizes && product.sizes.length > 0 && (
-                            <div className="flex items-center gap-1 flex-wrap">
-                              <Ruler className="h-3 w-3 text-muted-foreground shrink-0" />
-                              <div className="flex flex-wrap gap-0.5">
+                            <div className="flex items-start gap-1">
+                              <Ruler className="h-3 w-3 text-muted-foreground shrink-0 mt-0.5" />
+                              <div className="flex flex-wrap gap-0.5 max-w-[180px]">
                                 {product.sizes.slice(0, 2).map((size, idx) => (
-                                  <Badge key={idx} variant="secondary" className="text-[10px] px-1 py-0">
+                                  <Badge key={idx} variant="secondary" className="text-[10px] px-1.5 py-0.5 truncate max-w-[85px]" title={size}>
                                     {size}
                                   </Badge>
                                 ))}
                                 {product.sizes.length > 2 && (
-                                  <span 
-                                    className="text-[10px] text-muted-foreground cursor-help"
-                                    title={product.sizes.join(', ')}
+                                  <Badge 
+                                    variant="secondary" 
+                                    className="text-[10px] px-1.5 py-0.5 cursor-help bg-purple-50 text-purple-700 hover:bg-purple-100"
+                                    title={`Weitere: ${product.sizes.slice(2).join(', ')}`}
                                   >
                                     +{product.sizes.length - 2}
-                                  </span>
+                                  </Badge>
                                 )}
                               </div>
                             </div>
@@ -386,23 +387,43 @@ export default function ProductList({ onEdit, onDelete, onView, onAdd }: Product
                           {product.colors && product.colors.length > 0 && (
                             <div className="flex items-center gap-1">
                               <Palette className="h-3 w-3 text-muted-foreground shrink-0" />
-                              <div className="flex gap-0.5">
-                                {product.colors.slice(0, 4).map((color, idx) => (
-                                  <div 
-                                    key={idx}
-                                    className="w-4 h-4 rounded-full border border-gray-300" 
-                                    style={{ backgroundColor: color.toLowerCase() }}
-                                    title={color}
-                                  />
-                                ))}
-                                {product.colors.length > 4 && (
-                                  <span 
-                                    className="text-[10px] text-muted-foreground cursor-help ml-1"
-                                    title={product.colors.join(', ')}
-                                  >
-                                    +{product.colors.length - 4}
-                                  </span>
-                                )}
+                              <div className="flex flex-wrap gap-1">
+                                {product.colors.map((color, idx) => {
+                                  const colorMap: Record<string, string> = {
+                                    'weiss': '#ffffff', 'weiß': '#ffffff', 'white': '#ffffff',
+                                    'schwarz': '#000000', 'black': '#000000',
+                                    'rot': '#ef4444', 'red': '#ef4444',
+                                    'grün': '#22c55e', 'gruen': '#22c55e', 'green': '#22c55e',
+                                    'blau': '#3b82f6', 'blue': '#3b82f6',
+                                    'gelb': '#eab308', 'yellow': '#eab308',
+                                    'orange': '#f97316',
+                                    'grau': '#6b7280', 'grey': '#6b7280', 'gray': '#6b7280',
+                                    'braun': '#92400e', 'brown': '#92400e',
+                                    'transparent': 'transparent',
+                                    'natur': '#f5f5dc', 'beige': '#f5f5dc',
+                                  };
+                                  const bgColor = colorMap[color.toLowerCase()] || color.toLowerCase();
+                                  const isLight = ['weiss', 'weiß', 'white', 'gelb', 'yellow', 'transparent', 'natur', 'beige'].includes(color.toLowerCase());
+                                  
+                                  return (
+                                    <div 
+                                      key={idx}
+                                      className="flex items-center gap-0.5"
+                                      title={color}
+                                    >
+                                      <div 
+                                        className={`w-3 h-3 rounded-full border ${isLight ? 'border-gray-400' : 'border-gray-300'}`}
+                                        style={{ 
+                                          backgroundColor: bgColor,
+                                          backgroundImage: bgColor === 'transparent' ? 'linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%)' : undefined,
+                                          backgroundSize: bgColor === 'transparent' ? '4px 4px' : undefined,
+                                          backgroundPosition: bgColor === 'transparent' ? '0 0, 0 2px, 2px -2px, -2px 0px' : undefined,
+                                        }}
+                                      />
+                                      <span className="text-[10px] text-muted-foreground">{color}</span>
+                                    </div>
+                                  );
+                                })}
                               </div>
                             </div>
                           )}
