@@ -23,6 +23,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { ProductService, Product } from "@/services/product-service";
+import { createInquirySchema } from "@/lib/validators";
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -50,6 +51,7 @@ export default function ProductDetailPage() {
   const [inquirySubmitting, setInquirySubmitting] = useState(false);
   const [inquirySuccess, setInquirySuccess] = useState(false);
   const [inquiryError, setInquiryError] = useState<string | null>(null);
+  const [formErrors, setFormErrors] = useState<{ name?: string; email?: string; phone?: string }>({});
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -232,6 +234,26 @@ export default function ProductDetailPage() {
     e.preventDefault();
     if (!product) return;
 
+    // Validate form with Zod
+    const schema = createInquirySchema(locale);
+    const fullPhone = inquiryPhone ? `+49 ${inquiryPhone}` : '';
+    const validationResult = schema.safeParse({
+      name: inquiryName,
+      email: inquiryEmail,
+      phone: fullPhone,
+    });
+
+    if (!validationResult.success) {
+      const errors: { name?: string; email?: string; phone?: string } = {};
+      validationResult.error.issues.forEach((issue) => {
+        const field = issue.path[0] as 'name' | 'email' | 'phone';
+        errors[field] = issue.message;
+      });
+      setFormErrors(errors);
+      return;
+    }
+
+    setFormErrors({});
     setInquirySubmitting(true);
     setInquiryError(null);
 
@@ -242,7 +264,7 @@ export default function ProductDetailPage() {
         body: JSON.stringify({
           name: inquiryName,
           email: inquiryEmail,
-          phone: inquiryPhone,
+          phone: fullPhone,
           productName: product.name,
           productSlug: slug,
           productCategory: product.category.name,
@@ -269,6 +291,7 @@ export default function ProductDetailPage() {
         setInquiryEmail('');
         setInquiryPhone('');
         setAnmerkungen('');
+        setFormErrors({});
       }, 3000);
     } catch {
       setInquiryError(locale === 'de' ? 'Fehler beim Senden der Anfrage' : 'Failed to send inquiry');
@@ -900,10 +923,17 @@ export default function ProductDetailPage() {
                     <input
                       type="text"
                       value={inquiryName}
-                      onChange={(e) => setInquiryName(e.target.value)}
-                      required
-                      className="w-full px-4 py-2.5 border-2 border-border rounded-lg text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                      onChange={(e) => {
+                        setInquiryName(e.target.value);
+                        if (formErrors.name) setFormErrors(prev => ({ ...prev, name: undefined }));
+                      }}
+                      className={`w-full px-4 py-2.5 border-2 rounded-lg text-foreground focus:outline-none transition-colors ${
+                        formErrors.name ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary/50'
+                      }`}
                     />
+                    {formErrors.name && (
+                      <p className="mt-1 text-sm text-red-500">{formErrors.name}</p>
+                    )}
                   </div>
 
                   {/* Email */}
@@ -914,23 +944,48 @@ export default function ProductDetailPage() {
                     <input
                       type="email"
                       value={inquiryEmail}
-                      onChange={(e) => setInquiryEmail(e.target.value)}
-                      required
-                      className="w-full px-4 py-2.5 border-2 border-border rounded-lg text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                      onChange={(e) => {
+                        setInquiryEmail(e.target.value);
+                        if (formErrors.email) setFormErrors(prev => ({ ...prev, email: undefined }));
+                      }}
+                      className={`w-full px-4 py-2.5 border-2 rounded-lg text-foreground focus:outline-none transition-colors ${
+                        formErrors.email ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary/50'
+                      }`}
                     />
+                    {formErrors.email && (
+                      <p className="mt-1 text-sm text-red-500">{formErrors.email}</p>
+                    )}
                   </div>
 
-                  {/* Phone */}
+                  {/* Phone with German flag */}
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-1">
                       {locale === "de" ? "Telefon" : "Phone"}
                     </label>
-                    <input
-                      type="tel"
-                      value={inquiryPhone}
-                      onChange={(e) => setInquiryPhone(e.target.value)}
-                      className="w-full px-4 py-2.5 border-2 border-border rounded-lg text-foreground focus:outline-none focus:border-primary/50 transition-colors"
-                    />
+                    <div className={`flex items-center border-2 rounded-lg overflow-hidden transition-colors ${
+                      formErrors.phone ? 'border-red-500' : 'border-border focus-within:border-primary/50'
+                    }`}>
+                      {/* German Flag + Country Code */}
+                      <div className="flex items-center gap-2 px-3 py-2.5 bg-muted/50 border-r border-border">
+                        <span className="text-lg">🇩🇪</span>
+                        <span className="text-sm font-medium text-foreground">+49</span>
+                      </div>
+                      <input
+                        type="tel"
+                        value={inquiryPhone}
+                        onChange={(e) => {
+                          // Only allow numbers and spaces
+                          const value = e.target.value.replace(/[^0-9\s]/g, '');
+                          setInquiryPhone(value);
+                          if (formErrors.phone) setFormErrors(prev => ({ ...prev, phone: undefined }));
+                        }}
+                        placeholder="151 23456789"
+                        className="flex-1 px-3 py-2.5 text-foreground focus:outline-none bg-transparent"
+                      />
+                    </div>
+                    {formErrors.phone && (
+                      <p className="mt-1 text-sm text-red-500">{formErrors.phone}</p>
+                    )}
                   </div>
 
                   {/* Error Message */}
