@@ -10,6 +10,7 @@ import Script from "next/script";
 import { LocalBusinessJsonLd, WebsiteJsonLd } from "@/components/shared/seo/JsonLd";
 import "../globals.css";
 import AuthProvider from "@/components/auth/auth-provider";
+import ChatBot from "@/components/chat/ChatBot";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -148,6 +149,7 @@ export default async function LocaleLayout({
           <ThemeProvider>
             {children}
             <Toaster position="top-center" richColors />
+            <ChatBot />
           </ThemeProvider>
           </AuthProvider>
         </NextIntlClientProvider>
