@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback, FormEvent } from 'react';
+import { useState, useRef, useEffect, FormEvent } from 'react';
 import { useChat, type UIMessage } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -32,17 +32,8 @@ export default function ChatBot() {
   const [isMinimized, setIsMinimized] = useState(false);
   const [input, setInput] = useState('');
   const [hasAutoOpened, setHasAutoOpened] = useState(false);
+  const [showAttention, setShowAttention] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  // Play notification sound
-  const playNotificationSound = useCallback(() => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2teleQEAHIveli4AFWN/rMXKpXQcABl3pLvDqH8cABJqm7S8qYMfAA5glq+2qYYiAAtkk6u0qoklAAhgkKmyq4snAAVdjqexrI0pAANai6WsrZArAAFXiKOqrpItAP9UhqGorpQvAP5ShJ+mrpYxAP1Qgp2krpgzAPxOgJuirpo1APtMfpmgq5w3APpKfJeeqZ45APlIepWcqKA7APhGd5OapqI9APdEdJGYpKQ/APZCcY+WoqZBAPVAbY2UoKhDAPQ+a4uSnqpFAPI8aImQnKxHAPE6ZoeOmq5JAPAzZIWMmLBLAO8xYoOKlrJNAO4vYIGIlLRPAO0tXn+GkrZRAOwrXH2EkLhTAOspWnuCjrpVAOonWHmAjLxXAOklVnd+ir5ZAOgjVHV8iMBbAOchUnN6hcJdAOYfUHF4g8RfAOUdTm92gcZhAOQbTG10f8hjAOMZSml0fcplAOIXSGdyesxnAOEVRmVweMtuAOATRGNudM1wAN8RQmFscM9yAN4PP19qbtF0AN0NPV1obtN2ANwLO1tmbdV4ANsJOVlkbNd6ANoHN1diath8ANkFNVVgaOB+ANgDM1NeZuKAANcBMVFcZOSCANb/Lk9aYuaEANX9LE1YYOiGANT7KktWXuqIANP5KEtUXOyKANL3JklSWu6MANL1JEdQWPCOANHzIkVOVvKQANDxIENMVPSSAM/vHkFKUvaUAM7tHD9IT/iWAM3rGj1GTfqYAMzpGDtESvyaAMvnFjlCR/6cAMrlFDdARP+eAMnjEjU+Qv+gAMjhEDM8QP+iAMffDjE6Pv+kAMbdDC84PP+mAMXbCi02Ov+oAMTZCCs0OP+qAMPXBikzNv+sAMLVBCcxNP+uAMHTAiUvMv+wAMDRAiMtMP+yAL/PACErLv+0AL7NACApLP+2AL3LAB4nKv+4ALzJABwlKP+6ALvHABojJv+8ALrFABghJP++ALnDABYfIv/AALjBABQdIP/CALe/ABIbHv/EALa9ABEZHf/FALa7AA8XG//HALa5AA0VGf/IALa3AAsUF//JALa1AAkSFf/KALazAAcQE//LALaxAAUOEf/MALavAAMMD//NALauAAEKDf/OALasAP8IDP/OALaqAP0GCv/PALaoAPsECP/QALamAPkCBv/RALakAPcABP/SALaiAPX+Av/TALagAPP8AP/UALaeAPH6/v/VALacAO/4/P/WALaaAO32+v/XALaYAOv09//YALaWAOn08v/ZALaUAOf08P/aALaSAOXz7v/bALaQAOPy7P/cALaOAOHx6v/dALaMAODw6P/eALaKAN7v5v/fALaIANzu5P/gALaGANrt4v/hALaEANjs4P/iALaCANbr3v/jALaAANTq3P/kALZ+ANLp2v/lALZ8ANDo2P/mALZ6AM7n1v/nALZ4AMzm1P/oALZ2AMrl0v/pALZ0AMjk0P/qALZyAMbj0P/qALZwAMTi0P/rALZuAMLh0P/sALZsAMDg0P/tALZqAL7f0P/uALZoALze0P/vALZmALrd0P/wALZkALjc0P/xALZiALbb0P/yALZgALTa0P/zALZeALLZ0P/0ALZcALDY0P/1ALZaAK7X0P/2ALZYAKzW0P/3ALZWAKXV0P/4ALZUAKTU0P/5ALZSAKPT0P/6ALZQAKHS0P/7ALZOAK/R0P/8ALZMAI/Q0P/9ALZKAI7P0P/+ALZIAIzO0P//ALZGAI3N0P8AALZEAIvM0P8BAA==');
-    }
-    audioRef.current.volume = 0.5;
-    audioRef.current.play().catch(() => {});
-  }, []);
 
   // Auto-open chat after delay for first-time visitors
   useEffect(() => {
@@ -52,13 +43,24 @@ export default function ChatBot() {
       const timer = setTimeout(() => {
         setIsOpen(true);
         setHasAutoOpened(true);
+        setShowAttention(true);
         sessionStorage.setItem(STORAGE_KEY, 'true');
-        playNotificationSound();
+        
+        // Try to play sound (may be blocked by browser)
+        try {
+          const audio = new Audio('/sounds/notification.mp3');
+          audio.volume = 0.5;
+          audio.play().catch(() => {
+            // Sound blocked - that's okay, we have visual feedback
+          });
+        } catch {
+          // Audio not supported
+        }
       }, AUTO_OPEN_DELAY);
 
       return () => clearTimeout(timer);
     }
-  }, [hasAutoOpened, playNotificationSound]);
+  }, [hasAutoOpened]);
   
   const initialMessages: UIMessage[] = [
     {
@@ -133,7 +135,7 @@ export default function ChatBot() {
             }}
             exit={{ opacity: 0, y: 100, scale: 0.8 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-gray-200"
+            className={`fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] bg-white rounded-2xl overflow-hidden flex flex-col ${showAttention ? 'ring-4 ring-primary/50 ring-offset-2' : ''}`}
           >
             {/* Header */}
             <div className="bg-primary px-4 py-3 flex items-center justify-between">
