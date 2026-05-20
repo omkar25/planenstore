@@ -37,12 +37,13 @@ export default function ChatBot() {
   const [showAttention, setShowAttention] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Check if on admin page
+  // Check if on admin or auth pages
   const isAdminPage = pathname?.includes('/admin');
+  const isAuthPage = pathname?.includes('/sign-in') || pathname?.includes('/sign-up');
 
-  // Auto-open chat after delay for first-time visitors (only on non-admin pages)
+  // Auto-open chat after delay for first-time visitors (only on public pages)
   useEffect(() => {
-    if (isAdminPage) return;
+    if (isAdminPage || isAuthPage) return;
     
     const hasShownBefore = sessionStorage.getItem(STORAGE_KEY);
     
@@ -67,7 +68,7 @@ export default function ChatBot() {
 
       return () => clearTimeout(timer);
     }
-  }, [hasAutoOpened, isAdminPage]);
+  }, [hasAutoOpened, isAdminPage, isAuthPage]);
   
   const initialMessages: UIMessage[] = [
     {
@@ -107,8 +108,8 @@ export default function ChatBot() {
     setIsMinimized(!isMinimized);
   };
 
-  // Don't render on admin pages
-  if (isAdminPage) {
+  // Don't render on admin or auth pages
+  if (isAdminPage || isAuthPage) {
     return null;
   }
 
