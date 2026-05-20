@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { adminLinks } from './admin-links';
+import { AuthTokenService } from '@/services/api-config';
 import { 
   LayoutDashboard, 
   FolderTree, 
@@ -47,6 +48,8 @@ export default function AdminLayout({
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false); // Desktop sidebar collapse
 
   const handleLogout = async () => {
+    // Remove auth_token from localStorage
+    AuthTokenService.removeToken();
     await signOut({ redirect: false });
     router.push('/sign-in');
   };
