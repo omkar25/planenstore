@@ -58,6 +58,7 @@ const galleryImages: Record<string, string[]> = {
     "/images/portfolio/Geruestplane_Portfolio/Gerüstplane_B1_Muster.jpg",
     "/images/portfolio/Geruestplane_Portfolio/Gersütplane_Muster.jpg",
     "/images/portfolio/Geruestplane_Portfolio/Gerüstplane_Muster_3.jpeg",
+    "/images/portfolio/Geruestplane_Portfolio/polybandplane-muster.jpg",
   ],
   blast: [
     "/images/portfolio/Strahlschutznetze_Portfolio/Strahlschutznetze_B1_Muster.jpg",
