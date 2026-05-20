@@ -421,7 +421,7 @@
     "servicesList": {
       "pvc": "PVC-Planen Montage",
       "keder": "Keder-Planen Montage",
-      "geruestband": "Gerüstband Montage",
+      "geruestband": "Gerüstplanen Montage",
       "blast": "Strahlschutznetze",
       "dust": "Staubschutznetze",
       "personenauffang": "Personenauffangnetze"
