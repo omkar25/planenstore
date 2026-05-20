@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, FormEvent } from 'react';
+import { usePathname } from 'next/navigation';
 import { useChat, type UIMessage } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -28,6 +29,7 @@ const AUTO_OPEN_DELAY = 5000; // 5 seconds
 const STORAGE_KEY = 'chatbot_shown';
 
 export default function ChatBot() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [input, setInput] = useState('');
@@ -35,8 +37,13 @@ export default function ChatBot() {
   const [showAttention, setShowAttention] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-open chat after delay for first-time visitors
+  // Check if on admin page
+  const isAdminPage = pathname?.includes('/admin');
+
+  // Auto-open chat after delay for first-time visitors (only on non-admin pages)
   useEffect(() => {
+    if (isAdminPage) return;
+    
     const hasShownBefore = sessionStorage.getItem(STORAGE_KEY);
     
     if (!hasShownBefore && !hasAutoOpened) {
@@ -60,7 +67,7 @@ export default function ChatBot() {
 
       return () => clearTimeout(timer);
     }
-  }, [hasAutoOpened]);
+  }, [hasAutoOpened, isAdminPage]);
   
   const initialMessages: UIMessage[] = [
     {
@@ -99,6 +106,11 @@ export default function ChatBot() {
   const toggleMinimize = () => {
     setIsMinimized(!isMinimized);
   };
+
+  // Don't render on admin pages
+  if (isAdminPage) {
+    return null;
+  }
 
   return (
     <>
