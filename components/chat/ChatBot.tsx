@@ -25,6 +25,31 @@ function getMessageText(message: UIMessage): string {
     .join('');
 }
 
+// Helper to render text with clickable links
+function renderMessageWithLinks(text: string): React.ReactNode {
+  // Regex to match URLs
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const parts = text.split(urlRegex);
+  
+  return parts.map((part, index) => {
+    if (urlRegex.test(part)) {
+      // Reset regex lastIndex
+      urlRegex.lastIndex = 0;
+      return (
+        <a
+          key={index}
+          href={part}
+          className="text-primary underline hover:text-primary/80 break-all"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
 const AUTO_OPEN_DELAY = 5000; // 5 seconds
 const STORAGE_KEY = 'chatbot_shown';
 
@@ -219,7 +244,7 @@ export default function ChatBot() {
                             : 'bg-white text-gray-800 rounded-tl-sm shadow-sm border border-gray-100'
                         }`}
                       >
-                        <p className="whitespace-pre-wrap">{getMessageText(message)}</p>
+                        <p className="whitespace-pre-wrap">{renderMessageWithLinks(getMessageText(message))}</p>
                       </div>
                     </motion.div>
                   ))}
