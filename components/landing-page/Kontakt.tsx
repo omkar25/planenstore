@@ -220,7 +220,7 @@ export default function Kontakt() {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
