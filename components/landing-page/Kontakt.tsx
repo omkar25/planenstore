@@ -324,13 +324,13 @@ export default function Kontakt() {
                     height={90}
                     className="object-contain w-20 h-12 sm:w-28 sm:h-16 md:w-36 md:h-20 lg:w-44 lg:h-24"
                   />
-                  <Image
+                  {/* <Image
                     src="/logo/PQ_Registrier_Nr.1.jpeg"
                     alt="PQ Registrier Logo"
                     width={150}
                     height={90}
                     className="object-contain w-20 h-12 sm:w-28 sm:h-16 md:w-36 md:h-20 lg:w-44 lg:h-24"
-                  />
+                  /> */}
                   </div>
                 </div>
               </div>
