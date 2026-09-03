@@ -27,27 +27,36 @@ function getMessageText(message: UIMessage): string {
 
 // Helper to render text with clickable links
 function renderMessageWithLinks(text: string): React.ReactNode {
-  // Regex to match URLs
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  const parts = text.split(urlRegex);
-  
-  return parts.map((part, index) => {
-    if (urlRegex.test(part)) {
-      // Reset regex lastIndex
-      urlRegex.lastIndex = 0;
-      return (
-        <a
-          key={index}
-          href={part}
-          className="text-primary underline hover:text-primary/80 break-all"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {part}
-        </a>
-      );
-    }
-    return part;
-  });
+  // Matches URLs, optionally wrapped in <> (markdown autolinks)
+  const urlRegex = /<?(https?:\/\/[^\s<>]+)>?/g;
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = urlRegex.exec(text)) !== null) {
+    // Drop trailing punctuation that is not part of the URL
+    const trailing = match[1].match(/[.,;:!?)\]}'"]+$/)?.[0] ?? '';
+    const url = trailing ? match[1].slice(0, -trailing.length) : match[1];
+
+    if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index));
+    nodes.push(
+      <a
+        key={`${match.index}-${url}`}
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-primary underline hover:text-primary/80 break-all"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {url}
+      </a>
+    );
+    if (trailing) nodes.push(trailing);
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes;
 }
 
 const AUTO_OPEN_DELAY = 5000; // 5 seconds
@@ -293,7 +302,8 @@ export default function ChatBot() {
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       placeholder="Schreiben Sie eine Nachricht..."
-                      className="flex-1 px-4 py-2.5 bg-gray-100 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                      style={{ color: '#111827', WebkitTextFillColor: '#111827', caretColor: '#111827' }}
+                      className="flex-1 px-4 py-2.5 bg-gray-100 text-gray-900 placeholder:text-gray-500 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                       disabled={isLoading}
                     />
                     <button

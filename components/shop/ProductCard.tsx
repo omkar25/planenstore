@@ -56,14 +56,16 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
       >
         <div className="flex flex-col sm:flex-row">
           <div className="relative w-full sm:w-64 h-48 sm:h-auto shrink-0 overflow-hidden">
-            <Image
-              src={image}
-              alt={name}
-              fill
-              sizes="(max-width: 640px) 100vw, 256px"
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-              priority={index < 6}
-            />
+            <Link href={`/shop/${product.slug}`} className="absolute inset-0 block">
+              <Image
+                src={image}
+                alt={name}
+                fill
+                sizes="(max-width: 640px) 100vw, 256px"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                priority={index < 6}
+              />
+            </Link>
             {discount && (
               <span className="absolute top-3 left-3 px-2 py-1 bg-red-500 text-white text-xs font-bold rounded-md">
                 -{discount}%
@@ -138,14 +140,16 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative aspect-square overflow-hidden bg-muted">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover group-hover:scale-110 transition-transform duration-500"
-          priority={index < 6}
-        />
+        <Link href={`/shop/${product.slug}`} className="absolute inset-0 block">
+          <Image
+            src={image}
+            alt={name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover group-hover:scale-110 transition-transform duration-500"
+            priority={index < 6}
+          />
+        </Link>
 
         {discount && (
           <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-500 text-white text-xs font-bold rounded-md shadow-lg">
@@ -154,7 +158,7 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
         )}
 
         {!inStock && (
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center pointer-events-none">
             <span className="px-4 py-2 bg-white/90 text-foreground font-semibold rounded-lg">
               {locale === "de" ? "Ausverkauft" : "Sold Out"}
             </span>
@@ -164,7 +168,9 @@ export default function ProductCard({ product, locale, viewMode = "grid", index 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
-          className="absolute inset-x-0 bottom-0 p-3 bg-linear-to-t from-black/70 to-transparent"
+          className={`absolute inset-x-0 bottom-0 p-3 bg-linear-to-t from-black/70 to-transparent ${
+            isHovered ? "" : "pointer-events-none"
+          }`}
         >
           <div className="flex items-center justify-center gap-2">
             <button

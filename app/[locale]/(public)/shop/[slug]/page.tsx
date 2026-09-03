@@ -543,8 +543,8 @@ export default function ProductDetailPage() {
                       onClick={() => setSelectedBreite(breite)}
                       className={`px-6 py-3 rounded-lg text-sm font-medium transition-all border-2 ${
                         selectedBreite === breite
-                          ? "border-red-500 bg-white text-foreground"
-                          : "border-border bg-white text-foreground hover:border-gray-400"
+                          ? "border-red-500 bg-background text-foreground"
+                          : "border-border bg-background text-foreground hover:border-gray-400"
                       }`}
                     >
                       {breite}
@@ -554,8 +554,8 @@ export default function ProductDetailPage() {
                     onClick={() => setSelectedBreite(selectedBreite === "custom" ? null : "custom")}
                     className={`px-4 py-3 rounded-lg text-sm font-medium transition-all border-2 ${
                       selectedBreite === "custom"
-                        ? "border-red-500 bg-white text-foreground"
-                        : "border-border bg-white text-foreground hover:border-gray-400"
+                        ? "border-red-500 bg-background text-foreground"
+                        : "border-border bg-background text-foreground hover:border-gray-400"
                     }`}
                   >
                     {locale === "de" ? "Individuelle Größen" : "Custom Sizes"}

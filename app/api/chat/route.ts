@@ -100,7 +100,7 @@ function formatProductsForPrompt(products: Product[]): string {
 // Primary: Groq (free tier), Fallback: Google Gemini
 const getModel = () => {
   if (process.env.GROQ_API_KEY) {
-    return groq('llama-3.3-70b-versatile');
+    return groq('openai/gpt-oss-20b');
   }
   return google('gemini-2.0-flash');
 };
@@ -174,7 +174,7 @@ Wenn Kunden Kontakt aufnehmen möchten:
 5. Halte Antworten kurz und präzise (2-3 Sätze)
 6. Wenn ein Produkt nicht in der Liste ist, verweise auf den Shop (${SITE_DOMAIN}/shop) oder Kundenservice
 7. Verwende keine Emojis übermäßig
-8. WICHTIG: Nenne immer den VOLLSTÄNDIGEN Produktlink mit Domain: ${SITE_DOMAIN}/shop/{slug}
+8. WICHTIG: Nenne immer den VOLLSTÄNDIGEN Produktlink mit Domain: ${SITE_DOMAIN}/shop/{slug} - schreibe URLs als reinen Text, OHNE spitze Klammern (<>), Markdown-Klammern oder abschließende Satzzeichen
 9. Bei Preisfragen: Nutze die PREIS-ÜBERSICHT für min/max/durchschnitt Preise
 
 === BEISPIELANTWORTEN ===
